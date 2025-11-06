@@ -6,9 +6,9 @@
 [![Skills](https://img.shields.io/badge/Skills-7-blue.svg)](.)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-Empower AI models (Claude, GPT-4, Gemini, and others) with deep expertise across the entire AI research lifecycle—from model architecture to production deployment. Each skill provides comprehensive documentation, real-world examples, and battle-tested best practices.
+Empower AI models (Claude, GPT, Gemini, and others) with deep expertise across the entire AI research lifecycle—from model architecture to production deployment. Each skill provides comprehensive documentation, real-world examples, and battle-tested best practices.
 
-**Works with**: Claude Code, ChatGPT, Gemini, and any AI system that supports skill/knowledge injection.
+**Works with**: Any AI assistant that supports skills or knowledge injection.
 
 ---
 
@@ -46,7 +46,7 @@ Empower AI models (Claude, GPT-4, Gemini, and others) with deep expertise across
 
 ## 🚀 Quick Start
 
-### For AI Users (Claude, GPT-4, Gemini, etc.)
+### For AI Users
 
 1. **Clone this repository**:
 ```bash
@@ -60,10 +60,10 @@ cd claude-ai-research-skills
    - Real code examples, workflows, and troubleshooting
 
 3. **Use with your AI assistant**:
-   - **Claude Code**: Point to skill directory: `"Help me with DeepSpeed"` → reads `08-distributed-training/deepspeed/`
-   - **ChatGPT**: Copy-paste `SKILL.md` content into conversation
-   - **Gemini**: Upload `SKILL.md` as context
-   - **Custom agents**: Inject as system prompt or RAG knowledge
+   - **Upload as skill**: Package into `.zip` and upload to any AI assistant that supports custom skills
+   - **Attach as context**: Copy-paste `SKILL.md` content or attach as file
+   - **RAG knowledge**: Inject into your custom agent's knowledge base
+   - **Claude Code**: Point to skill directory for native integration
 
 ### For Skill Creators
 
