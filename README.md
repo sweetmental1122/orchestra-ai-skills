@@ -23,56 +23,22 @@ Empower Claude Code with deep expertise across the entire AI research lifecycle�
 
 ---
 
-## 📚 Available Skills (16/70 roadmap)
+## 📚 Available Skills (7/70 roadmap)
 
-### 🏗️ Model Architecture & Training
-Build and train models from scratch or customize existing architectures.
+**Quality over quantity**: Each skill provides comprehensive, expert-level guidance with real code examples, troubleshooting guides, and production-ready workflows.
 
-**01-model-architecture/** (2 skills)
-- **[Megatron-Core](01-model-architecture/megatron-core/)** - NVIDIA's industry-standard large-scale training (2,342 files, 32 releases)
-- **[LitGPT](01-model-architecture/litgpt/)** - Lightning AI's modular LLM implementations (299 files, 27 releases)
+### 🎯 Fine-Tuning (4 skills)
+- **[Axolotl](03-fine-tuning/axolotl/)** - YAML-based fine-tuning with 100+ models (151 lines, comprehensive)
+- **[TRL](03-fine-tuning/trl-fine-tuning/)** - Transformer Reinforcement Learning (56 lines)
+- **[LLaMA-Factory](03-fine-tuning/llama-factory/)** - WebUI no-code fine-tuning (73 lines)
+- **[Unsloth](03-fine-tuning/unsloth/)** - 2x faster QLoRA fine-tuning (70 lines)
 
-**02-tokenization/** (1 skill)
-- **[HuggingFace Tokenizers](02-tokenization/huggingface-tokenizers/)** - Fast tokenizers in Rust
+### 🎓 Post-Training (1 skill)
+- **[GRPO-RL-Training](06-post-training/grpo-rl-training/)** - Group Relative Policy Optimization with TRL (569 lines, **gold standard**)
 
-### 🎯 Fine-Tuning & Adaptation
-Adapt pre-trained models to your specific needs with state-of-the-art methods.
-
-**03-fine-tuning/** (4 skills) ✓ **COMPLETE**
-- **[Axolotl](03-fine-tuning/axolotl/)** - YAML-based fine-tuning with 100+ models (185 pages)
-- **[TRL](03-fine-tuning/trl-fine-tuning/)** - Transformer Reinforcement Learning (67 releases)
-- **[LLaMA-Factory](03-fine-tuning/llama-factory/)** - WebUI no-code fine-tuning (25 pages)
-- **[Unsloth](03-fine-tuning/unsloth/)** - 2x faster QLoRA fine-tuning (172 pages)
-
-**04-peft/** (1 skill) ✓ **COMPLETE**
-- **[HuggingFace PEFT](04-peft/huggingface-peft/)** - LoRA, QLoRA, AdaLoRA, IA3, DoRA (805 files)
-
-### 🎓 Post-Training & Alignment
-Improve models after initial training with reinforcement learning and human feedback.
-
-**06-post-training/** (1 skill)
-- **[GRPO-RL-Training](06-post-training/grpo-rl-training/)** - Group Relative Policy Optimization with TRL
-
-### 📊 Data & Safety
-Process data at scale and ensure model safety.
-
-**05-data-processing/** (1 skill)
-- **[NeMo Curator](05-data-processing/nemo-curator/)** - NVIDIA's distributed data curation
-
-**07-safety-alignment/** (1 skill)
-- **[NeMo Guardrails](07-safety-alignment/nemo-guardrails/)** - LLM safety & jailbreak protection (1,887 files)
-
-### ⚡ Distributed Training & Infrastructure
-Scale training across multiple GPUs and nodes.
-
-**08-distributed-training/** (3 skills)
-- **[DeepSpeed](08-distributed-training/deepspeed/)** - Microsoft's ZeRO optimization (144 pages)
-- **[PyTorch FSDP](08-distributed-training/pytorch-fsdp/)** - Fully Sharded Data Parallel (15 pages)
-- **[Accelerate](08-distributed-training/huggingface-accelerate/)** - HuggingFace distributed training (400 files)
-
-**09-infrastructure/** (2 skills)
-- **[PyTorch Lightning](09-infrastructure/pytorch-lightning/)** - Production training framework (1,238 files, 170 releases)
-- **[Ray Train](09-infrastructure/ray-train/)** - Distributed training with Ray (10,892 files, 115 releases)
+### ⚡ Distributed Training (2 skills)
+- **[DeepSpeed](08-distributed-training/deepspeed/)** - Microsoft's ZeRO optimization (132 lines)
+- **[PyTorch FSDP](08-distributed-training/pytorch-fsdp/)** - Fully Sharded Data Parallel (119 lines)
 
 ---
 
@@ -258,12 +224,13 @@ git push origin add-vllm-skill
 
 | Metric | Current | Target (6 months) |
 |--------|---------|-------------------|
-| **Skills** | 16 | 70 |
-| **Documentation** | 4.5MB | 20MB+ |
-| **GitHub Issues Captured** | 143 | 1000+ |
-| **Release Notes Tracked** | 562 | 3000+ |
+| **Skills** | 7 (high-quality) | 70 |
+| **Avg Lines/Skill** | 138 lines | 300+ lines |
+| **Gold Standard Skills** | 1 (GRPO: 569 lines) | 20+ |
 | **Contributors** | 1 | 100+ |
-| **Coverage** | Training (70%) | Full Lifecycle (100%) |
+| **Coverage** | Fine-tuning (strong) | Full Lifecycle |
+
+**Philosophy**: Quality > Quantity. Each skill must provide real value with comprehensive guidance, not just links to docs.
 
 ---
 

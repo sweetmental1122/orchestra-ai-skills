@@ -10,7 +10,9 @@ Thank you for your interest in contributing! This guide will help you add new sk
 
 **Target**: 70 comprehensive skills covering the entire AI research lifecycle—from model architecture to production deployment.
 
-**Current Progress**: 16/70 skills (23%)
+**Current Progress**: 7/70 skills (10%)
+
+**Philosophy**: Quality > Quantity. We deleted 9 low-quality skills to maintain high standards.
 
 ---
 
@@ -86,21 +88,28 @@ mv output/vllm_data/ .metadata/vllm_data/
 
 ### Step 5: Validate Quality
 
-**Minimum Requirements**:
-- ✅ SKILL.md: 50+ lines with real examples
-- ✅ references/: At least 3 categorized files
+**Minimum Requirements** (or skill will be rejected):
+- ✅ SKILL.md: 100+ lines of **real, useful content**
+- ✅ Step-by-step workflows with code examples
+- ✅ When to use / when NOT to use guidance
+- ✅ Troubleshooting section with real issues
 - ✅ Code examples with language detection (```python, ```bash, etc.)
-- ✅ Links to official documentation
-- ✅ License information
+- ✅ Production-ready patterns and best practices
 
-**Gold Standard** (aim for this):
-- ✅ SKILL.md: 150+ lines
-- ✅ references/: 5+ files, 300KB+ total
-- ✅ Comprehensive API coverage
-- ✅ Real GitHub issues and solutions
-- ✅ Release notes and version history
-- ✅ Troubleshooting section
-- ✅ Performance benchmarks (if applicable)
+**Gold Standard** (aim for this - see GRPO skill):
+- ✅ SKILL.md: 300-600 lines of expert guidance
+- ✅ Complete implementation workflow
+- ✅ Multiple real code examples (not just API calls)
+- ✅ Common pitfalls and solutions
+- ✅ Performance tips and optimization strategies
+- ✅ Debugging guide
+- ✅ References to official docs (not just copy-paste)
+
+**NOT Acceptable**:
+- ❌ Generic templates that just link to README/CHANGELOG
+- ❌ Scraped GitHub issues with no context
+- ❌ "See the docs" without actual guidance
+- ❌ Skills under 100 lines
 
 **Quick Quality Check**:
 ```bash
@@ -271,22 +280,25 @@ grep -A 1 '```' your-skill/SKILL.md | head -20
 
 ## 🎓 Examples of High-Quality Skills
 
-**Study these as references**:
+**Gold Standard** (emulate this):
+1. **06-post-training/grpo-rl-training/** (569 lines) ⭐⭐⭐⭐⭐
+   - Complete implementation workflow
+   - 10+ code examples with explanations
+   - Troubleshooting guide
+   - Common pitfalls and solutions
+   - Performance tips
+   - **This is the quality bar**
 
-1. **03-fine-tuning/axolotl/** (185 pages, 300KB)
-   - Comprehensive API docs
-   - Real code examples
-   - Multiple reference files
+**Good Examples**:
+2. **03-fine-tuning/axolotl/** (151 lines)
+   - Real configuration examples
+   - When to use guidance
+   - Comprehensive but could add more workflows
 
-2. **01-model-architecture/megatron-core/** (2,342 files)
-   - GitHub issues and solutions
-   - 32 releases tracked
-   - Complete file structure
-
-3. **08-distributed-training/deepspeed/** (144 pages)
-   - ZeRO optimization guide
+3. **08-distributed-training/deepspeed/** (132 lines)
+   - ZeRO optimization patterns
    - Configuration examples
-   - Performance benchmarks
+   - Good foundation, needs more troubleshooting
 
 ---
 
