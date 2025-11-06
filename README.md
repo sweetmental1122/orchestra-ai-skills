@@ -300,8 +300,8 @@ MIT License - See [LICENSE](LICENSE) for details.
 ## 🙏 Acknowledgments
 
 Built with:
-- 💜 **[Claude Code](https://claude.ai/claude-code)** - AI pair programming
-- ⚡ **[Skill Seeker](https://github.com/yusufkaraaslan/skill-seeker)** - Automated doc scraping
+- 💜 **[Claude Code](https://www.claude.com/product/claude-code)** - AI pair programming
+- ⚡ **[Skill Seeker](https://github.com/yusufkaraaslan/Skill_Seekers)** - Automated doc scraping
 - 🤗 **Open Source AI Community** - For amazing tools and docs
 
 Special thanks to:
