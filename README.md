@@ -257,6 +257,6 @@ Special thanks to:
 - Created strategic roadmap to 70 skills
 - Added contribution guidelines
 
-**October 2025** - v0.1.0
+**November 3, 2025** - v0.1.0
 - 🎉 Initial release with 5 fine-tuning skills
  
