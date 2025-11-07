@@ -3,7 +3,7 @@
 > **The most comprehensive open-source library of AI research skills for AI models**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Skills](https://img.shields.io/badge/Skills-10-blue.svg)](.)
+[![Skills](https://img.shields.io/badge/Skills-13-blue.svg)](.)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 ## Our Mission
@@ -29,9 +29,13 @@
 - 🎯 **Production-Ready Workflows** - Real-world patterns from GitHub issues and release notes
 - 🤝 **Reproducible Science** - Standardized, documented experimentation protocols
 
-## 📚 Available Skills (10/70 roadmap)
+## 📚 Available Skills (13/70 roadmap)
 
 **Quality over quantity**: Each skill provides comprehensive, expert-level guidance with real code examples, troubleshooting guides, and production-ready workflows.
+
+### 🏗️ Model Architecture (2 skills) **NEW**
+- **[Megatron-Core](01-model-architecture/megatron-core/)** - NVIDIA's framework for training 2B-462B param models with 47% MFU on H100 (420 lines + references)
+- **[LitGPT](01-model-architecture/litgpt/)** - Lightning AI's 20+ clean LLM implementations with production training recipes (340 lines)
 
 ### 🎯 Fine-Tuning (4 skills)
 - **[Axolotl](03-fine-tuning/axolotl/)** - YAML-based fine-tuning with 100+ models (151 lines, comprehensive)
@@ -50,8 +54,11 @@
 - **[Flash Attention](10-optimization/flash-attention/)** - 2-4x faster attention with memory efficiency (359 lines, **comprehensive**)
 - **[bitsandbytes](10-optimization/bitsandbytes/)** - 8-bit/4-bit quantization for 50-75% memory reduction (403 lines)
 
-### 🔥 Inference & Serving (1 skill) **NEW**
+### 🔥 Inference & Serving (1 skill)
 - **[vLLM](12-inference-serving/vllm/)** - High-throughput LLM serving with PagedAttention (356 lines + 1,212 lines references, **production-ready**)
+
+### 📊 Evaluation (1 skill) **NEW**
+- **[lm-evaluation-harness](11-evaluation/lm-evaluation-harness/)** - EleutherAI's standard for benchmarking LLMs across 60+ tasks (MMLU, GSM8K, HumanEval) (395 lines)
 
 ---
 
@@ -118,7 +125,7 @@ skill-name/
 
 We're building towards 70 comprehensive skills across the full AI research lifecycle. See our [detailed roadmap](ROADMAP.md) for the complete development plan.
 
-**Current Progress**: 10 high-quality skills | **Target**: 70 skills by month 6
+**Current Progress**: 13 high-quality skills | **Target**: 70 skills by month 6
 
 **Priority Areas**:
 - 🎯 **Inference & Serving** (CRITICAL) - vLLM, TensorRT-LLM, llama.cpp
@@ -166,13 +173,13 @@ git push origin add-vllm-skill
 
 | Metric | Current | Target (6 months) |
 |--------|---------|-------------------|
-| **Skills** | **10** (high-quality) | 70 |
-| **Avg Lines/Skill** | **283 lines** | 300+ lines |
-| **Gold Standard Skills** | **4** (GRPO: 569, vLLM: 356+1,212 refs, Flash Attn: 359, bitsandbytes: 403) | 20+ |
+| **Skills** | **13** (high-quality) | 70 |
+| **Avg Lines/Skill** | **320 lines** | 300+ lines |
+| **Gold Standard Skills** | **7** (GRPO: 569, vLLM: 356+1,212 refs, Flash Attn: 359, bitsandbytes: 403, Megatron: 420+refs, LitGPT: 340, lm-eval: 395) | 20+ |
 | **Contributors** | 1 | 100+ |
-| **Coverage** | Training, Optimization, Inference | Full Lifecycle |
+| **Coverage** | Architecture, Training, Optimization, Inference, Evaluation | Full Lifecycle |
 
-**Progress Today**: +3 skills (vLLM, Flash Attention, bitsandbytes), +2,838 lines of expert content
+**Progress Today**: +3 skills (Megatron-Core, LitGPT, lm-evaluation-harness), +1,155 lines of expert content
 
 **Philosophy**: Quality > Quantity. Following [Anthropic official best practices](anthropic_official_docs/best_practices.md) - each skill provides 200-500 lines of focused, actionable guidance with progressive disclosure.
 
