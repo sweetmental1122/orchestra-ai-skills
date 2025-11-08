@@ -1,16 +1,15 @@
-# AI Research Skills Library
+# AI Research Engineering `Skills` Library
 
 > **The most comprehensive open-source library of AI research skills for AI models**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Skills](https://img.shields.io/badge/Skills-24-blue.svg)](.)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Blog Post](https://img.shields.io/badge/Blog-Read%20More-orange.svg)](https://www.orchestra-research.com/perspectives/ai-research-skills)
 
 ## Our Mission
 
 **Enable AI agents to autonomously conduct AI research**—from hypothesis to experimental verification. We provide the foundational skills that empower **AI research agents** to conduct experiments, including preparing datasets, executing training pipelines, deploying models, and validating scientific hypotheses.
-
- 
 
 <p align="center">
   <img src="docs/skills.png" alt="AI Research Agent System" width="50%">
@@ -19,15 +18,13 @@
 
 ## Path Towards AI Research Agent
 
-**Problem**: Conducting AI research requires mastering 100+ frameworks and tools. Experimentation is slow, error-prone, and requires deep expertise in each component of the stack.
 
-**Solution**: Provide AI agents with comprehensive, battle-tested skills for every stage of AI research—enabling autonomous hypothesis testing through systematic experimentation.
-
-**Impact**:
-- 🔬 **Hypothesis-Driven Research** - Agents design and execute experiments to test scientific ideas
-- ⚡ **Automated Experimentation** - From data processing to model deployment without manual intervention
-- 🎯 **Production-Ready Workflows** - Real-world patterns from GitHub issues and release notes
-- 🤝 **Reproducible Science** - Standardized, documented experimentation protocols
+Modern AI research requires mastering dozens of specialized tools and frameworks. 
+AI Researchers spend more time debugging infrastructure than testing hypotheses—slowing the pace of scientific discovery. 
+We provide a comprehensive library of expert-level research engineering skills that enable AI agents to autonomously implement and execute different stages of AI research experiments—from data preparation and model training to evaluation and deployment.
+  - Specialized Expertise - Each skill provides deep, production-ready knowledge of a specific framework (Megatron-LM, vLLM, TRL, etc.)
+  - End-to-End Coverage - 24/70 skills spanning model architecture, fine-tuning, post-training, distributed training, optimization, and inference
+  - Research-Grade Quality - Documentation sourced from official repos, real GitHub issues, and battle-tested  production workflows
 
 ## 📚 Available Skills (24/70 roadmap)
 
@@ -40,13 +37,13 @@
 - **[RWKV](01-model-architecture/rwkv/)** - RNN+Transformer hybrid, infinite context, Linux Foundation project (253 lines + 3 refs)
 - **[NanoGPT](01-model-architecture/nanogpt/)** - Educational GPT in ~300 lines by Karpathy (283 lines + 3 refs)
 
-### 🎯 Fine-Tuning (4 skills)
+### 🎯 Fine-Tuning (3 skills)
 - **[Axolotl](03-fine-tuning/axolotl/)** - YAML-based fine-tuning with 100+ models (156 lines + 4 refs)
-- **[TRL](03-fine-tuning/trl-fine-tuning/)** - Transformer Reinforcement Learning (447 lines + 4 refs)
 - **[LLaMA-Factory](03-fine-tuning/llama-factory/)** - WebUI no-code fine-tuning (78 lines + 5 refs)
 - **[Unsloth](03-fine-tuning/unsloth/)** - 2x faster QLoRA fine-tuning (75 lines + 4 refs)
 
-### 🎓 Post-Training (3 skills)
+### 🎓 Post-Training (4 skills)
+- **[TRL Fine-Tuning](06-post-training/trl-fine-tuning/)** - Transformer Reinforcement Learning (447 lines + 4 refs)
 - **[GRPO-RL-Training](06-post-training/grpo-rl-training/)** - Group Relative Policy Optimization with TRL (569 lines, **gold standard**)
 - **[OpenRLHF](06-post-training/openrlhf/)** - Full RLHF pipeline with Ray + vLLM (241 lines + 4 refs)
 - **[SimPO](06-post-training/simpo/)** - Simple Preference Optimization, no reference model needed (211 lines + 3 refs)
@@ -56,14 +53,12 @@
 - **[LlamaGuard](07-safety-alignment/llamaguard/)** - Safety classifier for LLM inputs/outputs (329 lines)
 - **[NeMo Guardrails](07-safety-alignment/nemo-guardrails/)** - Programmable guardrails with Colang (289 lines)
 
-### ⚡ Distributed Training (2 skills)
+### ⚡ Distributed Training (5 skills)
 - **[DeepSpeed](08-distributed-training/deepspeed/)** - Microsoft's ZeRO optimization (137 lines + 9 refs)
 - **[PyTorch FSDP](08-distributed-training/pytorch-fsdp/)** - Fully Sharded Data Parallel (124 lines + 2 refs)
-
-### 🔧 Infrastructure (3 skills)
-- **[Accelerate](09-infrastructure/accelerate/)** - HuggingFace's 4-line distributed training API (324 lines + 3 refs)
-- **[PyTorch Lightning](09-infrastructure/pytorch-lightning/)** - High-level training framework with Trainer class (339 lines + 3 refs)
-- **[Ray Train](09-infrastructure/ray-train/)** - Multi-node orchestration and hyperparameter tuning (399 lines + 1 ref)
+- **[Accelerate](08-distributed-training/accelerate/)** - HuggingFace's 4-line distributed training API (324 lines + 3 refs)
+- **[PyTorch Lightning](08-distributed-training/pytorch-lightning/)** - High-level training framework with Trainer class (339 lines + 3 refs)
+- **[Ray Train](08-distributed-training/ray-train/)** - Multi-node orchestration and hyperparameter tuning (399 lines + 1 ref)
 
 ### 🚀 Optimization (2 skills)
 - **[Flash Attention](10-optimization/flash-attention/)** - 2-4x faster attention with memory efficiency (359 lines + 2 refs)
@@ -211,13 +206,12 @@ claude-ai-research-skills/
 │
 ├── 01-model-architecture/       (5 skills ✓ - Megatron, LitGPT, Mamba, RWKV, NanoGPT)
 ├── 02-tokenization/             (planned)
-├── 03-fine-tuning/              (4 skills ✓ - Axolotl, TRL, LLaMA-Factory, Unsloth)
-├── 04-peft/                     (planned)
+├── 03-fine-tuning/              (3 skills ✓ - Axolotl, LLaMA-Factory, Unsloth)
 ├── 05-data-processing/          (planned)
-├── 06-post-training/            (3 skills ✓ - GRPO, OpenRLHF, SimPO)
+├── 06-post-training/            (4 skills ✓ - TRL, GRPO, OpenRLHF, SimPO)
 ├── 07-safety-alignment/         (3 skills ✓ - Constitutional AI, LlamaGuard, NeMo Guardrails)
-├── 08-distributed-training/     (2 skills ✓ - DeepSpeed, FSDP)
-├── 09-infrastructure/           (3 skills ✓ - Accelerate, Lightning, Ray Train)
+├── 08-distributed-training/     (5 skills ✓ - DeepSpeed, FSDP, Accelerate, Lightning, Ray Train)
+├── 09-infrastructure/           (planned)
 ├── 10-optimization/             (2 skills ✓ - Flash Attention, bitsandbytes)
 ├── 11-evaluation/               (1 skill ✓ - lm-evaluation-harness)
 ├── 12-inference-serving/        (1 skill ✓ - vLLM)
