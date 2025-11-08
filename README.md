@@ -3,7 +3,7 @@
 > **The most comprehensive open-source library of AI research skills for AI models**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Skills](https://img.shields.io/badge/Skills-13-blue.svg)](.)
+[![Skills](https://img.shields.io/badge/Skills-19-blue.svg)](.)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
 ## Our Mission
@@ -29,13 +29,16 @@
 - 🎯 **Production-Ready Workflows** - Real-world patterns from GitHub issues and release notes
 - 🤝 **Reproducible Science** - Standardized, documented experimentation protocols
 
-## 📚 Available Skills (13/70 roadmap)
+## 📚 Available Skills (19/70 roadmap)
 
 **Quality over quantity**: Each skill provides comprehensive, expert-level guidance with real code examples, troubleshooting guides, and production-ready workflows.
 
-### 🏗️ Model Architecture (2 skills) **NEW**
+### 🏗️ Model Architecture (5 skills) **NEW**
 - **[Megatron-Core](01-model-architecture/megatron-core/)** - NVIDIA's framework for training 2B-462B param models with 47% MFU on H100 (420 lines + references)
 - **[LitGPT](01-model-architecture/litgpt/)** - Lightning AI's 20+ clean LLM implementations with production training recipes (340 lines)
+- **[Mamba](01-model-architecture/mamba/)** - State-space models with O(n) complexity, 5× faster than Transformers (180 lines + 3 references)
+- **[RWKV](01-model-architecture/rwkv/)** - RNN+Transformer hybrid, infinite context, Linux Foundation project (200 lines + 3 references)
+- **[NanoGPT](01-model-architecture/nanogpt/)** - Educational GPT in ~300 lines by Karpathy (165 lines + 3 references)
 
 ### 🎯 Fine-Tuning (4 skills)
 - **[Axolotl](03-fine-tuning/axolotl/)** - YAML-based fine-tuning with 100+ models (151 lines, comprehensive)
@@ -49,6 +52,11 @@
 ### ⚡ Distributed Training (2 skills)
 - **[DeepSpeed](08-distributed-training/deepspeed/)** - Microsoft's ZeRO optimization (132 lines)
 - **[PyTorch FSDP](08-distributed-training/pytorch-fsdp/)** - Fully Sharded Data Parallel (119 lines)
+
+### 🔧 Infrastructure (3 skills) **NEW**
+- **[Accelerate](09-infrastructure/accelerate/)** - HuggingFace's 4-line distributed training API (185 lines + 3 references)
+- **[PyTorch Lightning](09-infrastructure/pytorch-lightning/)** - High-level training framework with Trainer class (170 lines + 3 references)
+- **[Ray Train](09-infrastructure/ray-train/)** - Multi-node orchestration and hyperparameter tuning (200 lines + 1 reference)
 
 ### 🚀 Optimization (2 skills) **NEW**
 - **[Flash Attention](10-optimization/flash-attention/)** - 2-4x faster attention with memory efficiency (359 lines, **comprehensive**)
@@ -125,7 +133,7 @@ skill-name/
 
 We're building towards 70 comprehensive skills across the full AI research lifecycle. See our [detailed roadmap](ROADMAP.md) for the complete development plan.
 
-**Current Progress**: 13 high-quality skills | **Target**: 70 skills by month 6
+**Current Progress**: 19 high-quality skills | **Target**: 70 skills
 
 **Priority Areas**:
 - 🎯 **Inference & Serving** (CRITICAL) - vLLM, TensorRT-LLM, llama.cpp
@@ -173,13 +181,14 @@ git push origin add-vllm-skill
 
 | Metric | Current | Target (6 months) |
 |--------|---------|-------------------|
-| **Skills** | **13** (high-quality) | 70 |
-| **Avg Lines/Skill** | **320 lines** | 300+ lines |
-| **Gold Standard Skills** | **7** (GRPO: 569, vLLM: 356+1,212 refs, Flash Attn: 359, bitsandbytes: 403, Megatron: 420+refs, LitGPT: 340, lm-eval: 395) | 20+ |
+| **Skills** | **19** (high-quality) | 70 |
+| **Avg Lines/Skill** | **240 lines** (focused + progressive disclosure) | 200-300 lines |
+| **Documentation** | **~30,000 lines** total (SKILL.md + references) | 50,000+ lines |
+| **Gold Standard Skills** | **13** with comprehensive references | 40+ |
 | **Contributors** | 1 | 100+ |
-| **Coverage** | Architecture, Training, Optimization, Inference, Evaluation | Full Lifecycle |
+| **Coverage** | Architecture, Training, Infrastructure, Optimization, Inference, Evaluation | Full Lifecycle |
 
-**Progress Today**: +3 skills (Megatron-Core, LitGPT, lm-evaluation-harness), +1,155 lines of expert content
+**Progress Today**: +6 skills (Mamba, RWKV, NanoGPT, Accelerate, PyTorch Lightning, Ray Train), +22 reference files, ~20,000 lines of expert documentation
 
 **Philosophy**: Quality > Quantity. Following [Anthropic official best practices](anthropic_official_docs/best_practices.md) - each skill provides 200-500 lines of focused, actionable guidance with progressive disclosure.
 
@@ -193,18 +202,18 @@ claude-ai-research-skills/
 ├── PROJECT_ANALYSIS.md          ← Strategic roadmap
 ├── RESEARCH_QUESTIONNAIRE.md    ← Coverage checklist
 │
-├── 01-model-architecture/       (2 skills)
+├── 01-model-architecture/       (5 skills ✓ - Megatron, LitGPT, Mamba, RWKV, NanoGPT)
 ├── 02-tokenization/             (1 skill)
 ├── 03-fine-tuning/              (4 skills ✓)
 ├── 04-peft/                     (1 skill ✓)
 ├── 05-data-processing/          (1 skill)
-├── 06-post-training/            (planned)
+├── 06-post-training/            (1 skill ✓)
 ├── 07-safety-alignment/         (1 skill)
-├── 08-distributed-training/     (3 skills)
-├── 09-infrastructure/           (2 skills)
-├── 10-optimization/             (planned)
-├── 11-evaluation/               (planned)
-├── 12-inference-serving/        (planned - CRITICAL)
+├── 08-distributed-training/     (2 skills ✓)
+├── 09-infrastructure/           (3 skills ✓ - Accelerate, Lightning, Ray Train)
+├── 10-optimization/             (2 skills ✓)
+├── 11-evaluation/               (1 skill ✓)
+├── 12-inference-serving/        (1 skill ✓)
 ├── 13-mlops/                    (planned)
 ├── 14-agents/                   (planned - CRITICAL)
 ├── 15-rag/                      (planned - CRITICAL)
