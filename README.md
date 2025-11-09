@@ -3,7 +3,7 @@
 > **The most comprehensive open-source library of AI research skills for AI models**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Skills](https://img.shields.io/badge/Skills-24-blue.svg)](.)
+[![Skills](https://img.shields.io/badge/Skills-32-blue.svg)](.)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Blog Post](https://img.shields.io/badge/Blog-Read%20More-orange.svg)](https://www.orchestra-research.com/perspectives/ai-research-skills)
 
@@ -23,10 +23,10 @@ Modern AI research requires mastering dozens of specialized tools and frameworks
 AI Researchers spend more time debugging infrastructure than testing hypotheses—slowing the pace of scientific discovery. 
 We provide a comprehensive library of expert-level research engineering skills that enable AI agents to autonomously implement and execute different stages of AI research experiments—from data preparation and model training to evaluation and deployment.
   - Specialized Expertise - Each skill provides deep, production-ready knowledge of a specific framework (Megatron-LM, vLLM, TRL, etc.)
-  - End-to-End Coverage - 24/70 skills spanning model architecture, fine-tuning, post-training, distributed training, optimization, and inference
-  - Research-Grade Quality - Documentation sourced from official repos, real GitHub issues, and battle-tested  production workflows
+  - End-to-End Coverage - 32/70 skills spanning model architecture, tokenization, fine-tuning, data processing, post-training, distributed training, optimization, and inference
+  - Research-Grade Quality - Documentation sourced from official repos, real GitHub issues, and battle-tested production workflows
 
-## 📚 Available Skills (24/70 roadmap)
+## 📚 Available Skills (32/70 roadmap)
 
 **Quality over quantity**: Each skill provides comprehensive, expert-level guidance with real code examples, troubleshooting guides, and production-ready workflows.
 
@@ -37,10 +37,18 @@ We provide a comprehensive library of expert-level research engineering skills t
 - **[RWKV](01-model-architecture/rwkv/)** - RNN+Transformer hybrid, infinite context, Linux Foundation project (253 lines + 3 refs)
 - **[NanoGPT](01-model-architecture/nanogpt/)** - Educational GPT in ~300 lines by Karpathy (283 lines + 3 refs)
 
+### 🔤 Tokenization (2 skills)
+- **[HuggingFace Tokenizers](02-tokenization/huggingface-tokenizers/)** - Rust-based, <20s/GB, BPE/WordPiece/Unigram algorithms (486 lines + 4 refs)
+- **[SentencePiece](02-tokenization/sentencepiece/)** - Language-independent, 50k sentences/sec, used by T5/ALBERT (228 lines + 2 refs)
+
 ### 🎯 Fine-Tuning (3 skills)
 - **[Axolotl](03-fine-tuning/axolotl/)** - YAML-based fine-tuning with 100+ models (156 lines + 4 refs)
 - **[LLaMA-Factory](03-fine-tuning/llama-factory/)** - WebUI no-code fine-tuning (78 lines + 5 refs)
 - **[Unsloth](03-fine-tuning/unsloth/)** - 2x faster QLoRA fine-tuning (75 lines + 4 refs)
+
+### 📊 Data Processing (2 skills)
+- **[Ray Data](05-data-processing/ray-data/)** - Distributed ML data processing, streaming execution, GPU support (318 lines + 2 refs)
+- **[NeMo Curator](05-data-processing/nemo-curator/)** - GPU-accelerated data curation, 16× faster deduplication (375 lines + 2 refs)
 
 ### 🎓 Post-Training (4 skills)
 - **[TRL Fine-Tuning](06-post-training/trl-fine-tuning/)** - Transformer Reinforcement Learning (447 lines + 4 refs)
@@ -60,15 +68,19 @@ We provide a comprehensive library of expert-level research engineering skills t
 - **[PyTorch Lightning](08-distributed-training/pytorch-lightning/)** - High-level training framework with Trainer class (339 lines + 3 refs)
 - **[Ray Train](08-distributed-training/ray-train/)** - Multi-node orchestration and hyperparameter tuning (399 lines + 1 ref)
 
-### 🚀 Optimization (2 skills)
+### 🚀 Optimization (3 skills)
 - **[Flash Attention](10-optimization/flash-attention/)** - 2-4x faster attention with memory efficiency (359 lines + 2 refs)
 - **[bitsandbytes](10-optimization/bitsandbytes/)** - 8-bit/4-bit quantization for 50-75% memory reduction (403 lines + 3 refs)
+- **[GPTQ](10-optimization/gptq/)** - 4-bit post-training quantization, 4× memory reduction, <2% accuracy loss (443 lines + 3 refs)
 
 ### 📊 Evaluation (1 skill)
 - **[lm-evaluation-harness](11-evaluation/lm-evaluation-harness/)** - EleutherAI's standard for benchmarking LLMs across 60+ tasks (482 lines + 4 refs)
 
-### 🔥 Inference & Serving (1 skill)
+### 🔥 Inference & Serving (4 skills)
 - **[vLLM](12-inference-serving/vllm/)** - High-throughput LLM serving with PagedAttention (356 lines + 4 refs, **production-ready**)
+- **[TensorRT-LLM](12-inference-serving/tensorrt-llm/)** - NVIDIA's fastest inference, 24k tok/s, FP8/INT4 quantization (180 lines + 3 refs)
+- **[llama.cpp](12-inference-serving/llama-cpp/)** - CPU/Apple Silicon inference, GGUF quantization (251 lines + 3 refs)
+- **[SGLang](12-inference-serving/sglang/)** - Structured generation with RadixAttention, 5-10× faster for agents (435 lines + 3 refs)
 
 ---
 
@@ -135,12 +147,12 @@ skill-name/
 
 We're building towards 70 comprehensive skills across the full AI research lifecycle. See our [detailed roadmap](ROADMAP.md) for the complete development plan.
 
-**Current Progress**: 24 high-quality skills | **Target**: 70 skills
+**Current Progress**: 32 high-quality skills | **Target**: 70 skills
 
 **Priority Areas**:
-- 🎯 **Inference & Serving** (CRITICAL) - vLLM, TensorRT-LLM, llama.cpp
 - 🤖 **Applications** (CRITICAL) - LangChain, RAG, agents
-- 🚧 **Training Stack** (HIGH) - Complete RLHF, quantization, optimization
+- 🧠 **Advanced Optimization** (HIGH) - AWQ, HQQ, activation offloading
+- 🎨 **Multimodal** (MEDIUM) - CLIP, Stable Diffusion, Whisper
 
 [View Full Roadmap →](ROADMAP.md)
 
@@ -183,14 +195,14 @@ git push origin add-vllm-skill
 
 | Metric | Current | Target |
 |--------|---------|--------|
-| **Skills** | **24** (high-quality) | 70 |
-| **Avg Lines/Skill** | **295 lines** (focused + progressive disclosure) | 200-500 lines |
-| **Documentation** | **~40,000 lines** total (SKILL.md + references) | 60,000+ lines |
-| **Gold Standard Skills** | **18** with comprehensive references | 50+ |
+| **Skills** | **32** (high-quality) | 70 |
+| **Avg Lines/Skill** | **310 lines** (focused + progressive disclosure) | 200-500 lines |
+| **Documentation** | **~50,000 lines** total (SKILL.md + references) | 70,000+ lines |
+| **Gold Standard Skills** | **26** with comprehensive references | 50+ |
 | **Contributors** | 1 | 100+ |
-| **Coverage** | Architecture, Fine-Tuning, Post-Training, Safety, Distributed, Infrastructure, Optimization, Evaluation, Inference | Full Lifecycle |
+| **Coverage** | Architecture, Tokenization, Fine-Tuning, Data Processing, Post-Training, Safety, Distributed, Optimization, Evaluation, Inference | Full Lifecycle |
 
-**Recent Progress**: +11 skills (Mamba, RWKV, NanoGPT, Accelerate, PyTorch Lightning, Ray Train, OpenRLHF, SimPO, Constitutional AI, LlamaGuard, NeMo Guardrails), +30 reference files, comprehensive safety & alignment coverage
+**Recent Progress**: +8 skills (TensorRT-LLM, llama.cpp, SGLang, GPTQ, HuggingFace Tokenizers, SentencePiece, Ray Data, NeMo Curator), +30 reference files, comprehensive inference & data processing coverage
 
 **Philosophy**: Quality > Quantity. Following [Anthropic official best practices](anthropic_official_docs/best_practices.md) - each skill provides 200-500 lines of focused, actionable guidance with progressive disclosure.
 
@@ -205,16 +217,16 @@ claude-ai-research-skills/
 ├── RESEARCH_QUESTIONNAIRE.md    ← Coverage checklist
 │
 ├── 01-model-architecture/       (5 skills ✓ - Megatron, LitGPT, Mamba, RWKV, NanoGPT)
-├── 02-tokenization/             (planned)
+├── 02-tokenization/             (2 skills ✓ - HuggingFace Tokenizers, SentencePiece)
 ├── 03-fine-tuning/              (3 skills ✓ - Axolotl, LLaMA-Factory, Unsloth)
-├── 05-data-processing/          (planned)
+├── 05-data-processing/          (2 skills ✓ - Ray Data, NeMo Curator)
 ├── 06-post-training/            (4 skills ✓ - TRL, GRPO, OpenRLHF, SimPO)
 ├── 07-safety-alignment/         (3 skills ✓ - Constitutional AI, LlamaGuard, NeMo Guardrails)
 ├── 08-distributed-training/     (5 skills ✓ - DeepSpeed, FSDP, Accelerate, Lightning, Ray Train)
 ├── 09-infrastructure/           (planned)
-├── 10-optimization/             (2 skills ✓ - Flash Attention, bitsandbytes)
+├── 10-optimization/             (3 skills ✓ - Flash Attention, bitsandbytes, GPTQ)
 ├── 11-evaluation/               (1 skill ✓ - lm-evaluation-harness)
-├── 12-inference-serving/        (1 skill ✓ - vLLM)
+├── 12-inference-serving/        (4 skills ✓ - vLLM, TensorRT-LLM, llama.cpp, SGLang)
 ├── 13-mlops/                    (planned)
 ├── 14-agents/                   (planned - CRITICAL)
 ├── 15-rag/                      (planned - CRITICAL)
@@ -267,6 +279,14 @@ Special thanks to:
 - **Fork**: Build your own skill collection
 
 ## 📈 Recent Updates
+
+**November 8, 2025** - v0.3.0
+- 🚀 Added 8 comprehensive skills: TensorRT-LLM, llama.cpp, SGLang, GPTQ, HuggingFace Tokenizers, SentencePiece, Ray Data, NeMo Curator
+- ⚡ Completed Inference & Serving category (4/4 skills)
+- 🔤 New Tokenization category (2 skills)
+- 📊 New Data Processing category (2 skills)
+- 📝 9,617 new lines of documentation across 30 files
+- **32 total skills** (45% towards 70-skill target)
 
 **November 6, 2025** - v0.2.0
 - Added 10 skills from GitHub (Megatron-Core, Lightning, Ray Train, etc.)
