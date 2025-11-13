@@ -3,7 +3,7 @@
 > **The most comprehensive open-source library of AI research skills for AI models**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Skills](https://img.shields.io/badge/Skills-43-blue.svg)](.)
+[![Skills](https://img.shields.io/badge/Skills-47-blue.svg)](.)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Blog Post](https://img.shields.io/badge/Blog-Read%20More-orange.svg)](https://www.orchestra-research.com/perspectives/ai-research-skills)
 
@@ -23,10 +23,10 @@ Modern AI research requires mastering dozens of specialized tools and frameworks
 AI Researchers spend more time debugging infrastructure than testing hypotheses—slowing the pace of scientific discovery. 
 We provide a comprehensive library of expert-level research engineering skills that enable AI agents to autonomously implement and execute different stages of AI research experiments—from data preparation and model training to evaluation and deployment.
   - Specialized Expertise - Each skill provides deep, production-ready knowledge of a specific framework (Megatron-LM, vLLM, TRL, etc.)
-  - End-to-End Coverage - 43/70 skills spanning model architecture, tokenization, fine-tuning, data processing, post-training, distributed training, optimization, inference, agents, RAG, and multimodal
+  - End-to-End Coverage - 47/70 skills spanning model architecture, tokenization, fine-tuning, data processing, post-training, distributed training, optimization, inference, agents, RAG, multimodal, and prompt engineering
   - Research-Grade Quality - Documentation sourced from official repos, real GitHub issues, and battle-tested production workflows
 
-## 📚 Available Skills (43/70 roadmap)
+## 📚 Available Skills (47/70 roadmap)
 
 **Quality over quantity**: Each skill provides comprehensive, expert-level guidance with real code examples, troubleshooting guides, and production-ready workflows.
 
@@ -97,6 +97,12 @@ We provide a comprehensive library of expert-level research engineering skills t
 - **[Whisper](18-multimodal/whisper/)** - Robust speech recognition, 99 languages, 73k stars (395 lines)
 - **[LLaVA](18-multimodal/llava/)** - Vision-language assistant, image chat, GPT-4V level (360 lines)
 
+### 🎯 Prompt Engineering (4 skills)
+- **[DSPy](16-prompt-engineering/dspy/)** - Declarative prompt programming with optimizers, Stanford NLP, 22k stars (438 lines + 3 refs)
+- **[Instructor](16-prompt-engineering/instructor/)** - Structured LLM outputs with Pydantic validation, 15k stars (726 lines + 3 refs)
+- **[Guidance](16-prompt-engineering/guidance/)** - Constrained generation with regex/grammars, Microsoft Research, 18k stars (485 lines + 3 refs)
+- **[Outlines](16-prompt-engineering/outlines/)** - Structured text with FSM, zero-overhead, 8k stars (601 lines + 3 refs)
+
 ---
 
 ## 🚀 Quick Start
@@ -166,10 +172,11 @@ skill-name/
 
 We're building towards 70 comprehensive skills across the full AI research lifecycle. See our [detailed roadmap](ROADMAP.md) for the complete development plan.
 
-**Current Progress**: 43 high-quality skills | **Target**: 70 skills
+**Current Progress**: 47 high-quality skills | **Target**: 70 skills
 
 **Priority Areas**:
 - ~~🤖 **Applications** (CRITICAL) - LangChain, RAG, agents~~ ✅ COMPLETED
+- ~~🎯 **Prompt Engineering** (CRITICAL) - DSPy, Instructor, Guidance, Outlines~~ ✅ COMPLETED
 - 🧠 **Advanced Optimization** (HIGH) - AWQ, HQQ, activation offloading
 - 🎨 **Multimodal Extensions** (MEDIUM) - Stable Diffusion, BLIP-2
 
@@ -180,14 +187,14 @@ We're building towards 70 comprehensive skills across the full AI research lifec
 
 | Metric | Current | Target |
 |--------|---------|--------|
-| **Skills** | **43** (high-quality) | 70 |
-| **Avg Lines/Skill** | **380 lines** (focused + progressive disclosure) | 200-500 lines |
-| **Documentation** | **~65,000 lines** total (SKILL.md + references) | 70,000+ lines |
-| **Gold Standard Skills** | **35** with comprehensive references | 50+ |
+| **Skills** | **47** (high-quality) | 70 |
+| **Avg Lines/Skill** | **420 lines** (focused + progressive disclosure) | 200-600 lines |
+| **Documentation** | **~75,000 lines** total (SKILL.md + references) | 85,000+ lines |
+| **Gold Standard Skills** | **39** with comprehensive references | 50+ |
 | **Contributors** | 1 | 100+ |
-| **Coverage** | Architecture, Tokenization, Fine-Tuning, Data Processing, Post-Training, Safety, Distributed, Optimization, Evaluation, Inference, Agents, RAG, Multimodal | Full Lifecycle |
+| **Coverage** | Architecture, Tokenization, Fine-Tuning, Data Processing, Post-Training, Safety, Distributed, Optimization, Evaluation, Inference, Agents, RAG, Multimodal, Prompt Engineering | Full Lifecycle |
 
-**Recent Progress**: +11 skills (LangChain, LlamaIndex, Chroma, FAISS, Sentence Transformers, Pinecone, CLIP, Whisper, LLaVA), comprehensive agents, RAG, and multimodal coverage
+**Recent Progress**: +4 skills (DSPy, Instructor, Guidance, Outlines), comprehensive prompt engineering coverage with structured generation patterns
 
 **Philosophy**: Quality > Quantity. Following [Anthropic official best practices](anthropic_official_docs/best_practices.md) - each skill provides 200-500 lines of focused, actionable guidance with progressive disclosure.
 
@@ -222,14 +229,12 @@ claude-ai-research-skills/
 ├── 06-post-training/            (4 skills ✓ - TRL, GRPO, OpenRLHF, SimPO)
 ├── 07-safety-alignment/         (3 skills ✓ - Constitutional AI, LlamaGuard, NeMo Guardrails)
 ├── 08-distributed-training/     (5 skills ✓ - DeepSpeed, FSDP, Accelerate, Lightning, Ray Train)
-├── 09-infrastructure/           (planned)
 ├── 10-optimization/             (3 skills ✓ - Flash Attention, bitsandbytes, GPTQ)
 ├── 11-evaluation/               (1 skill ✓ - lm-evaluation-harness)
 ├── 12-inference-serving/        (4 skills ✓ - vLLM, TensorRT-LLM, llama.cpp, SGLang)
-├── 13-mlops/                    (planned)
 ├── 14-agents/                   (2 skills ✓ - LangChain, LlamaIndex)
 ├── 15-rag/                      (4 skills ✓ - Chroma, FAISS, Sentence Transformers, Pinecone)
-├── 16-prompt-engineering/       (planned)
+├── 16-prompt-engineering/       (4 skills ✓ - DSPy, Instructor, Guidance, Outlines)
 ├── 17-observability/            (planned)
 ├── 18-multimodal/               (3 skills ✓ - CLIP, Whisper, LLaVA)
 └── 19-emerging-techniques/      (planned)
@@ -279,6 +284,17 @@ Special thanks to:
 
 
 ## 📈 Recent Updates
+
+<details>
+<summary><b>November 12, 2025 - v0.5.0</b></summary>
+
+- 🎯 Added 4 comprehensive prompt engineering skills: DSPy, Instructor, Guidance, Outlines
+- ✨ New Prompt Engineering category (4 skills - DSPy, Instructor, Guidance, Outlines)
+- 📝 ~10,000 new lines of documentation across 16 files
+- 🔧 Comprehensive coverage: declarative programming, structured outputs, constrained generation, FSM-based generation
+- **47 total skills** (67% towards 70-skill target)
+
+</details>
 
 <details>
 <summary><b>November 9, 2025 - v0.4.0</b></summary>
