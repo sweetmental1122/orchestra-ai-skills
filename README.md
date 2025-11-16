@@ -3,7 +3,7 @@
 > **The most comprehensive open-source library of AI research skills for AI models**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Skills](https://img.shields.io/badge/Skills-47-blue.svg)](.)
+[![Skills](https://img.shields.io/badge/Skills-50-blue.svg)](.)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Blog Post](https://img.shields.io/badge/Blog-Read%20More-orange.svg)](https://www.orchestra-research.com/perspectives/ai-research-skills)
 
@@ -23,10 +23,10 @@ Modern AI research requires mastering dozens of specialized tools and frameworks
 AI Researchers spend more time debugging infrastructure than testing hypotheses—slowing the pace of scientific discovery. 
 We provide a comprehensive library of expert-level research engineering skills that enable AI agents to autonomously implement and execute different stages of AI research experiments—from data preparation and model training to evaluation and deployment.
   - Specialized Expertise - Each skill provides deep, production-ready knowledge of a specific framework (Megatron-LM, vLLM, TRL, etc.)
-  - End-to-End Coverage - 47/70 skills spanning model architecture, tokenization, fine-tuning, data processing, post-training, distributed training, optimization, inference, agents, RAG, multimodal, and prompt engineering
+  - End-to-End Coverage - 50/70 skills spanning model architecture, tokenization, fine-tuning, data processing, post-training, distributed training, optimization, inference, agents, RAG, multimodal, prompt engineering, and MLOps
   - Research-Grade Quality - Documentation sourced from official repos, real GitHub issues, and battle-tested production workflows
 
-## 📚 Available Skills (47/70 roadmap)
+## 📚 Available Skills (50/70 roadmap)
 
 **Quality over quantity**: Each skill provides comprehensive, expert-level guidance with real code examples, troubleshooting guides, and production-ready workflows.
 
@@ -103,6 +103,11 @@ We provide a comprehensive library of expert-level research engineering skills t
 - **[Guidance](16-prompt-engineering/guidance/)** - Constrained generation with regex/grammars, Microsoft Research, 18k stars (485 lines + 3 refs)
 - **[Outlines](16-prompt-engineering/outlines/)** - Structured text with FSM, zero-overhead, 8k stars (601 lines + 3 refs)
 
+### 📊 MLOps (3 skills)
+- **[Weights & Biases](13-mlops/weights-and-biases/)** - Experiment tracking, sweeps, artifacts, model registry (427 lines + 3 refs)
+- **[MLflow](13-mlops/mlflow/)** - Model registry, tracking, deployment, autologging (514 lines + 3 refs)
+- **[TensorBoard](13-mlops/tensorboard/)** - Visualization, profiling, embeddings, scalars/images (538 lines + 3 refs)
+
 ---
 
 ## 🚀 Quick Start
@@ -172,7 +177,7 @@ skill-name/
 
 We're building towards 70 comprehensive skills across the full AI research lifecycle. See our [detailed roadmap](ROADMAP.md) for the complete development plan.
 
-**Current Progress**: 47 high-quality skills | **Target**: 70 skills
+**Current Progress**: 50 high-quality skills | **Target**: 70 skills
 
 **Priority Areas**:
 - ~~🤖 **Applications** (CRITICAL) - LangChain, RAG, agents~~ ✅ COMPLETED
@@ -187,14 +192,14 @@ We're building towards 70 comprehensive skills across the full AI research lifec
 
 | Metric | Current | Target |
 |--------|---------|--------|
-| **Skills** | **47** (high-quality) | 70 |
-| **Avg Lines/Skill** | **420 lines** (focused + progressive disclosure) | 200-600 lines |
-| **Documentation** | **~75,000 lines** total (SKILL.md + references) | 85,000+ lines |
-| **Gold Standard Skills** | **39** with comprehensive references | 50+ |
+| **Skills** | **50** (high-quality) | 70 |
+| **Avg Lines/Skill** | **435 lines** (focused + progressive disclosure) | 200-600 lines |
+| **Documentation** | **~85,000 lines** total (SKILL.md + references) | 95,000+ lines |
+| **Gold Standard Skills** | **42** with comprehensive references | 50+ |
 | **Contributors** | 1 | 100+ |
-| **Coverage** | Architecture, Tokenization, Fine-Tuning, Data Processing, Post-Training, Safety, Distributed, Optimization, Evaluation, Inference, Agents, RAG, Multimodal, Prompt Engineering | Full Lifecycle |
+| **Coverage** | Architecture, Tokenization, Fine-Tuning, Data Processing, Post-Training, Safety, Distributed, Optimization, Evaluation, Inference, Agents, RAG, Multimodal, Prompt Engineering, MLOps | Full Lifecycle |
 
-**Recent Progress**: +4 skills (DSPy, Instructor, Guidance, Outlines), comprehensive prompt engineering coverage with structured generation patterns
+**Recent Progress**: +3 MLOps skills (Weights & Biases, MLflow, TensorBoard), comprehensive experiment tracking, model registry, and visualization coverage
 
 **Philosophy**: Quality > Quantity. Following [Anthropic official best practices](anthropic_official_docs/best_practices.md) - each skill provides 200-500 lines of focused, actionable guidance with progressive disclosure.
 
@@ -232,6 +237,7 @@ claude-ai-research-skills/
 ├── 10-optimization/             (3 skills ✓ - Flash Attention, bitsandbytes, GPTQ)
 ├── 11-evaluation/               (1 skill ✓ - lm-evaluation-harness)
 ├── 12-inference-serving/        (4 skills ✓ - vLLM, TensorRT-LLM, llama.cpp, SGLang)
+├── 13-mlops/                    (3 skills ✓ - Weights & Biases, MLflow, TensorBoard)
 ├── 14-agents/                   (2 skills ✓ - LangChain, LlamaIndex)
 ├── 15-rag/                      (4 skills ✓ - Chroma, FAISS, Sentence Transformers, Pinecone)
 ├── 16-prompt-engineering/       (4 skills ✓ - DSPy, Instructor, Guidance, Outlines)
@@ -284,6 +290,17 @@ Special thanks to:
 
 
 ## 📈 Recent Updates
+
+<details>
+<summary><b>November 15, 2025 - v0.6.0</b></summary>
+
+- 📊 Added 3 comprehensive MLOps skills: Weights & Biases, MLflow, TensorBoard
+- ✨ New MLOps category (3 skills - experiment tracking, model registry, visualization)
+- 📝 ~10,000 new lines of documentation across 13 files
+- 🔧 Comprehensive coverage: experiment tracking, hyperparameter sweeps, model registry, profiling, embeddings visualization
+- **50 total skills** (71% towards 70-skill target)
+
+</details>
 
 <details>
 <summary><b>November 12, 2025 - v0.5.0</b></summary>
