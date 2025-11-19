@@ -131,6 +131,78 @@ ls -lh 12-inference-serving/vllm/references/
 du -sh 12-inference-serving/vllm/references/
 ```
 
+### YAML Frontmatter Format Standards
+
+All SKILL.md files **must** include properly formatted YAML frontmatter with the following fields:
+
+```yaml
+---
+name: skill-name-here
+description: Clear description of when to use this skill
+version: 1.0.0
+author: Orchestra Research
+license: MIT
+tags: [Tag One, Tag Two, Tag Three]
+dependencies: [package1>=1.0.0, package2>=2.0.0]
+---
+```
+
+**Field Requirements:**
+
+| Field | Required | Format | Notes |
+|-------|----------|--------|-------|
+| `name` | ✅ Yes | kebab-case | No quotes, lowercase with hyphens |
+| `description` | ✅ Yes | Plain text | No quotes, concise explanation |
+| `version` | ✅ Yes | Semantic version | Format: `MAJOR.MINOR.PATCH` |
+| `author` | ✅ Yes | Plain text | Use "Orchestra Research" |
+| `license` | ✅ Yes | License identifier | Typically `MIT` |
+| `tags` | ✅ Yes | Array | Capitalized words, no quotes |
+| `dependencies` | ⚠️ Optional | Array | Include version constraints |
+
+**Tag Guidelines:**
+- Use **Title Case** for all tags (capitalize first letter of each word)
+- Keep acronyms **UPPERCASE** (e.g., `GRPO`, `TRL`, `RLHF`, `DPO`)
+- Use descriptive, searchable terms
+- Include 5-10 relevant tags
+- No quotes around tags
+
+**Example Tags:**
+```yaml
+tags: [Reinforcement Learning, GRPO, TRL, Post-Training, RLHF, Reward Modeling]
+```
+
+**Dependencies Guidelines:**
+- Only include **direct dependencies** needed to use the skill
+- Include **minimum version constraints** using `>=`
+- No quotes around package names
+- List core packages first, optional packages last
+
+**Example Dependencies:**
+```yaml
+dependencies: [transformers>=4.47.0, trl>=0.14.0, datasets>=3.2.0, peft>=0.14.0, torch]
+```
+
+**Complete Example:**
+```yaml
+---
+name: grpo-rl-training
+description: Expert guidance for GRPO/RL fine-tuning with TRL for reasoning and task-specific model training
+version: 1.0.0
+author: Orchestra Research
+license: MIT
+tags: [Reinforcement Learning, GRPO, TRL, Post-Training, RLHF, Reward Modeling, Reasoning, DPO, PPO, Structured Output]
+dependencies: [transformers>=4.47.0, trl>=0.14.0, datasets>=3.2.0, peft>=0.14.0, torch]
+---
+```
+
+**Validation Checklist:**
+- [ ] YAML frontmatter is present at the very beginning of SKILL.md
+- [ ] All required fields are included
+- [ ] No quotes around field values (except in arrays)
+- [ ] Tags use Title Case (capitalized words)
+- [ ] Dependencies include version constraints where appropriate
+- [ ] YAML is valid (test with: `python -c "import yaml; yaml.safe_load(open('SKILL.md').read().split('---')[1])"`)
+
 ### Step 6: Submit Pull Request
 
 ```bash
