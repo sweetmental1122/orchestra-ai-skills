@@ -122,12 +122,31 @@ python validate.py config.yaml
 
 ## YAML Frontmatter Requirements
 
+All SKILL.md files **must** include properly formatted YAML frontmatter with the following fields:
+
 ```yaml
 ---
-name: "skill-name-here"
-description: "Third-person description of what this does and when to use it. Include key terms and triggers. Maximum 1024 characters."
+name: skill-name-here
+description: Third-person description of what this does and when to use it. Include key terms and triggers. Maximum 1024 characters.
+version: 1.0.0
+author: Orchestra Research
+license: MIT
+tags: [Tag One, Tag Two, Tag Three]
+dependencies: [package1>=1.0.0, package2>=2.0.0]
 ---
 ```
+
+### Field Requirements
+
+| Field | Required | Format | Notes |
+|-------|----------|--------|-------|
+| `name` | ✅ Yes | kebab-case | No quotes, lowercase with hyphens |
+| `description` | ✅ Yes | Plain text | No quotes, concise explanation |
+| `version` | ✅ Yes | Semantic version | Format: `MAJOR.MINOR.PATCH` |
+| `author` | ✅ Yes | Plain text | Use "Orchestra Research" |
+| `license` | ✅ Yes | License identifier | Typically `MIT` |
+| `tags` | ✅ Yes | Array | Capitalized words, no quotes |
+| `dependencies` | ⚠️ Optional | Array | Include version constraints |
 
 **name** field:
 - Maximum 64 characters
@@ -140,30 +159,70 @@ description: "Third-person description of what this does and when to use it. Inc
 - Maximum 1024 characters
 - Non-empty
 - No XML tags
+- No quotes around the text
 - **MUST be third person**: "Processes files..." not "I can help you..."
 - Include **what** it does AND **when** to use it
 - Include key terms for discovery
+
+**tags** field:
+- Use **Title Case** for all tags (capitalize first letter of each word)
+- Keep acronyms **UPPERCASE** (e.g., `GRPO`, `TRL`, `RLHF`, `DPO`, `MLOps`, `RAG`)
+- Use descriptive, searchable terms
+- Include 5-10 relevant tags
+- No quotes around tags
+
+**dependencies** field:
+- Only include **direct dependencies** needed to use the skill
+- Include **minimum version constraints** using `>=`
+- No quotes around package names
+- List core packages first, optional packages last
 
 **Examples**:
 
 ✅ **Good**:
 ```yaml
-description: "Serves LLMs with high throughput using vLLM's PagedAttention and continuous batching. Use when deploying production LLM APIs, optimizing inference latency, or serving models with limited GPU memory."
+---
+name: serving-llms
+description: Serves LLMs with high throughput using vLLM's PagedAttention and continuous batching. Use when deploying production LLM APIs, optimizing inference latency, or serving models with limited GPU memory.
+version: 1.0.0
+author: Orchestra Research
+license: MIT
+tags: [Inference, Serving, vLLM, PagedAttention, Production Deployment, High Throughput]
+dependencies: [vllm>=0.2.0, torch>=2.0.0, transformers>=4.35.0]
+---
 ```
 
 ✅ **Good**:
 ```yaml
-description: "Extracts text and tables from PDF files, fills forms, merges documents. Use when working with PDF files or when the user mentions PDFs, forms, or document extraction."
+---
+name: processing-pdfs
+description: Extracts text and tables from PDF files, fills forms, merges documents. Use when working with PDF files or when the user mentions PDFs, forms, or document extraction.
+version: 1.0.0
+author: Orchestra Research
+license: MIT
+tags: [PDF Processing, Text Extraction, Document Processing, Forms]
+dependencies: [pdfplumber>=0.9.0, PyPDF2>=3.0.0]
+---
 ```
 
-❌ **Bad** (first person):
+❌ **Bad** (quotes and missing fields):
 ```yaml
-description: "I can help you process PDF files and extract text"
+---
+name: "skill-name"
+description: "I can help you process PDF files"
+---
 ```
 
-❌ **Bad** (too vague):
+❌ **Bad** (first person, vague):
 ```yaml
-description: "Helps with documents"
+---
+name: docs-helper
+description: Helps with documents
+version: 1.0.0
+author: Orchestra Research
+license: MIT
+tags: [documents]
+---
 ```
 
 ---

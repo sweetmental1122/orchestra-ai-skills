@@ -10,11 +10,11 @@ Build the most comprehensive open-source library of AI research skills, enabling
 
 | Metric | Current | Target |
 |--------|---------|--------|
-| **Skills** | **43** (high-quality) | 70 |
+| **Skills** | **54** (high-quality, standardized YAML) | 70 |
 | **Avg Lines/Skill** | **380 lines** (focused + progressive disclosure) | 200-500 lines |
-| **Documentation** | **~65,000 lines** total (SKILL.md + references) | 70,000+ lines |
-| **Gold Standard Skills** | **35** with comprehensive references | 50+ |
-| **Coverage** | Architecture, Tokenization, Fine-Tuning, Data Processing, Post-Training, Safety, Distributed, Optimization, Evaluation, Inference, Agents, RAG, Multimodal | Full Lifecycle |
+| **Documentation** | **~70,000 lines** total (SKILL.md + references) | 70,000+ lines |
+| **Gold Standard Skills** | **40+** with comprehensive references | 50+ |
+| **Coverage** | Architecture, Tokenization, Fine-Tuning, Data Processing, Post-Training, Safety, Distributed, Optimization, Evaluation, Inference, Agents, RAG, Multimodal, MLOps, Prompt Engineering, Emerging Techniques | Full Lifecycle |
 
 ## Development Phases
 
@@ -133,24 +133,31 @@ Build the most comprehensive open-source library of AI research skills, enabling
 - [ ] **GGUF** - Quantization format for llama.cpp
 - [ ] **Activation Offloading** - Memory optimization techniques
 
-### 🚧 Phase 15: MLOps & Observability (MEDIUM-HIGH PRIORITY) - 6 skills
-**Status**: Planned - Production monitoring and tracking
+### 🔄 Phase 15: MLOps & Observability (IN PROGRESS - 3/6 skills complete)
+**Status**: Partially complete - Core MLOps tools available, LLM observability needed
 
-- [ ] **Weights & Biases** - Experiment tracking
-- [ ] **MLflow** - Open-source MLOps
-- [ ] **TensorBoard** - Visualization
+**Completed Skills**:
+- ✅ **MLflow** - Open-source MLOps platform for tracking experiments
+- ✅ **TensorBoard** - Visualization and experiment tracking
+- ✅ **Weights & Biases** - Experiment tracking and collaboration
+
+**Remaining Skills**:
 - [ ] **LangSmith** - LLM observability
 - [ ] **Phoenix** - LLM monitoring
 - [ ] **HuggingFace Hub** - Model registry
 
-### 🚧 Phase 16: Advanced Applications (MEDIUM PRIORITY) - 6 skills
-**Status**: Planned - Specialized application frameworks
+### 🔄 Phase 16: Prompt Engineering & Advanced Applications (IN PROGRESS - 4/7 skills complete)
+**Status**: Partially complete - Core prompt engineering tools available, agent frameworks needed
 
-- [ ] **DSPy** - Prompt optimization
-- [ ] **Instructor** - Structured output
+**Completed Skills**:
+- ✅ **DSPy** - Declarative prompt optimization and LM programming
+- ✅ **Guidance** - Constrained generation and structured prompting
+- ✅ **Instructor** - Structured output with Pydantic models
+- ✅ **Outlines** - Structured text generation with regex and grammars
+
+**Remaining Skills**:
 - [ ] **CrewAI** - Multi-agent collaboration
 - [ ] **AutoGPT** - Autonomous agents
-- [ ] **Haystack** - NLP framework
 - [ ] **Semantic Kernel** - Microsoft's AI orchestration
 
 ### 🚧 Phase 17: Extended Multimodal (MEDIUM PRIORITY) - 5 skills
@@ -162,15 +169,16 @@ Build the most comprehensive open-source library of AI research skills, enabling
 - [ ] **AudioCraft** - Audio generation
 - [ ] **ImageBind** - Multi-modal embeddings
 
-### 🚧 Phase 18: Emerging Techniques (LOW-MEDIUM PRIORITY) - 6 skills
-**Status**: Planned - Cutting-edge research techniques
+### ✅ Phase 18: Emerging Techniques (COMPLETE - 6 skills)
+**Status**: Core emerging techniques covered
 
-- [ ] **MoE Training** - Mixture of Experts
-- [ ] **Model Merging** - mergekit
-- [ ] **Long Context** - RoPE extensions, ALiBi
-- [ ] **Speculative Decoding** - Faster inference
-- [ ] **Distillation** - Knowledge distillation
-- [ ] **Pruning** - Model compression
+**Completed Skills**:
+- ✅ **MoE Training** - Mixture of Experts with DeepSpeed/HuggingFace
+- ✅ **Model Merging** - mergekit, SLERP, and model composition
+- ✅ **Long Context** - RoPE extensions, ALiBi, and context scaling
+- ✅ **Speculative Decoding** - Medusa, Lookahead, and draft models for faster inference
+- ✅ **Knowledge Distillation** - MiniLLM, reverse KLD, teacher-student training
+- ✅ **Model Pruning** - Wanda, SparseGPT, and structured pruning
 
 ## Contributing to the Roadmap
 
@@ -184,9 +192,10 @@ Want to help us achieve these goals?
 
 If you're looking to make the biggest impact, focus on:
 
-1. **Phase 14: Advanced Optimization** (HIGH PRIORITY) - AWQ, HQQ, activation offloading for better model compression
-2. **Phase 15: MLOps & Observability** (MEDIUM-HIGH PRIORITY) - Production monitoring, experiment tracking
-3. **Phase 16: Advanced Applications** (MEDIUM PRIORITY) - DSPy, Instructor, CrewAI for specialized workflows
+1. **Phase 14: Advanced Optimization** (HIGH PRIORITY) - AWQ, HQQ, GGUF, AutoAWQ, activation offloading for advanced quantization
+2. **Phase 15: MLOps & Observability** (MEDIUM-HIGH PRIORITY) - LangSmith, Phoenix, HuggingFace Hub for LLM observability
+3. **Phase 16: Prompt Engineering** (MEDIUM PRIORITY) - CrewAI, AutoGPT, Semantic Kernel for multi-agent systems
+4. **Phase 17: Extended Multimodal** (MEDIUM PRIORITY) - Stable Diffusion, BLIP-2, SAM for advanced vision/audio
 
 ## Philosophy
 

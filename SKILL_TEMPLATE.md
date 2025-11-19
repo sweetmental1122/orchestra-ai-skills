@@ -1,6 +1,11 @@
 ---
-name: "example-skill-name"
-description: "Brief third-person description of what this skill does and when to use it. Include key terms and triggers for discovery. Maximum 1024 characters."
+name: example-skill-name
+description: Brief third-person description of what this skill does and when to use it. Include key terms and triggers for discovery. Maximum 1024 characters.
+version: 1.0.0
+author: Orchestra Research
+license: MIT
+tags: [Tag One, Tag Two, Tag Three, Key Concept, Use Case]
+dependencies: [package1>=1.0.0, package2>=2.0.0]
 ---
 
 # [Skill Title]
