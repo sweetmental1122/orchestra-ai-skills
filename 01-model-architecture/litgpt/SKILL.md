@@ -467,3 +467,5 @@ Apply LoRA to fewer layers:
 - Model zoo: 20+ pretrained architectures (Llama, Gemma, Phi, Qwen, Mistral, Mixtral, Falcon, etc.)
 
 <!-- Test sync Thu Nov 20 00:47:54 EST 2025 -->
+
+<!-- Test sync with www URL Thu Nov 20 01:39:22 EST 2025 -->
