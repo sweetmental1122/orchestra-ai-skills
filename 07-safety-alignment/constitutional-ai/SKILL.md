@@ -285,3 +285,4 @@ final_preference = majority_vote(prefs_1, prefs_2, prefs_3)
 - Anthropic blog: https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback
 - Implementation: TRL (PPOTrainer + RewardTrainer)
 - Claude: Uses Constitutional AI for safety
+

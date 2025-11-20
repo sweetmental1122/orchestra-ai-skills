@@ -256,3 +256,4 @@ model = MambaLMHeadModel.from_pretrained("state-spaces/mamba-2.8b")
 - GitHub: https://github.com/state-spaces/mamba ⭐ 13,000+
 - Models: https://huggingface.co/state-spaces
 - Docs: Repository README and wiki
+
