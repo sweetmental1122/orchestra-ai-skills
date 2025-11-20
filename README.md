@@ -1,6 +1,6 @@
 # AI Research Engineering `Skills` Library
 
-> **The most comprehensive open-source library of AI research skills for AI models**
+> **The most comprehensive open-source library of AI research engineering skills for AI agents**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Skills](https://img.shields.io/badge/Skills-54-blue.svg)](.)
@@ -9,12 +9,13 @@
 
 ## Our Mission
 
-**Enable AI agents to autonomously conduct AI research**—from hypothesis to experimental verification. We provide the foundational skills that empower **AI research agents** to conduct experiments, including preparing datasets, executing training pipelines, deploying models, and validating scientific hypotheses.
-
+**Enable AI agents to autonomously conduct AI research**—from hypothesis to experimental verification. 
+We provide the layer of **Engineering Ability** that empower **AI research agents** to conduct experiments, including preparing datasets, executing training pipelines, deploying models, and validating scientific hypotheses.
 <p align="center">
   <img src="docs/skills.png" alt="AI Research Agent System" width="50%">
+  <br>
+  <em>System diagram of an AI research agent</em>
 </p>
-  
 
 ## Path Towards AI Research Agent
 
