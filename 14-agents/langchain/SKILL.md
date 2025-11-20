@@ -476,3 +476,4 @@ splitter = SemanticChunker(OpenAIEmbeddings())
 - **LangSmith**: https://smith.langchain.com (observability)
 - **Version**: 0.3+ (stable)
 - **License**: MIT
+

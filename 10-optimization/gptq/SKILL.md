@@ -446,3 +446,4 @@ model = AutoGPTQForCausalLM.from_quantized(
 - **Paper**: GPTQ: Accurate Post-Training Quantization (arXiv:2210.17323)
 - **Models**: https://huggingface.co/models?library=gptq
 - **Discord**: https://discord.gg/autogptq
+

@@ -535,3 +535,4 @@ mergekit-yaml config.yml ./merged-model
 - `references/methods.md` - Deep dive into merge algorithms
 - `references/examples.md` - Real-world merge configurations
 - `references/evaluation.md` - Benchmarking and testing strategies
+

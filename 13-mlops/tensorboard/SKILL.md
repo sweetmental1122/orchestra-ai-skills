@@ -625,3 +625,4 @@ with profiler.profile(
 - `references/visualization.md` - Comprehensive visualization guide
 - `references/profiling.md` - Performance profiling patterns
 - `references/integrations.md` - Framework-specific integration examples
+

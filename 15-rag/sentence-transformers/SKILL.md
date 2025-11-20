@@ -251,3 +251,4 @@ index = VectorStoreIndex.from_documents(documents)
 - **Models**: https://huggingface.co/sentence-transformers
 - **Docs**: https://www.sbert.net
 - **License**: Apache 2.0
+
