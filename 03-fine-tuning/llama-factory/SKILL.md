@@ -4,7 +4,7 @@ description: Expert guidance for fine-tuning LLMs with LLaMA-Factory - WebUI no-
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [LLaMA Factory, Fine-Tuning, LLM, WebUI, No-Code, QLoRA, LoRA, Multimodal, HuggingFace, Llama, Qwen, Gemma]
+tags: [Fine-Tuning, LLaMA Factory, LLM, WebUI, No-Code, QLoRA, LoRA, Multimodal, HuggingFace, Llama, Qwen, Gemma]
 dependencies: [llmtuner, torch, transformers, datasets, peft, accelerate, gradio]
 ---
 

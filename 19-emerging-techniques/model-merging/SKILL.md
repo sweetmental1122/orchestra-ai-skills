@@ -4,7 +4,7 @@ description: Merge multiple fine-tuned models using mergekit to combine capabili
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [Model Merging, Mergekit, SLERP, TIES, DARE, Task Arithmetic, Model Fusion, No Retraining, Multi-Capability, Arcee AI]
+tags: [Emerging Techniques, Model Merging, Mergekit, SLERP, TIES, DARE, Task Arithmetic, Model Fusion, No Retraining, Multi-Capability, Arcee AI]
 dependencies: [mergekit, transformers, torch]
 ---
 

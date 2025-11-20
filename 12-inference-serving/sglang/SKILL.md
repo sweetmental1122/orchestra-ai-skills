@@ -4,7 +4,7 @@ description: Fast structured generation and serving for LLMs with RadixAttention
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [SGLang, Structured Generation, RadixAttention, Prefix Caching, Constrained Decoding, Agents, JSON Output, Fast Inference, Production Scale]
+tags: [Inference Serving, SGLang, Structured Generation, RadixAttention, Prefix Caching, Constrained Decoding, Agents, JSON Output, Fast Inference, Production Scale]
 dependencies: [sglang, torch, transformers]
 ---
 

@@ -4,7 +4,7 @@ description: Extend context windows of transformer models using RoPE, YaRN, ALiB
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [Long Context, RoPE, YaRN, ALiBi, Position Interpolation, Extended Context, Rotary Embeddings, Attention Bias, Context Extension, Positional Encoding]
+tags: [Emerging Techniques, Long Context, RoPE, YaRN, ALiBi, Position Interpolation, Extended Context, Rotary Embeddings, Attention Bias, Context Extension, Positional Encoding]
 dependencies: [transformers, torch, flash-attn]
 ---
 

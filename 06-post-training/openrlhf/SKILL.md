@@ -4,7 +4,7 @@ description: High-performance RLHF framework with Ray+vLLM acceleration. Use for
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [OpenRLHF, RLHF, PPO, GRPO, RLOO, DPO, Post-Training, Ray, vLLM, Distributed Training, Large Models, ZeRO-3]
+tags: [Post-Training, OpenRLHF, RLHF, PPO, GRPO, RLOO, DPO, Ray, vLLM, Distributed Training, Large Models, ZeRO-3]
 dependencies: [openrlhf, ray, vllm, torch, transformers, deepspeed]
 ---
 

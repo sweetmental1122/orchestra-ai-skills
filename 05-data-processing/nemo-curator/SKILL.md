@@ -4,7 +4,7 @@ description: GPU-accelerated data curation for LLM training. Supports text/image
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [NeMo Curator, Data Curation, GPU Acceleration, Deduplication, Quality Filtering, NVIDIA, RAPIDS, PII Redaction, Multimodal, LLM Training Data]
+tags: [Data Processing, NeMo Curator, Data Curation, GPU Acceleration, Deduplication, Quality Filtering, NVIDIA, RAPIDS, PII Redaction, Multimodal, LLM Training Data]
 dependencies: [nemo-curator, cudf, dask, rapids]
 ---
 

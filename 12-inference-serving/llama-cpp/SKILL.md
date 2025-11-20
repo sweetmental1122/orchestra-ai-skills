@@ -4,7 +4,7 @@ description: Runs LLM inference on CPU, Apple Silicon, and consumer GPUs without
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [Llama.cpp, CPU Inference, Apple Silicon, Edge Deployment, GGUF, Quantization, Non-NVIDIA, AMD GPUs, Intel GPUs, Embedded]
+tags: [Inference Serving, Llama.cpp, CPU Inference, Apple Silicon, Edge Deployment, GGUF, Quantization, Non-NVIDIA, AMD GPUs, Intel GPUs, Embedded]
 dependencies: [llama-cpp-python]
 ---
 

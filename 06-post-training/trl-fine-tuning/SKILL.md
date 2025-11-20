@@ -4,7 +4,7 @@ description: Fine-tune LLMs using reinforcement learning with TRL - SFT for inst
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [TRL, Reinforcement Learning, Fine-Tuning, SFT, DPO, PPO, GRPO, RLHF, Preference Alignment, HuggingFace, Post-Training]
+tags: [Post-Training, TRL, Reinforcement Learning, Fine-Tuning, SFT, DPO, PPO, GRPO, RLHF, Preference Alignment, HuggingFace]
 dependencies: [trl, transformers, datasets, peft, accelerate, torch]
 ---
 

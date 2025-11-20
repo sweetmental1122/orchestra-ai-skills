@@ -4,7 +4,7 @@ description: Data framework for building LLM applications with RAG. Specializes 
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [LlamaIndex, RAG, Document Ingestion, Vector Indices, Query Engines, Knowledge Retrieval, Data Framework, Multimodal, Private Data, Connectors]
+tags: [Agents, LlamaIndex, RAG, Document Ingestion, Vector Indices, Query Engines, Knowledge Retrieval, Data Framework, Multimodal, Private Data, Connectors]
 dependencies: [llama-index, openai, anthropic]
 ---
 

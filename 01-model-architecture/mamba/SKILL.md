@@ -4,7 +4,7 @@ description: State-space model with O(n) complexity vs Transformers' O(n²). 5×
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [Mamba, State Space Models, SSM, Model Architecture, Linear Complexity, Long Context, Efficient Inference, Hardware-Aware, Alternative To Transformers]
+tags: [Model Architecture, Mamba, State Space Models, SSM, Linear Complexity, Long Context, Efficient Inference, Hardware-Aware, Alternative To Transformers]
 dependencies: [mamba-ssm, torch, transformers, causal-conv1d]
 ---
 

@@ -4,7 +4,7 @@ description: Meta's 7-8B specialized moderation model for LLM input/output filte
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [LlamaGuard, Content Moderation, Safety, Meta, Guardrails, Safety Classification, Input Filtering, Output Filtering, AI Safety]
+tags: [Safety Alignment, LlamaGuard, Content Moderation, Meta, Guardrails, Safety Classification, Input Filtering, Output Filtering, AI Safety]
 dependencies: [transformers, torch, vllm]
 ---
 

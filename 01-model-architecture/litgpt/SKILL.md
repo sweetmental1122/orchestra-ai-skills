@@ -4,7 +4,7 @@ description: Implements and trains LLMs using Lightning AI's LitGPT with 20+ pre
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [LitGPT, Lightning AI, Model Architecture, LLM Implementation, LoRA, QLoRA, Fine-Tuning, Llama, Gemma, Phi, Mistral, Educational]
+tags: [Model Architecture, LitGPT, Lightning AI, LLM Implementation, LoRA, QLoRA, Fine-Tuning, Llama, Gemma, Phi, Mistral, Educational]
 dependencies: [litgpt, torch, transformers]
 ---
 

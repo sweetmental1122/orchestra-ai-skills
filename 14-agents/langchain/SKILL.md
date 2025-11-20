@@ -4,7 +4,7 @@ description: Framework for building LLM-powered applications with agents, chains
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [LangChain, Agents, RAG, Tool Calling, ReAct, Memory Management, Vector Stores, LLM Applications, Chatbots, Production]
+tags: [Agents, LangChain, RAG, Tool Calling, ReAct, Memory Management, Vector Stores, LLM Applications, Chatbots, Production]
 dependencies: [langchain, langchain-core, langchain-openai, langchain-anthropic]
 ---
 

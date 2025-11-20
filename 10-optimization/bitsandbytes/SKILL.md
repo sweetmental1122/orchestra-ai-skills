@@ -4,7 +4,7 @@ description: Quantizes LLMs to 8-bit or 4-bit for 50-75% memory reduction with m
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [Bitsandbytes, Quantization, 8-Bit, 4-Bit, Memory Optimization, QLoRA, NF4, INT8, HuggingFace, Efficient Inference]
+tags: [Optimization, Bitsandbytes, Quantization, 8-Bit, 4-Bit, Memory Optimization, QLoRA, NF4, INT8, HuggingFace, Efficient Inference]
 dependencies: [bitsandbytes, transformers, accelerate, torch]
 ---
 

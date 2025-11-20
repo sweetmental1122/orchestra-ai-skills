@@ -4,7 +4,7 @@ description: NVIDIA's runtime safety framework for LLM applications. Features ja
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [NeMo Guardrails, Safety, NVIDIA, Jailbreak Detection, Guardrails, Colang, Runtime Safety, Hallucination Detection, PII Filtering, Production]
+tags: [Safety Alignment, NeMo Guardrails, NVIDIA, Jailbreak Detection, Guardrails, Colang, Runtime Safety, Hallucination Detection, PII Filtering, Production]
 dependencies: [nemoguardrails]
 ---
 

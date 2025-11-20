@@ -4,7 +4,7 @@ description: Compress large language models using knowledge distillation from te
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [Knowledge Distillation, Model Compression, Teacher-Student, MiniLLM, Reverse KLD, Soft Targets, Temperature Scaling, Logit Distillation, Model Transfer]
+tags: [Emerging Techniques, Knowledge Distillation, Model Compression, Teacher-Student, MiniLLM, Reverse KLD, Soft Targets, Temperature Scaling, Logit Distillation, Model Transfer]
 dependencies: [transformers, torch, datasets]
 ---
 

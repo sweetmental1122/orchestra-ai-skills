@@ -4,7 +4,7 @@ description: Anthropic's method for training harmless AI through self-improvemen
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [Constitutional AI, Safety Alignment, RLAIF, Self-Critique, Harmlessness, Anthropic, AI Safety, RL From AI Feedback, Claude]
+tags: [Safety Alignment, Constitutional AI, RLAIF, Self-Critique, Harmlessness, Anthropic, AI Safety, RL From AI Feedback, Claude]
 dependencies: [transformers, torch, trl]
 ---
 

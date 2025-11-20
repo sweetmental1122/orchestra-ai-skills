@@ -4,7 +4,7 @@ description: Scalable data processing for ML workloads. Streaming execution acro
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [Ray Data, Data Processing, Distributed Computing, ML Pipelines, Batch Inference, ETL, Scalable, Ray, PyTorch, TensorFlow]
+tags: [Data Processing, Ray Data, Distributed Computing, ML Pipelines, Batch Inference, ETL, Scalable, Ray, PyTorch, TensorFlow]
 dependencies: [ray[data], pyarrow, pandas]
 ---
 

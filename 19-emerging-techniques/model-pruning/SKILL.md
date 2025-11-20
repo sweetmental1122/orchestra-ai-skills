@@ -4,7 +4,7 @@ description: Reduce LLM size and accelerate inference using pruning techniques l
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [Model Pruning, Wanda, SparseGPT, Sparsity, Model Compression, N:M Sparsity, One-Shot Pruning, Structured Pruning, Unstructured Pruning, Fast Inference]
+tags: [Emerging Techniques, Model Pruning, Wanda, SparseGPT, Sparsity, Model Compression, N:M Sparsity, One-Shot Pruning, Structured Pruning, Unstructured Pruning, Fast Inference]
 dependencies: [transformers, torch]
 ---
 

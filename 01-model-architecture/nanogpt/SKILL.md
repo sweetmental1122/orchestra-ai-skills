@@ -4,7 +4,7 @@ description: Educational GPT implementation in ~300 lines. Reproduces GPT-2 (124
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [NanoGPT, GPT-2, Educational, Model Architecture, Andrej Karpathy, Transformer, Minimalist, From Scratch, Training]
+tags: [Model Architecture, NanoGPT, GPT-2, Educational, Andrej Karpathy, Transformer, Minimalist, From Scratch, Training]
 dependencies: [torch, transformers, datasets, tiktoken, wandb]
 ---
 

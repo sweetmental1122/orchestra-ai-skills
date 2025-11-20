@@ -4,7 +4,7 @@ description: Post-training 4-bit quantization for LLMs with minimal accuracy los
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [GPTQ, Quantization, 4-Bit, Post-Training, Memory Optimization, Consumer GPUs, Fast Inference, QLoRA, Group-Wise Quantization]
+tags: [Optimization, GPTQ, Quantization, 4-Bit, Post-Training, Memory Optimization, Consumer GPUs, Fast Inference, QLoRA, Group-Wise Quantization]
 dependencies: [auto-gptq, transformers, optimum, peft]
 ---
 

@@ -2,7 +2,7 @@
 name: mlflow
 description: Track ML experiments, manage model registry with versioning, deploy models to production, and reproduce experiments with MLflow - framework-agnostic ML lifecycle platform
 version: 1.0.0
-author: AI Research Skills Contributors
+author: Orchestra Research
 license: MIT
 tags: [MLOps, MLflow, Experiment Tracking, Model Registry, ML Lifecycle, Deployment, Model Versioning, PyTorch, TensorFlow, Scikit-Learn, HuggingFace]
 dependencies: [mlflow, sqlalchemy, boto3]

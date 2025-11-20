@@ -4,7 +4,7 @@ description: Optimizes LLM inference with NVIDIA TensorRT for maximum throughput
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [TensorRT-LLM, NVIDIA, Inference Optimization, High Throughput, Low Latency, Production, FP8, INT4, In-Flight Batching, Multi-GPU]
+tags: [Inference Serving, TensorRT-LLM, NVIDIA, Inference Optimization, High Throughput, Low Latency, Production, FP8, INT4, In-Flight Batching, Multi-GPU]
 dependencies: [tensorrt-llm, torch]
 ---
 

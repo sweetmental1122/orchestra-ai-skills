@@ -4,7 +4,7 @@ description: Train Mixture of Experts (MoE) models using DeepSpeed or HuggingFac
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [MoE, Mixture Of Experts, Sparse Models, DeepSpeed, Expert Parallelism, Mixtral, DeepSeek, Routing, Load Balancing, Efficient Training]
+tags: [Emerging Techniques, MoE, Mixture Of Experts, Sparse Models, DeepSpeed, Expert Parallelism, Mixtral, DeepSeek, Routing, Load Balancing, Efficient Training]
 dependencies: [deepspeed, transformers, torch, accelerate]
 ---
 

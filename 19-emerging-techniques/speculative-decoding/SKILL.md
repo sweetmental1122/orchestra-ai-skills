@@ -4,7 +4,7 @@ description: Accelerate LLM inference using speculative decoding, Medusa multipl
 version: 1.0.0
 author: Orchestra Research
 license: MIT
-tags: [Speculative Decoding, Medusa, Lookahead Decoding, Fast Inference, Draft Models, Tree Attention, Parallel Generation, Latency Reduction, Inference Optimization]
+tags: [Emerging Techniques, Speculative Decoding, Medusa, Lookahead Decoding, Fast Inference, Draft Models, Tree Attention, Parallel Generation, Latency Reduction, Inference Optimization]
 dependencies: [transformers, torch]
 ---
 
