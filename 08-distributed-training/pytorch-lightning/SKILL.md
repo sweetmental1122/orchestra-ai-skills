@@ -343,3 +343,4 @@ trainer = L.Trainer(accelerator='gpu', devices=1)
 - Discord: https://discord.gg/lightning-ai
 - Used by: Kaggle winners, research labs, production teams
 
+

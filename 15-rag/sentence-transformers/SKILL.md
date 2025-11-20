@@ -252,3 +252,4 @@ index = VectorStoreIndex.from_documents(documents)
 - **Docs**: https://www.sbert.net
 - **License**: Apache 2.0
 
+

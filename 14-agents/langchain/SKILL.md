@@ -477,3 +477,4 @@ splitter = SemanticChunker(OpenAIEmbeddings())
 - **Version**: 0.3+ (stable)
 - **License**: MIT
 
+

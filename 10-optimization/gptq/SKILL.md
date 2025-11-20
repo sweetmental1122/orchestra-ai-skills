@@ -447,3 +447,4 @@ model = AutoGPTQForCausalLM.from_quantized(
 - **Models**: https://huggingface.co/models?library=gptq
 - **Discord**: https://discord.gg/autogptq
 
+

@@ -626,3 +626,4 @@ with profiler.profile(
 - `references/profiling.md` - Performance profiling patterns
 - `references/integrations.md` - Framework-specific integration examples
 
+

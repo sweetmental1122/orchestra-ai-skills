@@ -355,3 +355,4 @@ index.delete(delete_all=True)
 - **Console**: https://app.pinecone.io
 - **Pricing**: https://www.pinecone.io/pricing
 
+

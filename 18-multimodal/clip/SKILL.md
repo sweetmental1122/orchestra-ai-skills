@@ -250,3 +250,4 @@ results = collection.query(
 - **Colab**: https://colab.research.google.com/github/openai/clip/
 - **License**: MIT
 
+
