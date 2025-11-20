@@ -109,19 +109,20 @@ jobs:
 
             echo "✓ Created zip: $(ls -lh "$ZIP_FILE" | awk '{print $5}')"
 
-            # Read SKILL.md content
-            SKILL_MD_CONTENT=$(cat "$SKILL_PATH/SKILL.md")
+            # Write SKILL.md content to temp file (avoid argument length limits)
+            SKILL_MD_FILE="$TEMP_DIR/skill.md"
+            cat "$SKILL_PATH/SKILL.md" > "$SKILL_MD_FILE"
 
             # Encode zip to base64 and write to temp file (avoid argument length limits)
             ZIP_BASE64_FILE="$TEMP_DIR/base64.txt"
             base64 -w 0 "$ZIP_FILE" > "$ZIP_BASE64_FILE" 2>/dev/null || base64 "$ZIP_FILE" > "$ZIP_BASE64_FILE"
 
-            # Prepare JSON payload
+            # Prepare JSON payload (use --rawfile for large content)
             JSON_PAYLOAD=$(jq -n \
               --arg skillName "$SKILL_NAME" \
               --arg skillPath "$SKILL_PATH" \
               --arg author "$AUTHOR" \
-              --arg skillMdContent "$SKILL_MD_CONTENT" \
+              --rawfile skillMdContent "$SKILL_MD_FILE" \
               --rawfile zipBase64 "$ZIP_BASE64_FILE" \
               '{
                 skillName: $skillName,
