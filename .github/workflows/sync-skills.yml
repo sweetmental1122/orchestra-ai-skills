@@ -131,14 +131,16 @@ jobs:
                 zipBase64: $zipBase64
               }')
 
-            # Send to Orchestra API
+            # Send to Orchestra API (write JSON to file to avoid argument length limits)
             echo "📤 Uploading to Orchestra..."
+            JSON_FILE="$TEMP_DIR/payload.json"
+            echo "$JSON_PAYLOAD" > "$JSON_FILE"
 
             RESPONSE=$(curl -s -w "\n%{http_code}" -L \
               -X POST \
               -H "Content-Type: application/json" \
               -H "X-Admin-API-Key: $ORCHESTRA_SYNC_API_KEY" \
-              -d "$JSON_PAYLOAD" \
+              -d @"$JSON_FILE" \
               "$ORCHESTRA_API_URL/api/admin/sync-github-skill")
 
             HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
