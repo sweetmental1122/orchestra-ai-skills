@@ -3,7 +3,7 @@
 > **The most comprehensive open-source library of AI research engineering skills for AI agents**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Skills](https://img.shields.io/badge/Skills-64-blue.svg)](.)
+[![Skills](https://img.shields.io/badge/Skills-70-blue.svg)](.)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Blog Post](https://img.shields.io/badge/Blog-Read%20More-orange.svg)](https://www.orchestra-research.com/perspectives/ai-research-skills)
 
@@ -24,10 +24,10 @@ Modern AI research requires mastering dozens of specialized tools and frameworks
 AI Researchers spend more time debugging infrastructure than testing hypotheses—slowing the pace of scientific discovery. 
 We provide a comprehensive library of expert-level research engineering skills that enable AI agents to autonomously implement and execute different stages of AI research experiments—from data preparation and model training to evaluation and deployment.
   - Specialized Expertise - Each skill provides deep, production-ready knowledge of a specific framework (Megatron-LM, vLLM, TRL, etc.)
-  - End-to-End Coverage - 64/70 skills spanning model architecture, tokenization, fine-tuning, data processing, post-training, distributed training, optimization, inference, agents, RAG, multimodal, prompt engineering, MLOps, observability, and emerging techniques
+  - End-to-End Coverage - 70 skills spanning model architecture, tokenization, fine-tuning, data processing, post-training, distributed training, optimization, inference, infrastructure, agents, RAG, multimodal, prompt engineering, MLOps, observability, and emerging techniques
   - Research-Grade Quality - Documentation sourced from official repos, real GitHub issues, and battle-tested production workflows
 
-## 📚 Available Skills (64/70 roadmap)
+## 📚 Available Skills (70/70 roadmap complete!)
 
 **Quality over quantity**: Each skill provides comprehensive, expert-level guidance with real code examples, troubleshooting guides, and production-ready workflows.
 
@@ -81,6 +81,11 @@ We provide a comprehensive library of expert-level research engineering skills t
 ### 📊 Evaluation (1 skill)
 - **[lm-evaluation-harness](11-evaluation/lm-evaluation-harness/)** - EleutherAI's standard for benchmarking LLMs across 60+ tasks (482 lines + 4 refs)
 
+### ☁️ Infrastructure (3 skills)
+- **[Modal](09-infrastructure/modal/)** - Serverless GPU cloud with Python-native API, T4-H200 on-demand (342 lines + 2 refs)
+- **[SkyPilot](09-infrastructure/skypilot/)** - Multi-cloud orchestration across 20+ providers with spot recovery (390 lines + 2 refs)
+- **[Lambda Labs](09-infrastructure/lambda-labs/)** - Reserved/on-demand GPU cloud with H100/A100, persistent filesystems (390 lines + 2 refs)
+
 ### 🔥 Inference & Serving (4 skills)
 - **[vLLM](12-inference-serving/vllm/)** - High-throughput LLM serving with PagedAttention (356 lines + 4 refs, **production-ready**)
 - **[TensorRT-LLM](12-inference-serving/tensorrt-llm/)** - NVIDIA's fastest inference, 24k tok/s, FP8/INT4 quantization (180 lines + 3 refs)
@@ -100,11 +105,14 @@ We provide a comprehensive library of expert-level research engineering skills t
 - **[Pinecone](15-rag/pinecone/)** - Managed vector database, auto-scaling, <100ms latency (410 lines)
 - **[Qdrant](15-rag/qdrant/)** - High-performance vector search, Rust-powered, hybrid search with filtering (493 lines + 2 refs)
 
-### 🎨 Multimodal (4 skills)
+### 🎨 Multimodal (7 skills)
 - **[CLIP](18-multimodal/clip/)** - OpenAI's vision-language model, zero-shot classification, 25k stars (320 lines)
 - **[Whisper](18-multimodal/whisper/)** - Robust speech recognition, 99 languages, 73k stars (395 lines)
 - **[LLaVA](18-multimodal/llava/)** - Vision-language assistant, image chat, GPT-4V level (360 lines)
 - **[Stable Diffusion](18-multimodal/stable-diffusion/)** - Text-to-image generation via HuggingFace Diffusers, SDXL, ControlNet (380 lines + 2 refs)
+- **[Segment Anything](18-multimodal/segment-anything/)** - Meta's SAM for zero-shot image segmentation with points/boxes (500 lines + 2 refs)
+- **[BLIP-2](18-multimodal/blip-2/)** - Vision-language pretraining with Q-Former, image captioning, VQA (500 lines + 2 refs)
+- **[AudioCraft](18-multimodal/audiocraft/)** - Meta's MusicGen/AudioGen for text-to-music and text-to-sound (470 lines + 2 refs)
 
 ### 🎯 Prompt Engineering (4 skills)
 - **[DSPy](16-prompt-engineering/dspy/)** - Declarative prompt programming with optimizers, Stanford NLP, 22k stars (438 lines + 3 refs)
@@ -135,7 +143,7 @@ We provide a comprehensive library of expert-level research engineering skills t
 
 ### 🎯 Using with Orchestra
 
-All 64 skills in this repo are automatically synced to [Orchestra Research](https://www.orchestra-research.com/research-skills), where you can add them to your projects with one click and use them with AI research agents.
+All 70 skills in this repo are automatically synced to [Orchestra Research](https://www.orchestra-research.com/research-skills), where you can add them to your projects with one click and use them with AI research agents.
 
 **Example use case**: The [Vibe Fine-tuning LLMs](https://www.orchestra-research.com/perspectives/LLM-with-Orchestra) case study shows reproducing LoRA research through natural language conversation - the agent handled code writing, GPU provisioning, and experiment execution autonomously. ([Video demo](https://www.youtube.com/watch?v=X0DoLYfXl5I))
 
@@ -228,14 +236,14 @@ skill-name/
 
 We're building towards 70 comprehensive skills across the full AI research lifecycle. See our [detailed roadmap](ROADMAP.md) for the complete development plan.
 
-**Current Progress**: 64 high-quality skills | **Target**: 70 skills
+**Current Progress**: 70 high-quality skills | **Target**: 70 skills ✅ COMPLETE!
 
-**Priority Areas**:
+**All Priority Areas Complete**:
 - ~~🤖 **Applications** (CRITICAL) - LangChain, RAG, agents~~ ✅ COMPLETED
 - ~~🎯 **Prompt Engineering** (CRITICAL) - DSPy, Instructor, Guidance, Outlines~~ ✅ COMPLETED
 - ~~🧠 **Advanced Optimization** (HIGH) - AWQ, HQQ~~ ✅ COMPLETED
-- ~~🎨 **Multimodal Extensions** (MEDIUM) - Stable Diffusion~~ ✅ COMPLETED
-- 🔬 **Remaining** (6 skills) - BLIP-2, activation checkpointing, more
+- ~~🎨 **Multimodal Extensions** (MEDIUM) - SAM, BLIP-2, AudioCraft~~ ✅ COMPLETED
+- ~~☁️ **Infrastructure** (MEDIUM) - Modal, SkyPilot, Lambda Labs~~ ✅ COMPLETED
 
 [View Full Roadmap →](ROADMAP.md)
 
@@ -244,14 +252,14 @@ We're building towards 70 comprehensive skills across the full AI research lifec
 
 | Metric | Current | Target |
 |--------|---------|--------|
-| **Skills** | **64** (high-quality, standardized YAML) | 70 |
+| **Skills** | **70** (high-quality, standardized YAML) | 70 ✅ |
 | **Avg Lines/Skill** | **420 lines** (focused + progressive disclosure) | 200-600 lines |
-| **Documentation** | **~100,000 lines** total (SKILL.md + references) | 100,000+ lines |
-| **Gold Standard Skills** | **52** with comprehensive references | 50+ |
+| **Documentation** | **~115,000 lines** total (SKILL.md + references) | 100,000+ lines |
+| **Gold Standard Skills** | **58** with comprehensive references | 50+ |
 | **Contributors** | 1 | 100+ |
-| **Coverage** | Architecture, Tokenization, Fine-Tuning, Data Processing, Post-Training, Safety, Distributed, Optimization, Evaluation, Inference, Agents, RAG, Multimodal, Prompt Engineering, MLOps, Observability | Full Lifecycle |
+| **Coverage** | Architecture, Tokenization, Fine-Tuning, Data Processing, Post-Training, Safety, Distributed, Optimization, Evaluation, Infrastructure, Inference, Agents, RAG, Multimodal, Prompt Engineering, MLOps, Observability | Full Lifecycle ✅ |
 
-**Recent Progress**: +5 skills (HQQ, GGUF, Phoenix, AutoGPT, Stable Diffusion) covering advanced quantization, open-source observability, autonomous agents, and text-to-image generation
+**Recent Progress**: +4 skills (Lambda Labs, SAM, BLIP-2, AudioCraft) completing the 70-skill roadmap with GPU cloud and extended multimodal capabilities
 
 **Philosophy**: Quality > Quantity. Following [Anthropic official best practices](anthropic_official_docs/best_practices.md) - each skill provides 200-500 lines of focused, actionable guidance with progressive disclosure.
 
@@ -286,6 +294,7 @@ claude-ai-research-skills/
 ├── 06-post-training/            (4 skills ✓ - TRL, GRPO, OpenRLHF, SimPO)
 ├── 07-safety-alignment/         (3 skills ✓ - Constitutional AI, LlamaGuard, NeMo Guardrails)
 ├── 08-distributed-training/     (5 skills ✓ - DeepSpeed, FSDP, Accelerate, Lightning, Ray Train)
+├── 09-infrastructure/           (3 skills ✓ - Modal, SkyPilot, Lambda Labs)
 ├── 10-optimization/             (6 skills ✓ - Flash Attention, bitsandbytes, GPTQ, AWQ, HQQ, GGUF)
 ├── 11-evaluation/               (1 skill ✓ - lm-evaluation-harness)
 ├── 12-inference-serving/        (4 skills ✓ - vLLM, TensorRT-LLM, llama.cpp, SGLang)
@@ -294,7 +303,7 @@ claude-ai-research-skills/
 ├── 15-rag/                      (5 skills ✓ - Chroma, FAISS, Sentence Transformers, Pinecone, Qdrant)
 ├── 16-prompt-engineering/       (4 skills ✓ - DSPy, Instructor, Guidance, Outlines)
 ├── 17-observability/            (2 skills ✓ - LangSmith, Phoenix)
-├── 18-multimodal/               (4 skills ✓ - CLIP, Whisper, LLaVA, Stable Diffusion)
+├── 18-multimodal/               (7 skills ✓ - CLIP, Whisper, LLaVA, Stable Diffusion, SAM, BLIP-2, AudioCraft)
 └── 19-emerging-techniques/      (6 skills ✓ - MoE, Model Merging, Long Context, Speculative Decoding, Distillation, Pruning)
 ```
 
@@ -342,6 +351,32 @@ Special thanks to:
 
 
 ## 📈 Recent Updates
+
+<details>
+<summary><b>November 25, 2025 - v1.0.0 🎉 70 Skills Complete!</b></summary>
+
+- 🎉 **ROADMAP COMPLETE**: Reached 70-skill milestone!
+- 🚀 Added 4 skills: Lambda Labs, Segment Anything (SAM), BLIP-2, AudioCraft
+- ☁️ Lambda Labs skill: Reserved/on-demand GPU cloud with H100/A100, persistent filesystems, 1-Click Clusters
+- 🖼️ SAM skill: Meta's Segment Anything for zero-shot image segmentation with points/boxes/masks
+- 👁️ BLIP-2 skill: Vision-language pretraining with Q-Former, image captioning, VQA
+- 🎵 AudioCraft skill: Meta's MusicGen/AudioGen for text-to-music and text-to-sound generation
+- 📝 ~10,000 new lines of documentation across 12 files
+- **70 total skills** (100% roadmap complete!)
+
+</details>
+
+<details>
+<summary><b>November 25, 2025 - v0.9.0</b></summary>
+
+- 🚀 Added 2 infrastructure skills: Modal, SkyPilot
+- ☁️ Modal skill: Serverless GPU cloud with Python-native API, T4-H200 on-demand, auto-scaling
+- 🌐 SkyPilot skill: Multi-cloud orchestration across 20+ providers with spot recovery
+- ✨ New Infrastructure category (2 skills - serverless GPU and multi-cloud orchestration)
+- 📝 ~2,500 new lines of documentation across 6 files
+- **66 total skills** (94% towards 70-skill target)
+
+</details>
 
 <details>
 <summary><b>November 25, 2025 - v0.8.0</b></summary>
