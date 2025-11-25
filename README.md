@@ -353,7 +353,7 @@ Special thanks to:
 ## 📈 Recent Updates
 
 <details>
-<summary><b>November 25, 2025 - v1.0.0 🎉 70 Skills Complete!</b></summary>
+<summary><b>November 25, 2025 - v0.10.0 🎉 70 Skills Complete!</b></summary>
 
 - 🎉 **ROADMAP COMPLETE**: Reached 70-skill milestone!
 - 🚀 Added 4 skills: Lambda Labs, Segment Anything (SAM), BLIP-2, AudioCraft
