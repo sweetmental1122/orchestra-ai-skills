@@ -7,10 +7,44 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Blog Post](https://img.shields.io/badge/Blog-Read%20More-orange.svg)](https://www.orchestra-research.com/perspectives/ai-research-skills)
 
+## Table of Contents
+<details>
+   <summary><a href="#-available-skills-7070-roadmap-complete"><b>Available Skills (70)</b></a></summary>
+   
+   - [Model Architecture](#🏗️-model-architecture-5-skills)
+   - [Tokenization](#🔤-tokenization-2-skills)
+   - [Fine-Tuning](#🎯-fine-tuning-4-skills)
+   - [Data Processing](#📊-data-processing-2-skills)
+   - [Post-Training](#🎓-post-training-4-skills)
+   - [Safety & Alignment](#🛡️-safety--alignment-3-skills)
+   - [Distributed Training](#⚡-distributed-training-5-skills)
+   - [Optimization](#🚀-optimization-6-skills)
+   - [Evaluation](#📊-evaluation-1-skill)
+   - [Infrastructure](#☁️-infrastructure-3-skills)
+   - [Inference & Serving](#🔥-inference--serving-4-skills)
+   - [Agents](#🤖-agents-4-skills)
+   - [RAG](#🔍-rag-5-skills)
+   - [Multimodal](#🎨-multimodal-7-skills)
+   - [Prompt Engineering](#🎯-prompt-engineering-4-skills)
+   - [MLOps](#📊-mlops-3-skills)
+   - [Observability](#👁️-observability-2-skills)
+   - [Emerging Techniques](#🔬-emerging-techniques-6-skills)
+
+</details>
+
+
+- [Our Mission](#our-mission)
+- [Path Towards AI Research Agent](#path-towards-ai-research-agent)
+- [How to Use These Skills](#🚀-how-to-use-these-skills)
+- [Skill Structure](#📖-skill-structure)
+- [Roadmap](#🗺️-roadmap)
+- [Contributing](#🤝-contributing)
+- [Repository Structure](#🏗️-repository-structure)
+- [Use Cases](#🎯-use-cases) 
+
 ## Our Mission
 
-**Enable AI agents to autonomously conduct AI research**—from hypothesis to experimental verification. 
-We provide the layer of **Engineering Ability** that empower **AI research agents** to conduct experiments, including preparing datasets, executing training pipelines, deploying models, and validating scientific hypotheses.
+We provide the layer of **Engineering Ability** that **enable your coding agent to write conduct AI research experiments**, including preparing datasets, executing training pipelines, deploying models, and validating scientific hypotheses.
 <p align="center">
   <img src="docs/skills.png" alt="AI Research Agent System" width="50%">
   <br>
@@ -18,7 +52,6 @@ We provide the layer of **Engineering Ability** that empower **AI research agent
 </p>
 
 ## Path Towards AI Research Agent
-
 
 Modern AI research requires mastering dozens of specialized tools and frameworks. 
 AI Researchers spend more time debugging infrastructure than testing hypotheses—slowing the pace of scientific discovery. 
@@ -141,6 +174,42 @@ We provide a comprehensive library of expert-level research engineering skills t
 
 ## 🚀 How to Use These Skills
 
+### 📦 Install from Marketplace
+
+Install individual skills directly from the marketplace using the Claude Code CLI:
+
+```bash
+# Install a single skill
+/plugin install skill-name@ai-research-skills
+
+# Examples:
+/plugin install serving-llms-vllm@ai-research-skills
+/plugin install grpo-rl-training@ai-research-skills
+/plugin install langchain@ai-research-skills
+```
+
+**Available skills** (70 total):
+| Category | Skills |
+|----------|--------|
+| Model Architecture | `implementing-llms-litgpt`, `mamba-architecture`, `nanogpt`, `rwkv-architecture` |
+| Tokenization | `huggingface-tokenizers`, `sentencepiece` |
+| Fine-Tuning | `axolotl`, `llama-factory`, `peft-fine-tuning`, `unsloth` |
+| Data Processing | `nemo-curator`, `ray-data` |
+| Post-Training | `grpo-rl-training`, `openrlhf-training`, `simpo-training`, `fine-tuning-with-trl` |
+| Safety | `constitutional-ai`, `llamaguard`, `nemo-guardrails` |
+| Distributed Training | `huggingface-accelerate`, `deepspeed`, `training-llms-megatron`, `pytorch-fsdp`, `pytorch-lightning`, `ray-train` |
+| Infrastructure | `lambda-labs-gpu-cloud`, `modal-serverless-gpu`, `skypilot-multi-cloud-orchestration` |
+| Optimization | `awq-quantization`, `quantizing-models-bitsandbytes`, `optimizing-attention-flash`, `gguf-quantization`, `gptq`, `hqq-quantization` |
+| Evaluation | `evaluating-llms-harness` |
+| Inference | `llama-cpp`, `sglang`, `tensorrt-llm`, `serving-llms-vllm` |
+| MLOps | `mlflow`, `tensorboard`, `weights-and-biases` |
+| Agents | `autogpt-agents`, `crewai-multi-agent`, `langchain`, `llamaindex` |
+| RAG | `chroma`, `faiss`, `pinecone`, `qdrant-vector-search`, `sentence-transformers` |
+| Prompt Engineering | `dspy`, `guidance`, `instructor`, `outlines` |
+| Observability | `langsmith-observability`, `phoenix-observability` |
+| Multimodal | `audiocraft-audio-generation`, `blip-2-vision-language`, `clip`, `llava`, `segment-anything-model`, `stable-diffusion-image-generation`, `whisper` |
+| Emerging Techniques | `knowledge-distillation`, `long-context`, `model-merging`, `model-pruning`, `moe-training`, `speculative-decoding` |
+
 ### 🎯 Using with Orchestra
 
 All 70 skills in this repo are automatically synced to [Orchestra Research](https://www.orchestra-research.com/research-skills), where you can add them to your projects with one click and use them with AI research agents.
@@ -170,20 +239,7 @@ zip -r litgpt-skill.zip SKILL.md references/
 - Ingest `SKILL.md` + `references/` into your knowledge base
 - Use as retrieval context for specialized queries
 - Build domain-specific agents with curated skill subsets
-
-### 🎓 For Learning & Reference
-
-1. **Clone this repository**:
-```bash
-git clone https://github.com/zechenzhangAGI/claude-ai-research-skills.git
-cd claude-ai-research-skills
-```
-
-2. **Browse skills** - Each directory contains:
-   - `SKILL.md` - Expert-level guidance (100-600 lines)
-   - `references/` - Supporting documentation from official sources
-   - Real code examples, workflows, and troubleshooting guides
-
+ 
 ### 👨‍💻 For Skill Creators
 
 **Your contributions power the entire ecosystem!** When you contribute a skill to this repo:
