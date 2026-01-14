@@ -29,21 +29,12 @@ Thank you for your interest in contributing! This guide will help you add new sk
 
 ## 📝 Adding a New Skill
 
-### Step 1: Choose a Skill from the Roadmap
-
-See [PROJECT_ANALYSIS.md](PROJECT_ANALYSIS.md) or [README.md](README.md) for the full roadmap.
-
-**High-Priority Skills Needed**:
-- **Phase 2**: vLLM, TensorRT-LLM, llama.cpp (inference/serving)
-- **Phase 3**: lm-evaluation-harness, HELM (evaluation)
-- **Phase 4**: Weights & Biases, MLflow (MLOps)
-- **Phase 5**: LangChain, LlamaIndex, ChromaDB (agents & RAG)
-
+### Step 1: Choose a Skill 
 ### Step 2: Fork and Clone
 
 ```bash
 # Fork the repository on GitHub first
-git clone https://github.com/YOUR_USERNAME/claude-ai-research-skills.git
+git clone https://github.com/YOUR_USERNAME/AI-research-SKILLs.git
 cd claude-ai-research-skills
 
 # Create a feature branch
@@ -203,12 +194,43 @@ dependencies: [transformers>=4.47.0, trl>=0.14.0, datasets>=3.2.0, peft>=0.14.0,
 - [ ] Dependencies include version constraints where appropriate
 - [ ] YAML is valid (test with: `python -c "import yaml; yaml.safe_load(open('SKILL.md').read().split('---')[1])"`)
 
-### Step 6: Submit Pull Request
+### Step 6: Update Marketplace
+
+Add your skill to `.claude-plugin/marketplace.json` so it appears in the Claude Code plugin marketplace.
+
+**Add a new entry to the `plugins` array:**
+```json
+{
+  "name": "your-skill-name",
+  "source": "./XX-category/skill-folder",
+  "description": "Description from your SKILL.md frontmatter (what it does AND when to use it)"
+}
+```
+
+**Example:**
+```json
+{
+  "name": "serving-llms-vllm",
+  "source": "./12-inference-serving/vllm",
+  "description": "Serves LLMs with high throughput using vLLM's PagedAttention and continuous batching. Use when deploying production LLM APIs or optimizing inference latency/throughput."
+}
+```
+
+**Validation:**
+```bash
+# Verify JSON is valid after editing
+python3 -c "import json; json.load(open('.claude-plugin/marketplace.json'))"
+```
+
+**Important**: Place your entry in the correct position (skills are ordered by category number).
+
+### Step 7: Submit Pull Request
 
 ```bash
 # Add your changes
 git add 12-inference-serving/vllm/
 git add .metadata/vllm_data/
+git add .claude-plugin/marketplace.json
 
 # Commit with descriptive message
 git commit -m "Add vLLM inference serving skill
@@ -263,7 +285,7 @@ claude-ai-research-skills/
 
 ## 📋 Skill Structure Template
 
-Use [SKILL_TEMPLATE.md](SKILL_TEMPLATE.md) as a starting point. Each skill should contain:
+Use [SKILL_TEMPLATE.md](docs/SKILL_TEMPLATE.md) as a starting point. Each skill should contain:
 
 ```
 skill-name/
@@ -354,6 +376,9 @@ grep -A 1 '```' your-skill/SKILL.md | head -20
 
 # 5. No broken links (manual check)
 # Open SKILL.md and verify all [links](urls) work
+
+# 6. Marketplace entry added and valid
+python3 -c "import json; json.load(open('.claude-plugin/marketplace.json'))"
 ```
 
 ---
@@ -418,6 +443,7 @@ All contributors will be:
    - File structure validation
    - Code block language detection
    - Documentation size check
+   - Marketplace.json validation
 
 2. **Manual Review** (by maintainers):
    - Content quality and accuracy

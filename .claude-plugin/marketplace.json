@@ -59,6 +59,26 @@
       "description": "Expert guidance for fast fine-tuning with Unsloth - 2-5x faster training, 50-80% less memory, LoRA/QLoRA optimization. Use when you need maximum training speed and memory efficiency for fine-tuning LLMs."
     },
     {
+      "name": "nnsight-remote-interpretability",
+      "source": "./04-mechanistic-interpretability/nnsight",
+      "description": "Provides guidance for interpreting and manipulating neural network internals using nnsight with optional NDIF remote execution. Use when needing to run interpretability experiments on massive models (70B+) without local GPU resources, or when working with any PyTorch architecture."
+    },
+    {
+      "name": "pyvene-interventions",
+      "source": "./04-mechanistic-interpretability/pyvene",
+      "description": "Provides guidance for performing causal interventions on PyTorch models using pyvene's declarative intervention framework. Use when conducting causal tracing, activation patching, interchange intervention training, or testing causal hypotheses about model behavior."
+    },
+    {
+      "name": "sparse-autoencoder-training",
+      "source": "./04-mechanistic-interpretability/saelens",
+      "description": "Provides guidance for training and analyzing Sparse Autoencoders (SAEs) using SAELens to decompose neural network activations into interpretable features. Use when discovering interpretable features, analyzing superposition, or studying monosemantic representations in language models."
+    },
+    {
+      "name": "transformer-lens-interpretability",
+      "source": "./04-mechanistic-interpretability/transformer-lens",
+      "description": "Provides guidance for mechanistic interpretability research using TransformerLens to inspect and manipulate transformer internals via HookPoints and activation caching. Use when reverse-engineering model algorithms, studying attention patterns, or performing activation patching experiments."
+    },
+    {
       "name": "nemo-curator",
       "source": "./05-data-processing/nemo-curator",
       "description": "GPU-accelerated data curation for LLM training. Supports text/image/video/audio. Features fuzzy deduplication (16x faster), quality filtering (30+ heuristics), semantic deduplication, PII redaction, NSFW detection. Scales across GPUs with RAPIDS. Use for preparing high-quality training datasets, cleaning web data, or deduplicating large corpora."
@@ -182,6 +202,16 @@
       "name": "evaluating-llms-harness",
       "source": "./11-evaluation/lm-evaluation-harness",
       "description": "Evaluates LLMs across 60+ academic benchmarks (MMLU, HumanEval, GSM8K, TruthfulQA, HellaSwag). Use when benchmarking model quality, comparing models, reporting academic results, or tracking training progress. Industry standard used by EleutherAI, HuggingFace, and major labs. Supports HuggingFace, vLLM, APIs."
+    },
+    {
+      "name": "evaluating-code-models",
+      "source": "./11-evaluation/bigcode-evaluation-harness",
+      "description": "Evaluates code generation models across HumanEval, MBPP, MultiPL-E, and 15+ benchmarks with pass@k metrics. Use when benchmarking code models, comparing coding abilities, testing multi-language support, or measuring code generation quality. Industry standard from BigCode Project used by HuggingFace leaderboards."
+    },
+    {
+      "name": "nemo-evaluator-sdk",
+      "source": "./11-evaluation/nemo-evaluator",
+      "description": "Evaluates LLMs across 100+ benchmarks from 18+ harnesses (MMLU, HumanEval, GSM8K, safety, VLM) with multi-backend execution. Use when needing scalable evaluation on local Docker, Slurm HPC, or cloud platforms. NVIDIA's enterprise-grade platform with container-first architecture for reproducible benchmarking."
     },
     {
       "name": "llama-cpp",

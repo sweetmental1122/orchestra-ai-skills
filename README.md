@@ -47,7 +47,7 @@
 
 ## Our Mission
 
-We provide the layer of **Engineering Ability** that **enable your coding agent to write conduct AI research experiments**, including preparing datasets, executing training pipelines, deploying models, and validating scientific hypotheses.
+We provide the layer of **Engineering Ability** that **enable your coding agent to write and conduct AI research experiments**, including preparing datasets, executing training pipelines, deploying models, and building your AI agents.
 <p align="center">
   <img src="docs/skills.png" alt="AI Research Agent System" width="50%">
   <br>
@@ -69,13 +69,12 @@ We provide a comprehensive library of expert-level research engineering skills t
 
 ### 📦 Install from Marketplace
 
-Install individual skills directly from the marketplace using the Claude Code CLI:
+Install individual skills directly from the marketplace using the **Claude Code CLI**:
 
 ```bash
-# Install a single skill
-/plugin install skill-name@ai-research-skills
+/plugin marketplace add zechenzhangAGI/AI-research-SKILLs
 
-# Examples:
+# Install a single skill
 /plugin install serving-llms-vllm@ai-research-skills
 /plugin install grpo-rl-training@ai-research-skills
 /plugin install langchain@ai-research-skills
@@ -196,7 +195,7 @@ Install individual skills directly from the marketplace using the Claude Code CL
 - **[Model Pruning](19-emerging-techniques/model-pruning/)** - 50% sparsity with Wanda, SparseGPT, <1% accuracy loss (417 lines)
  
 
-**Available skills in Claude marketplace** (74 total):
+### **Available skills in Claude marketplace** (75 total):
 | Category | Skills |
 |----------|--------|
 | Model Architecture | `implementing-llms-litgpt`, `mamba-architecture`, `nanogpt`, `rwkv-architecture` |
@@ -230,7 +229,7 @@ The Orchestra agent autonomously wrote training code using TRL, provisioned H100
 
 ### 🛠️ Alternative Usage Methods
 
-**For Claude Users** (Claude.ai, Claude Code):
+<!-- **For Claude Users** (Claude.ai, Claude Code):
 ```bash
 # 1. Download skill folder
 cd 01-model-architecture/litgpt
@@ -238,7 +237,7 @@ cd 01-model-architecture/litgpt
 # 2. Use directly in Claude Code workspace
 # OR zip and upload to Claude.ai Projects
 zip -r litgpt-skill.zip SKILL.md references/
-```
+``` -->
 
 **For Other AI Coding Assistants**:
 - **Gemini CLI**: Point to skill directory in your workspace
@@ -259,7 +258,7 @@ zip -r litgpt-skill.zip SKILL.md references/
 
 **Getting started**:
 1. **Read [CONTRIBUTING.md](CONTRIBUTING.md)** - Step-by-step guide
-2. **Use [SKILL_TEMPLATE.md](SKILL_TEMPLATE.md)** - Copy-paste scaffold
+2. **Use [SKILL_TEMPLATE.md](docs/SKILL_TEMPLATE.md)** - Copy-paste scaffold
 3. **Run validation**: `python scripts/validate_skill.py your-skill/`
 4. **Submit PR** - We review within 48 hours, auto-publish to Orchestra on merge
 
@@ -300,9 +299,9 @@ skill-name/
 
 ## Roadmap
 
-We're building towards 80 comprehensive skills across the full AI research lifecycle. See our [detailed roadmap](ROADMAP.md) for the complete development plan.
- 
-[View Full Roadmap →](ROADMAP.md)
+We're building towards 80 comprehensive skills across the full AI research lifecycle. See our [detailed roadmap](docs/ROADMAP.md) for the complete development plan.
+
+[View Full Roadmap →](docs/ROADMAP.md)
 
 <details>
 <summary><b>View Detailed Statistics</b></summary>
@@ -316,7 +315,7 @@ We're building towards 80 comprehensive skills across the full AI research lifec
 | **Contributors** | 1 | 100+ |
 | **Coverage** | Architecture, Tokenization, Fine-Tuning, Mechanistic Interpretability, Data Processing, Post-Training, Safety, Distributed, Optimization, Evaluation, Infrastructure, Inference, Agents, RAG, Multimodal, Prompt Engineering, MLOps, Observability | Full Lifecycle ✅ |
 
-**Recent Progress**: +4 skills (TransformerLens, SAELens, pyvene, nnsight) adding Mechanistic Interpretability category for reverse-engineering neural networks
+**Recent Progress**: +1 skill (NeMo Evaluator SDK) adding NVIDIA's enterprise evaluation platform with 100+ benchmarks across 18+ harnesses
 
 **Philosophy**: Quality > Quantity. Following [Anthropic official best practices](anthropic_official_docs/best_practices.md) - each skill provides 200-500 lines of focused, actionable guidance with progressive disclosure.
 
@@ -330,9 +329,7 @@ We're building towards 80 comprehensive skills across the full AI research lifec
 claude-ai-research-skills/
 ├── README.md                    ← You are here
 ├── CONTRIBUTING.md              ← Contribution guide
-├── SKILL_TEMPLATE.md            ← Skill scaffold
-├── ROADMAP.md                   ← Development roadmap
-│
+├── docs/ 
 ├── 01-model-architecture/       (5 skills ✓ - Megatron, LitGPT, Mamba, RWKV, NanoGPT)
 ├── 02-tokenization/             (2 skills ✓ - HuggingFace Tokenizers, SentencePiece)
 ├── 03-fine-tuning/              (4 skills ✓ - Axolotl, LLaMA-Factory, Unsloth, PEFT)
@@ -403,6 +400,17 @@ All contributors are featured in our [Contributors Hall of Fame](CONTRIBUTORS.md
  
 
 ## Recent Updates
+
+<details>
+<summary><b>January 2026 - v0.12.0 📊 NeMo Evaluator SDK</b></summary>
+
+- 📊 **NEW SKILL**: NeMo Evaluator SDK for enterprise LLM benchmarking
+- 🔧 NVIDIA's evaluation platform with 100+ benchmarks from 18+ harnesses (MMLU, HumanEval, GSM8K, safety, VLM)
+- ⚡ Multi-backend execution: local Docker, Slurm HPC, Lepton cloud
+- 📦 Container-first architecture for reproducible evaluation
+- 📝 454 lines SKILL.md + 4 comprehensive reference files (~48KB documentation)
+
+</details>
 
 <details>
 <summary><b>December 2025 - v0.11.0 🔬 Mechanistic Interpretability</b></summary>
