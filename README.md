@@ -8,12 +8,12 @@
 
 <div align="center">
 
-### **76 Skills Powering AI Research in 2026**
+### **77 Skills Powering AI Research in 2026**
 
 </div>
 
 <details>
-<summary><b>View All 19 Categories</b></summary>
+<summary><b>View All 20 Categories</b></summary>
 
 <div align="center">
 
@@ -25,7 +25,7 @@
 | **Safety & Alignment** (3) | **Agents** (4) | **RAG** (5) |
 | **Multimodal** (7) | **Prompt Engineering** (4) | **MLOps** (3) |
 | **Observability** (2) | **Infrastructure** (3) | **Mech Interp** (4) |
-| | **Emerging Techniques** (6) | |
+| **Emerging Techniques** (6) | **ML Paper Writing** (1) | |
 
 </div>
 
@@ -60,7 +60,7 @@ Modern AI research requires mastering dozens of specialized tools and frameworks
 AI Researchers spend more time debugging infrastructure than testing hypotheses—slowing the pace of scientific discovery. 
 We provide a comprehensive library of expert-level research engineering skills that enable AI agents to autonomously implement and execute different stages of AI research experiments—from data preparation and model training to evaluation and deployment.
   - Specialized Expertise - Each skill provides deep, production-ready knowledge of a specific framework (Megatron-LM, vLLM, TRL, etc.)
-  - End-to-End Coverage - 76 skills spanning model architecture, tokenization, fine-tuning, mechanistic interpretability, data processing, post-training, distributed training, optimization, evaluation, inference, infrastructure, agents, RAG, multimodal, prompt engineering, MLOps, observability, and emerging techniques
+  - End-to-End Coverage - 77 skills spanning model architecture, tokenization, fine-tuning, mechanistic interpretability, data processing, post-training, distributed training, optimization, evaluation, inference, infrastructure, agents, RAG, multimodal, prompt engineering, MLOps, observability, emerging techniques, and ML paper writing
   - Research-Grade Quality - Documentation sourced from official repos, real GitHub issues, and battle-tested production workflows
 
 ## Available AI Research Engineering Skills  
@@ -75,7 +75,7 @@ Install skill categories directly using the **Claude Code CLI**:
 # Add the marketplace
 /plugin marketplace add zechenzhangAGI/AI-research-SKILLs
 
-# Install by category (19 categories available)
+# Install by category (20 categories available)
 /plugin install fine-tuning@ai-research-skills        # Axolotl, LLaMA-Factory, PEFT, Unsloth
 /plugin install post-training@ai-research-skills      # TRL, GRPO, OpenRLHF, SimPO
 /plugin install inference-serving@ai-research-skills  # vLLM, TensorRT-LLM, llama.cpp, SGLang
@@ -83,7 +83,7 @@ Install skill categories directly using the **Claude Code CLI**:
 /plugin install optimization@ai-research-skills
 ```
 
-**All 19 Categories**:
+**All 20 Categories**:
 | Category | Install Command | Skills Included |
 |----------|-----------------|-----------------|
 | Model Architecture | `model-architecture@ai-research-skills` | LitGPT, Mamba, NanoGPT, RWKV |
@@ -105,6 +105,7 @@ Install skill categories directly using the **Claude Code CLI**:
 | Observability | `observability@ai-research-skills` | LangSmith, Phoenix |
 | Multimodal | `multimodal@ai-research-skills` | CLIP, Whisper, LLaVA, BLIP-2, SAM, Stable Diffusion, AudioCraft |
 | Emerging | `emerging-techniques@ai-research-skills` | MoE, Model Merging, Long Context, Speculative Decoding, Distillation, Pruning |
+| ML Paper Writing | `ml-paper-writing@ai-research-skills` | ML Paper Writing (LaTeX templates, citation verification, writing guides) |
 
 ### 🏗️ Model Architecture (5 skills)
 - **[LitGPT](01-model-architecture/litgpt/)** - Lightning AI's 20+ clean LLM implementations with production training recipes (462 lines + 4 refs)
@@ -219,11 +220,13 @@ Install skill categories directly using the **Claude Code CLI**:
 - **[Speculative Decoding](19-emerging-techniques/speculative-decoding/)** - 1.5-3.6× faster inference with Medusa, Lookahead (379 lines)
 - **[Knowledge Distillation](19-emerging-techniques/knowledge-distillation/)** - Compress models 70B→7B with MiniLLM, temperature scaling (424 lines)
 - **[Model Pruning](19-emerging-techniques/model-pruning/)** - 50% sparsity with Wanda, SparseGPT, <1% accuracy loss (417 lines)
- 
+
+### 📝 ML Paper Writing (1 skill)
+- **[ML Paper Writing](20-ml-paper-writing/)** - Write publication-ready papers for NeurIPS, ICML, ICLR, ACL, AAAI, COLM with LaTeX templates, citation verification, and writing best practices (532 lines + 5 refs)
 
 ## Demo
 
-All 76 skills in this repo are automatically synced to [Orchestra Research](https://www.orchestra-research.com/research-skills), where you can add them to your projects with one click and use them with AI research agents.
+All 77 skills in this repo are automatically synced to [Orchestra Research](https://www.orchestra-research.com/research-skills), where you can add them to your projects with one click and use them with AI research agents.
 
 **[Demo](https://www.orchestra-research.com/perspectives/LLM-with-Orchestra)**: With this `skills`, a physics PhD is able to [reproduce](https://www.orchestra-research.com/perspectives/LLM-with-Orchestra) Thinking Machines Lab's "LoRA Without Regret" findings. 
 The Orchestra agent autonomously wrote training code using TRL, provisioned H100 GPUs, ran GRPO experiments overnight, and generated publication-ready analysis, successfully validating that rank=16 LoRA achieves 99.4% of rank=256's SFT performance and that rank=1 LoRA outperforms full fine-tuning on RL tasks (52.1% vs 33.3% on GSM8k math reasoning). ([Video demo](https://www.youtube.com/watch?v=X0DoLYfXl5I))
@@ -311,7 +314,7 @@ We're building towards 80 comprehensive skills across the full AI research lifec
 
 | Metric | Current | Target |
 |--------|---------|--------|
-| **Skills** | **76** (high-quality, standardized YAML) | 80 |
+| **Skills** | **77** (high-quality, standardized YAML) | 80 |
 | **Avg Lines/Skill** | **420 lines** (focused + progressive disclosure) | 200-600 lines |
 | **Documentation** | **~120,000 lines** total (SKILL.md + references) | 100,000+ lines |
 | **Gold Standard Skills** | **62** with comprehensive references | 50+ |
@@ -351,7 +354,8 @@ claude-ai-research-skills/
 ├── 16-prompt-engineering/       (4 skills ✓ - DSPy, Instructor, Guidance, Outlines)
 ├── 17-observability/            (2 skills ✓ - LangSmith, Phoenix)
 ├── 18-multimodal/               (7 skills ✓ - CLIP, Whisper, LLaVA, Stable Diffusion, SAM, BLIP-2, AudioCraft)
-└── 19-emerging-techniques/      (6 skills ✓ - MoE, Model Merging, Long Context, Speculative Decoding, Distillation, Pruning)
+├── 19-emerging-techniques/      (6 skills ✓ - MoE, Model Merging, Long Context, Speculative Decoding, Distillation, Pruning)
+└── 20-ml-paper-writing/         (1 skill ✓ - ML Paper Writing with LaTeX templates)
 ```
 
 ## Use Cases
