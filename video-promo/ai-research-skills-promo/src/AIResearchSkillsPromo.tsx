@@ -6,6 +6,8 @@ import {
   useVideoConfig,
   interpolate,
   spring,
+  Audio,
+  staticFile,
 } from "remotion";
 import { loadFont } from "@remotion/google-fonts/JetBrainsMono";
 import { loadFont as loadInterFont } from "@remotion/google-fonts/Inter";
@@ -236,6 +238,17 @@ export const AIResearchSkillsPromo: React.FC = () => {
 
   return (
     <AbsoluteFill>
+      {/* Background music with fade out at end */}
+      <Audio
+        src={staticFile("music.wav")}
+        volume={(f) =>
+          interpolate(f, [0, 30, 435, 465], [0, 0.6, 0.6, 0], {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          })
+        }
+      />
+
       <Background />
 
       {/* Scene 1: Intro with logo */}
