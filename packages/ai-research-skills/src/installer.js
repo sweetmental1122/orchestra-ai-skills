@@ -514,3 +514,98 @@ export async function uninstallAllSkills(agents) {
     throw error;
   }
 }
+
+/**
+ * Uninstall specific skills
+ * @param {Array<string>} skillPaths - Paths like ['06-post-training/verl', '20-ml-paper-writing']
+ * @param {Array} agents - List of agents to remove symlinks from
+ */
+export async function uninstallSpecificSkills(skillPaths, agents) {
+  const spinner = ora('Removing selected skills...').start();
+
+  try {
+    for (const skillPath of skillPaths) {
+      const parts = skillPath.split('/');
+      const categoryId = parts[0];
+      const skillName = parts[1] || null;
+
+      // Determine the link name (what appears in agent's skills folder)
+      const linkName = skillName || categoryId;
+
+      // Remove symlinks from each agent
+      for (const agent of agents) {
+        const linkPath = join(agent.skillsPath, linkName);
+        try {
+          if (existsSync(linkPath)) {
+            const stats = lstatSync(linkPath);
+            if (stats.isSymbolicLink()) {
+              rmSync(linkPath, { force: true });
+            }
+          }
+        } catch {
+          // Ignore errors
+        }
+      }
+
+      // Remove from canonical directory
+      if (skillName) {
+        // Nested skill like '06-post-training/verl'
+        const skillDir = join(CANONICAL_DIR, categoryId, skillName);
+        if (existsSync(skillDir)) {
+          rmSync(skillDir, { recursive: true, force: true });
+        }
+        // Clean up empty category folder
+        const categoryDir = join(CANONICAL_DIR, categoryId);
+        if (existsSync(categoryDir)) {
+          const remaining = readdirSync(categoryDir);
+          if (remaining.length === 0) {
+            rmSync(categoryDir, { recursive: true, force: true });
+          }
+        }
+      } else {
+        // Standalone skill like '20-ml-paper-writing'
+        const skillDir = join(CANONICAL_DIR, categoryId);
+        if (existsSync(skillDir)) {
+          rmSync(skillDir, { recursive: true, force: true });
+        }
+      }
+
+      spinner.text = `Removed ${linkName}`;
+    }
+
+    spinner.succeed(`Removed ${skillPaths.length} skill${skillPaths.length !== 1 ? 's' : ''}`);
+
+    // Update lock file
+    const lock = readLock();
+    if (lock.skills) {
+      lock.skills = lock.skills.filter(s => {
+        const path = s.standalone ? s.category : `${s.category}/${s.skill}`;
+        return !skillPaths.includes(path);
+      });
+      writeLock(lock);
+    }
+
+    return skillPaths.length;
+  } catch (error) {
+    spinner.fail('Uninstall failed');
+    throw error;
+  }
+}
+
+/**
+ * Get installed skills with display info for selection
+ * Returns array of { path, name, category } for UI
+ */
+export function getInstalledSkillsForSelection() {
+  const paths = getInstalledSkillPaths();
+  return paths.map(path => {
+    const parts = path.split('/');
+    if (parts.length === 1) {
+      // Standalone skill
+      return { path, name: parts[0], category: 'Standalone', standalone: true };
+    } else {
+      // Nested skill
+      return { path, name: parts[1], category: parts[0], standalone: false };
+    }
+  });
+}

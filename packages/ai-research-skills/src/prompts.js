@@ -116,11 +116,80 @@ export async function askMainMenuAction() {
 }
 
 /**
+ * Ask what to uninstall
+ */
+export async function askUninstallChoice() {
+  console.log();
+  console.log(chalk.dim('    What would you like to uninstall?'));
+  console.log();
+
+  const { choice } = await inquirer.prompt([
+    {
+      type: 'list',
+      name: 'choice',
+      message: ' ',
+      choices: [
+        { name: 'Select specific skills', value: 'select' },
+        { name: chalk.red('Uninstall everything'), value: 'all' },
+        new inquirer.Separator(' '),
+        { name: chalk.dim('← Back'), value: 'back' },
+      ],
+      prefix: '   ',
+    },
+  ]);
+  return choice;
+}
+
+/**
+ * Ask which installed skills to uninstall
+ */
+export async function askSelectSkillsToUninstall(installedSkills) {
+  console.log();
+  console.log(chalk.dim('    Select skills to uninstall:'));
+  console.log(chalk.dim('    (Space to select, Enter to confirm)'));
+  console.log();
+
+  const { skills } = await inquirer.prompt([
+    {
+      type: 'checkbox',
+      name: 'skills',
+      message: ' ',
+      choices: installedSkills.map(skill => ({
+        name: `${skill.name.padEnd(25)} ${chalk.dim(skill.category)}`,
+        value: skill.path,
+        short: skill.name,
+      })),
+      prefix: '   ',
+      pageSize: 15,
+    },
+  ]);
+
+  if (skills.length === 0) {
+    console.log();
+    const { action } = await inquirer.prompt([
+      {
+        type: 'list',
+        name: 'action',
+        message: chalk.yellow('No skills selected'),
+        choices: [
+          { name: 'Try again', value: 'retry' },
+          { name: chalk.dim('← Back'), value: 'back' },
+        ],
+        prefix: '   ',
+      },
+    ]);
+    return { skills: [], action };
+  }
+
+  return { skills, action: 'confirm' };
+}
+
+/**
  * Ask to confirm uninstall
  */
-export async function askConfirmUninstall() {
+export async function askConfirmUninstall(count) {
   console.log();
-  console.log(chalk.yellow('    This will remove all installed skills and symlinks.'));
+  console.log(chalk.yellow(`    This will remove ${count} skill${count !== 1 ? 's' : ''} and their symlinks.`));
   console.log();
 
   const { action } = await inquirer.prompt([
@@ -129,7 +198,7 @@ export async function askConfirmUninstall() {
       name: 'action',
       message: ' ',
       choices: [
-        { name: chalk.red('Yes, uninstall everything'), value: 'confirm' },
+        { name: chalk.red('Yes, uninstall'), value: 'confirm' },
         { name: chalk.dim('← Back'), value: 'back' },
       ],
       prefix: '   ',

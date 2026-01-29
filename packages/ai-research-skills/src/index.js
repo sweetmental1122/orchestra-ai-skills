@@ -11,6 +11,8 @@ import {
   askMainMenuAction,
   askSelectAgents,
   askAfterAction,
+  askUninstallChoice,
+  askSelectSkillsToUninstall,
   askConfirmUninstall,
   parseArgs,
   CATEGORIES,
@@ -18,7 +20,7 @@ import {
   QUICK_START_SKILLS,
   getTotalSkillCount,
 } from './prompts.js';
-import { installSkills, installSpecificSkills, listInstalledSkills, getAllCategoryIds, updateInstalledSkills, uninstallAllSkills, getInstalledSkillPaths } from './installer.js';
+import { installSkills, installSpecificSkills, listInstalledSkills, getAllCategoryIds, updateInstalledSkills, uninstallAllSkills, uninstallSpecificSkills, getInstalledSkillPaths, getInstalledSkillsForSelection } from './installer.js';
 
 /**
  * Sleep utility
@@ -102,15 +104,59 @@ async function interactiveFlow() {
     }
 
     if (menuAction === 'uninstall') {
-      // Uninstall all skills
-      showMenuHeader();
-      const confirmAction = await askConfirmUninstall();
-      if (confirmAction === 'confirm') {
-        console.log();
-        await uninstallAllSkills(agents);
-        console.log();
-        console.log(chalk.green('    ✓ All skills uninstalled!'));
+      // Uninstall skills
+      step_uninstall:
+      while (true) {
+        showMenuHeader();
+        const installedSkills = getInstalledSkillsForSelection();
+
+        if (installedSkills.length === 0) {
+          console.log(chalk.yellow('    No skills installed to uninstall.'));
+          break;
+        }
+
+        const uninstallChoice = await askUninstallChoice();
+
+        if (uninstallChoice === 'back') {
+          break;
+        }
+
+        if (uninstallChoice === 'all') {
+          // Uninstall everything
+          const confirmAction = await askConfirmUninstall(installedSkills.length);
+          if (confirmAction === 'confirm') {
+            console.log();
+            await uninstallAllSkills(agents);
+            console.log();
+            console.log(chalk.green('    ✓ All skills uninstalled!'));
+          }
+          break;
+        }
+
+        if (uninstallChoice === 'select') {
+          // Select specific skills to uninstall
+          showMenuHeader();
+          const result = await askSelectSkillsToUninstall(installedSkills);
+
+          if (result.action === 'back') {
+            continue step_uninstall;
+          }
+          if (result.action === 'retry') {
+            continue step_uninstall;
+          }
+
+          // Confirm uninstall
+          const confirmAction = await askConfirmUninstall(result.skills.length);
+          if (confirmAction === 'confirm') {
+            console.log();
+            await uninstallSpecificSkills(result.skills, agents);
+            console.log();
+            console.log(chalk.green(`    ✓ ${result.skills.length} skill${result.skills.length !== 1 ? 's' : ''} uninstalled!`));
+          }
+          break;
+        }
       }
+
       const afterUninstall = await askAfterAction();
       if (afterUninstall === 'exit') {
         console.log(chalk.dim('              Goodbye!'));
