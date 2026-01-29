@@ -5,7 +5,7 @@ import { execSync } from 'child_process';
 import chalk from 'chalk';
 import ora from 'ora';
 
-const REPO_URL = 'https://github.com/zechenzhangAGI/AI-research-SKILLs';
+const REPO_URL = 'https://github.com/Orchestra-Research/AI-research-SKILLs';
 const CANONICAL_DIR = join(homedir(), '.orchestra', 'skills');
 const LOCK_FILE = join(homedir(), '.orchestra', '.lock.json');
 
