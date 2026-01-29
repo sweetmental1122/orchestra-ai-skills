@@ -398,13 +398,13 @@ curl -X POST http://localhost:3000/api/admin/sync-github-skill \
   -d '{"skillName":"test","skillPath":"test","author":"Orchestra Research","skillMdContent":"---\nname: test\n---","zipBase64":"UEsDBBQAAAAIAA..."}'
 
 # Check GitHub Actions status
-gh run list --repo zechenzhangAGI/AI-research-SKILLs --workflow="sync-skills.yml"
+gh run list --repo orchestra-research/AI-research-SKILLs --workflow="sync-skills.yml"
 
 # View latest workflow run logs
-gh run view --repo zechenzhangAGI/AI-research-SKILLs --log
+gh run view --repo orchestra-research/AI-research-SKILLs --log
 
 # Manually trigger workflow
-gh workflow run sync-skills.yml --repo zechenzhangAGI/AI-research-SKILLs
+gh workflow run sync-skills.yml --repo orchestra-research/AI-research-SKILLs
 ```
 
 ---

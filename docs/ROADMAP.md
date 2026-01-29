@@ -189,7 +189,7 @@ Build the most comprehensive open-source library of AI research skills, enabling
 
 Want to help us achieve these goals?
 
-1. **Pick a skill from the roadmap** - Comment on [GitHub Discussions](https://github.com/zechenzhangAGI/claude-ai-research-skills/discussions) to claim it
+1. **Pick a skill from the roadmap** - Comment on [GitHub Discussions](https://github.com/orchestra-research/AI-research-SKILLs/discussions) to claim it
 2. **Follow the [contribution guide](CONTRIBUTING.md)** - Use our template and quality standards
 3. **Submit your PR** - We review within 48 hours
 

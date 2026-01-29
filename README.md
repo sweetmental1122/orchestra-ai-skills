@@ -103,7 +103,7 @@ Install skill categories directly using the **Claude Code CLI**:
 
 ```bash
 # Add the marketplace
-/plugin marketplace add zechenzhangAGI/AI-research-SKILLs
+/plugin marketplace add orchestra-research/AI-research-SKILLs
 
 # Install by category (20 categories available)
 /plugin install fine-tuning@ai-research-skills        # Axolotl, LLaMA-Factory, PEFT, Unsloth
@@ -626,10 +626,10 @@ All contributors are featured in our [Contributors Hall of Fame](CONTRIBUTORS.md
 
 ## Star History
 
-<a href="https://star-history.com/#zechenzhangAGI/AI-research-SKILLs&Date">
+<a href="https://star-history.com/#orchestra-research/AI-research-SKILLs&Date">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=zechenzhangAGI/AI-research-SKILLs&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=zechenzhangAGI/AI-research-SKILLs&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=zechenzhangAGI/AI-research-SKILLs&type=Date" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=orchestra-research/AI-research-SKILLs&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=orchestra-research/AI-research-SKILLs&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=orchestra-research/AI-research-SKILLs&type=Date" />
  </picture>
 </a>
