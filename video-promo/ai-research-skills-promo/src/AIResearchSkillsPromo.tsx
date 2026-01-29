@@ -21,16 +21,16 @@ import { CallToAction } from "./components/CallToAction";
 const { fontFamily: monoFont } = loadFont();
 const { fontFamily: interFont } = loadInterFont();
 
-// Scene timing (in seconds)
+// Scene timing (in seconds) - 2x speed (half duration), 4x speed for installation
 const SCENE_TIMING = {
-  intro: { start: 0, duration: 4 },
-  stats: { start: 4, duration: 2 },
-  terminalTyping: { start: 6, duration: 2.5 },
-  agentDetection: { start: 8.5, duration: 4 },
-  categorySelection: { start: 12.5, duration: 4 },
-  installation: { start: 16.5, duration: 5 },
-  success: { start: 21.5, duration: 4 },
-  callToAction: { start: 25.5, duration: 4.5 },
+  intro: { start: 0, duration: 2 },
+  stats: { start: 2, duration: 1 },
+  terminalTyping: { start: 3, duration: 2 },     // longer
+  agentDetection: { start: 5, duration: 2 },
+  categorySelection: { start: 7, duration: 2 },
+  installation: { start: 9, duration: 1.25 },
+  success: { start: 10.25, duration: 3 },        // longer
+  callToAction: { start: 13.25, duration: 2.25 },
 };
 
 // Background gradient component
@@ -85,7 +85,7 @@ const StatsScene: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const opacity = interpolate(frame, [0, 0.3 * fps], [0, 1], {
+  const opacity = interpolate(frame, [0, 0.15 * fps], [0, 1], {
     extrapolateRight: "clamp",
   });
 
@@ -97,7 +97,7 @@ const StatsScene: React.FC = () => {
         opacity,
       }}
     >
-      <StatsDisplay startDelay={5} />
+      <StatsDisplay startDelay={0} />
     </AbsoluteFill>
   );
 };
@@ -107,9 +107,9 @@ const TerminalTypingScene: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Typewriter effect for the command
+  // Typewriter effect for the command - faster typing (2x speed)
   const command = "npx @orchestra-research/ai-research-skills";
-  const charsPerFrame = 0.8;
+  const charsPerFrame = 1.6; // 2x faster
   const typedChars = Math.min(
     command.length,
     Math.floor(frame * charsPerFrame)
@@ -137,7 +137,7 @@ const TerminalTypingScene: React.FC = () => {
               color: COLORS.dim,
               opacity: interpolate(
                 frame - command.length / charsPerFrame,
-                [0, 15],
+                [0, 8],
                 [0, 1],
                 { extrapolateRight: "clamp" }
               ),

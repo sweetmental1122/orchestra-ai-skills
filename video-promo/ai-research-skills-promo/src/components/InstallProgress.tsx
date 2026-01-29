@@ -47,8 +47,8 @@ export const InstallProgress: React.FC<InstallProgressProps> = ({
 
   const adjustedFrame = Math.max(0, frame - startDelay);
 
-  // Progress bar animation
-  const progressDuration = 3 * fps; // 3 seconds for full progress
+  // Progress bar animation - 1 second for full progress (scene is 1.25s total at 4x speed)
+  const progressDuration = 1 * fps;
   const progress = interpolate(adjustedFrame, [0, progressDuration], [0, 100], {
     extrapolateRight: "clamp",
     easing: Easing.out(Easing.quad),
