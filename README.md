@@ -2,9 +2,16 @@
 
 > **The most comprehensive open-source library of AI research engineering skills for AI agents**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Blog Post](https://img.shields.io/badge/Blog-Read%20More-orange.svg)](https://www.orchestra-research.com/perspectives/ai-research-skills)
-[![Demo](https://img.shields.io/badge/Demo-LLM%20Fine--Tuning-blue.svg)](https://www.orchestra-research.com/perspectives/LLM-with-Orchestra)
+<p align="center">
+  <img src="docs/assets/promo.gif" alt="AI Research Skills Demo" width="700">
+</p>
+
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+  <a href="https://www.npmjs.com/package/@orchestra-research/ai-research-skills"><img src="https://img.shields.io/npm/v/@orchestra-research/ai-research-skills.svg" alt="npm version"></a>
+  <a href="https://www.orchestra-research.com/perspectives/ai-research-skills"><img src="https://img.shields.io/badge/Blog-Read%20More-orange.svg" alt="Blog Post"></a>
+  <a href="https://www.orchestra-research.com/perspectives/LLM-with-Orchestra"><img src="https://img.shields.io/badge/Demo-LLM%20Fine--Tuning-blue.svg" alt="Demo"></a>
+</p>
 
 <div align="center">
 
