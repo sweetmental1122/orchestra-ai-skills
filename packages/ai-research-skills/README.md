@@ -1,6 +1,6 @@
 # @orchestra-research/ai-research-skills
 
-Install AI research engineering skills to your coding agents (Claude Code, Cursor, Gemini CLI, and more).
+Install AI research engineering skills to your coding agents (Claude Code, OpenCode, Cursor, Gemini CLI, and more).
 
 ```bash
 npx @orchestra-research/ai-research-skills
@@ -12,7 +12,7 @@ npx @orchestra-research/ai-research-skills
 - **Auto-detects** installed coding agents
 - **Interactive installer** with guided experience
 - **One canonical copy** with symlinks to all agents
-- **Works with 7 agents**: Claude Code, Cursor, Codex, Windsurf, Gemini CLI, Kilo Code, Qwen Code
+- **Works with 6 agents**: Claude Code, OpenCode, Cursor, Codex, Gemini CLI, Qwen Code
 
 ## Quick Start
 
@@ -85,11 +85,10 @@ npx @orchestra-research/ai-research-skills update
 | Agent | Config Directory |
 |-------|-----------------|
 | Claude Code | `~/.claude` |
+| OpenCode | `~/.config/opencode` |
 | Cursor | `~/.cursor` |
 | Codex (OpenAI) | `~/.codex` |
-| Windsurf | `~/.windsurf` |
 | Gemini CLI | `~/.gemini` |
-| Kilo Code | `~/.kilocode` |
 | Qwen Code | `~/.qwen` |
 
 ## License

@@ -37,6 +37,12 @@ export const SUPPORTED_AGENTS = [
     configDir: '.qwen',
     skillsDir: 'skills',
   },
+  {
+    id: 'opencode',
+    name: 'OpenCode',
+    configDir: '.config/opencode',
+    skillsDir: 'skills',
+  },
 ];
 
 /**

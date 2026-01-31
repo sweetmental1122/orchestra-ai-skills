@@ -80,7 +80,7 @@ We provide a comprehensive library of expert-level research engineering skills t
 
 ### 📦 Quick Install (Recommended)
 
-Install skills to **any coding agent** (Claude Code, Cursor, Codex, Gemini CLI, Qwen Code) with one command:
+Install skills to **any coding agent** (Claude Code, OpenCode, Cursor, Codex, Gemini CLI, Qwen Code) with one command:
 
 ```bash
 npx @orchestra-research/ai-research-skills
@@ -472,7 +472,7 @@ All contributors are featured in our [Contributors Hall of Fame](CONTRIBUTORS.md
 <summary><b>January 2026 - v0.14.0 📦 npm Package & 82 Skills</b></summary>
 
 - 📦 **NEW**: `npx @orchestra-research/ai-research-skills` - One-command installation for all coding agents
-- 🤖 **Supported agents**: Claude Code, Cursor, Codex, Gemini CLI, Qwen Code
+- 🤖 **Supported agents**: Claude Code, OpenCode, Cursor, Codex, Gemini CLI, Qwen Code
 - ✨ Interactive installer with category/individual skill selection
 - 🔄 Update installed skills, selective uninstall
 - 📊 **82 total skills** (5 new post-training skills: verl, slime, miles, torchforge + TorchTitan)

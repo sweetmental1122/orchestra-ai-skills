@@ -15,7 +15,7 @@ const logo = `
 /**
  * Welcome screen
  */
-export function showWelcome(skillCount = 82, categoryCount = 20, agentCount = 5) {
+export function showWelcome(skillCount = 82, categoryCount = 20, agentCount = 6) {
   console.clear();
   console.log(chalk.white(logo));
   console.log();
@@ -115,11 +115,10 @@ export function showNoAgents() {
   console.log(chalk.dim('              Install one of these supported agents:'));
   console.log();
   console.log('                  ○  Claude Code');
+  console.log('                  ○  OpenCode');
   console.log('                  ○  Cursor');
   console.log('                  ○  Codex (OpenAI)');
-  console.log('                  ○  Windsurf');
   console.log('                  ○  Gemini CLI');
-  console.log('                  ○  Kilo Code');
   console.log('                  ○  Qwen Code');
   console.log();
   console.log();
