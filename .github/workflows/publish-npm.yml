@@ -6,6 +6,10 @@ on:
     paths:
       - 'packages/ai-research-skills/**'
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -49,7 +53,7 @@ jobs:
         if: steps.version.outputs.changed == 'true' && steps.published.outputs.already_published == 'false'
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
@@ -61,8 +65,6 @@ jobs:
         run: |
           echo "Publishing v${{ steps.version.outputs.version }} to npm..."
           npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Skip reason
         if: steps.version.outputs.changed != 'true'
