@@ -11,8 +11,7 @@ npx @orchestra-research/ai-research-skills
 - **83 skills** across 20 categories for AI research engineering
 - **Auto-detects** installed coding agents
 - **Interactive installer** with guided experience
-- **Global install** with one canonical copy and symlinks to all agents
-- **Local install** to project directories for per-project skill sets
+- **Global or local install** — install globally with symlinks, or per-project with `--local` for version-controlled, project-specific skill sets
 - **Works with 8 agents**: Claude Code, OpenCode, OpenClaw, Cursor, Codex, Gemini CLI, Qwen Code, and shared `.agents/`
 
 ## Quick Start
