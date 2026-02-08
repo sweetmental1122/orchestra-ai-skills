@@ -75,7 +75,7 @@ my-project/
 ├── .claude/skills/        # Claude Code picks these up
 │   ├── grpo-rl-training/
 │   └── vllm/
-├── .cursor/rules/         # Cursor picks these up
+├── .cursor/skills/        # Cursor picks these up
 │   ├── grpo-rl-training/
 │   └── vllm/
 ├── .orchestra-skills.json # Tracks installed skills
@@ -131,7 +131,7 @@ Benefits:
 ```
 my-project/
 ├── .claude/skills/verl/           # Copied for Claude Code
-├── .cursor/rules/verl/            # Copied for Cursor
+├── .cursor/skills/verl/           # Copied for Cursor
 ├── .codex/skills/verl/            # Copied for Codex
 └── .orchestra-skills.json         # Lock file
 ```

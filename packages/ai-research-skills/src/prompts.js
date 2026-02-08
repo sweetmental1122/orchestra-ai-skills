@@ -94,8 +94,10 @@ export function getTotalSkillCount() {
 /**
  * Ask main menu action after agent detection
  */
-export async function askMainMenuAction() {
+export async function askMainMenuAction(projectDir) {
   console.log();
+  const cwd = projectDir || process.cwd();
+  const shortCwd = cwd.split('/').slice(-2).join('/');
   const { action } = await inquirer.prompt([
     {
       type: 'list',
@@ -103,7 +105,7 @@ export async function askMainMenuAction() {
       message: ' ',
       choices: [
         { name: 'Install new skills', value: 'install' },
-        { name: `Install to project ${chalk.dim('(local)')}`, value: 'install-local' },
+        { name: `Install to project ${chalk.dim('(local → ./' + shortCwd + ')')}`, value: 'install-local' },
         { name: 'View installed skills', value: 'view' },
         { name: 'Update installed skills', value: 'update' },
         { name: 'Uninstall skills', value: 'uninstall' },

@@ -988,16 +988,27 @@ export async function uninstallLocalSkills(skillPaths, agents, projectDir) {
  * Uninstall all local skills
  */
 export async function uninstallAllLocalSkills(agents, projectDir) {
+  const lock = readLocalLock(projectDir);
+  const trackedSkills = lock.skills || [];
+
+  if (trackedSkills.length === 0) {
+    console.log(chalk.yellow('    No tracked local skills to remove.'));
+    return false;
+  }
+
   const spinner = ora('Removing all local skills...').start();
 
   try {
-    // Remove skill directories from each agent
+    // Build set of directory names to remove (only tracked skills)
+    const skillNames = trackedSkills.map(s => s.standalone ? s.category : s.skill);
+
     for (const agent of agents) {
       if (existsSync(agent.skillsPath)) {
-        const entries = readdirSync(agent.skillsPath, { withFileTypes: true });
-        for (const entry of entries) {
-          const entryPath = join(agent.skillsPath, entry.name);
-          rmSync(entryPath, { recursive: true, force: true });
+        for (const name of skillNames) {
+          const skillDir = join(agent.skillsPath, name);
+          if (existsSync(skillDir)) {
+            rmSync(skillDir, { recursive: true, force: true });
+          }
         }
       }
       console.log(`    ${chalk.green('✓')} Removed skills from ${agent.name} (${agent.skillsPath.replace(projectDir, '.')})`);

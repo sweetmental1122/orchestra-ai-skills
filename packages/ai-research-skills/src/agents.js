@@ -9,7 +9,7 @@ import { join } from 'path';
  * Local:  .{agent}/skills/  (project directory)
  *
  * localConfigDir/localSkillsDir define where skills go at the project level.
- * These may differ from global paths (e.g., Cursor uses .cursor/rules/ locally).
+ * These may differ from global paths (e.g., OpenClaw uses <project>/skills/).
  */
 export const SUPPORTED_AGENTS = [
   {
@@ -26,7 +26,7 @@ export const SUPPORTED_AGENTS = [
     configDir: '.cursor',
     skillsDir: 'skills',
     localConfigDir: '.cursor',
-    localSkillsDir: 'rules',
+    localSkillsDir: 'skills',
   },
   {
     id: 'codex',
@@ -65,7 +65,7 @@ export const SUPPORTED_AGENTS = [
     name: 'OpenClaw',
     configDir: '.openclaw',
     skillsDir: 'skills',
-    localConfigDir: '.openclaw',
+    localConfigDir: '.',
     localSkillsDir: 'skills',
   },
   {
