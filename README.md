@@ -71,7 +71,7 @@ Modern AI research requires mastering dozens of specialized tools and frameworks
 AI Researchers spend more time debugging infrastructure than testing hypotheses—slowing the pace of scientific discovery. 
 We provide a comprehensive library of expert-level research engineering skills that enable AI agents to autonomously implement and execute different stages of AI research experiments—from data preparation and model training to evaluation and deployment.
   - Specialized Expertise - Each skill provides deep, production-ready knowledge of a specific framework (Megatron-LM, vLLM, TRL, etc.)
-  - End-to-End Coverage - 83 skills spanning model architecture, tokenization, fine-tuning, mechanistic interpretability, data processing, post-training, distributed training, optimization, evaluation, inference, infrastructure, agents, RAG, multimodal, prompt engineering, MLOps, observability, emerging techniques, and ML paper writing
+  - End-to-End Coverage - 83 skills spanning the full AI research lifecycle, from model architecture to deployment
   - Research-Grade Quality - Documentation sourced from official repos, real GitHub issues, and battle-tested production workflows
 
 ## Available AI Research Engineering Skills
@@ -291,43 +291,6 @@ We maintain a curated collection of demo repositories showing how to use skills 
 | **[Cross-Lingual Alignment Analysis](https://github.com/AmberLJC/faiss-demo)** | FAISS | Quantify how well multilingual embeddings align semantic concepts across 8 languages using FAISS similarity search |
 
 **Featured Demo**: Reproduce Thinking Machines Lab's "LoRA Without Regret" paper **by simply prompting an AI agent**. The agent autonomously writes training code for both SFT and GRPO reinforcement learning, provisions H100 GPUs, runs LoRA rank ablation experiments overnight, and generates publication-ready analysis. No manual coding required—just describe what you want to reproduce. ([Blog](https://www.orchestra-research.com/perspectives/LLM-with-Orchestra) | [Video](https://www.youtube.com/watch?v=X0DoLYfXl5I))
-
-**Note**: When you contribute a skill to this repo via PR, it automatically syncs to the Orchestra marketplace after merge.
-
-### 🛠️ Alternative Usage Methods
-
-<!-- **For Claude Users** (Claude.ai, Claude Code):
-```bash
-# 1. Download skill folder
-cd 01-model-architecture/litgpt
-
-# 2. Use directly in Claude Code workspace
-# OR zip and upload to Claude.ai Projects
-zip -r litgpt-skill.zip SKILL.md references/
-``` -->
-
-**For Other AI Coding Assistants**:
-- **Gemini CLI**: Point to skill directory in your workspace
-- **Grok Code**: Use skill folder as context
-- **Cursor/Windsurf**: Add skill folder to project knowledge
-
-**For Custom RAG/Agent Systems**:
-- Ingest `SKILL.md` + `references/` into your knowledge base
-- Use as retrieval context for specialized queries
-- Build domain-specific agents with curated skill subsets
- 
-### 👨‍💻 For Skill Creators
-
-**Your contributions power the entire ecosystem!** When you contribute a skill to this repo:
-1. It automatically syncs to [Orchestra marketplace](https://www.orchestra-research.com/research-skills)
-2. Thousands of researchers can use your expertise
-3. AI agents become more capable at conducting research
-
-**Getting started**:
-1. **Read [CONTRIBUTING.md](CONTRIBUTING.md)** - Step-by-step guide
-2. **Use [SKILL_TEMPLATE.md](docs/SKILL_TEMPLATE.md)** - Copy-paste scaffold
-3. **Run validation**: `python scripts/validate_skill.py your-skill/`
-4. **Submit PR** - We review within 48 hours, auto-publish to Orchestra on merge
 
 ## Skill Structure
 
