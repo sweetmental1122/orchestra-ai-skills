@@ -1,11 +1,9 @@
-# Reviewer Guidelines & Evaluation Criteria / 审稿人指南与评估标准
+# Reviewer Guidelines & Evaluation Criteria
 
 This reference documents how reviewers evaluate papers at major ML/AI and Systems conferences, helping authors anticipate and address reviewer concerns.
-本参考文档记录了 ML/AI 和系统会议审稿人如何评估论文，帮助作者预判和解决审稿人关切的问题。
+ ML/AI 
 
----
-
-## Contents / 目录
+## Contents
 
 - [Universal Evaluation Dimensions](#universal-evaluation-dimensions)
 - [NeurIPS Reviewer Guidelines](#neurips-reviewer-guidelines)
@@ -16,8 +14,6 @@ This reference documents how reviewers evaluate papers at major ML/AI and System
 - [What Makes Reviews Strong](#what-makes-reviews-strong)
 - [Common Reviewer Concerns](#common-reviewer-concerns)
 - [How to Address Reviewer Feedback](#how-to-address-reviewer-feedback)
-
----
 
 ## Universal Evaluation Dimensions
 
@@ -75,8 +71,6 @@ All major ML conferences assess papers across four core dimensions:
 **Key insight from NeurIPS guidelines:**
 > "Originality does not necessarily require introducing an entirely new method. Papers that provide novel insights from evaluating existing approaches or shed light on why methods succeed can also be highly original."
 
----
-
 ## NeurIPS Reviewer Guidelines
 
 ### Scoring System (1-6 Scale)
@@ -115,8 +109,6 @@ Reviewers are explicitly instructed to:
 - Discussion period: July 31 - August 13
 - Final notifications: September 18
 
----
-
 ## ICML Reviewer Guidelines
 
 ### Review Structure
@@ -146,8 +138,6 @@ ICML uses a similar 1-6 scale with calibration:
 3. **Writing quality** - Clear, organized, well-structured?
 4. **Novelty** - Non-trivial contribution?
 
----
-
 ## ICLR Reviewer Guidelines
 
 ### OpenReview Process
@@ -171,8 +161,6 @@ ICLR reviews include:
 1. **LLM Disclosure** - Reviewers assess whether LLM use is properly disclosed
 2. **Reproducibility** - Emphasis on code availability
 3. **Reciprocal Reviewing** - Authors must also serve as reviewers
-
----
 
 ## ACL Reviewer Guidelines
 
@@ -198,128 +186,120 @@ ACL has a dedicated ethics review process for:
 - Data privacy issues
 - Bias and fairness implications
 
----
-
-## Systems Conference Reviewer Guidelines / 系统会议审稿指南
+## Systems Conference Reviewer Guidelines
 
 Systems conferences (OSDI, NSDI, ASPLOS, SOSP) evaluate papers differently from ML/AI venues. Understanding these differences is critical for cross-venue submissions.
-系统会议的评审标准与 ML/AI 会议不同。理解这些差异对跨会议提交至关重要。
+ ML/AI 
 
-### Core Evaluation Criteria for Systems / 系统论文核心评估标准
+### Core Evaluation Criteria for Systems
 
-| Criterion | What Reviewers Look For | 审稿人关注点 |
+| Criterion | What Reviewers Look For | |
 |-----------|------------------------|-----------|
-| **Novelty** | New system design, not just incremental improvement | 新颖的系统设计，非增量改进 |
-| **Significance** | Solves important practical problem | 解决重要实际问题 |
-| **System Design** | Sound architecture, clear design decisions | 合理的架构、清晰的设计决策 |
-| **Implementation** | Working prototype, not just simulation | 可工作的原型，而非仅仅仿真 |
-| **Evaluation** | Real workloads, end-to-end performance | 真实工作负载、端到端性能 |
-| **Clarity** | Clear writing, reproducible | 清晰写作、可重现 |
+| **Novelty** | New system design, not just incremental improvement | |
+| **Significance** | Solves important practical problem | |
+| **System Design** | Sound architecture, clear design decisions | |
+| **Implementation** | Working prototype, not just simulation | |
+| **Evaluation** | Real workloads, end-to-end performance | |
+| **Clarity** | Clear writing, reproducible | |
 
-### OSDI 2026 Reviewer Perspective / OSDI 2026 审稿视角
+### OSDI 2026 Reviewer Perspective / OSDI 2026 
 
 **What reviewers evaluate:**
-- Topic relevance to computer systems / 与计算机系统的相关性
-- Potential to impact future systems research and practices / 对未来系统研究和实践的影响潜力
-- Interest to substantial portion of OSDI attendees / 对 OSDI 与会者的吸引力
-- Papers with little PC overlap are less likely accepted / 与 PC 兴趣重叠少的论文不易被接受
+- Topic relevance to computer systems
+- Potential to impact future systems research and practices
+- Interest to substantial portion of OSDI attendees
+- Papers with little PC overlap are less likely accepted
 
 **Research Track criteria:**
 - Novelty, significance, clarity, relevance, correctness
 - Quantified or insightful experiences in systems
 
-**Operational Systems Track criteria / 运营系统赛道标准:**
-- Real-world deployment at meaningful scale / 有意义规模的真实部署
-- Lessons that deepen understanding of existing problems / 加深对现有问题的理解
-- Disproves or strengthens existing assumptions / 证伪或加强现有假设
-- Novel research ideas NOT required / 不要求新颖研究想法
+**Operational Systems Track criteria
+- Real-world deployment at meaningful scale
+- Lessons that deepen understanding of existing problems
+- Disproves or strengthens existing assumptions
+- Novel research ideas NOT required
 
-**New in 2026 / 2026 新变化:**
-- No author response period / 无作者回复期
-- Conditional accept replaces revise-and-resubmit / "有条件接受"取代修改重投
-- Target acceptance rate ≥20% / 目标接受率 ≥20%
-- Reviewers encouraged to down-rank padded papers / 审稿人被鼓励降低注水论文评分
+**New in 2026 / 2026 :**
+- No author response period
+- Conditional accept replaces revise-and-resubmit / ""
+- Target acceptance rate ≥20%
+- Reviewers encouraged to down-rank padded papers
 
-### NSDI 2027 Reviewer Perspective / NSDI 2027 审稿视角
+### NSDI 2027 Reviewer Perspective / NSDI 2027 
 
-**Prescreening (Introduction only) / 预筛选（仅 Introduction）:**
+**Prescreening (Introduction only)
 
 Reviewers check three criteria in the prescreening phase:
-审稿人在预筛选阶段检查三个标准：
+1. **Scope**: Subject within NSDI topics
+2. **Accessibility**: Understandable by PC member / PC 
+3. **Track alignment**: Meets track-specific criteria
 
-1. **Scope**: Subject within NSDI topics / 主题在 NSDI 范围内
-2. **Accessibility**: Understandable by PC member / PC 成员可理解
-3. **Track alignment**: Meets track-specific criteria / 符合赛道标准
+**Track-specific review
 
-**Track-specific review / 赛道特定评审:**
-
-| Track | Key Criterion | 关键标准 |
+| Track | Key Criterion | |
 |-------|---------------|----------|
-| Research | Novel idea + compelling evaluation evidence | 新颖想法+有力评估证据 |
-| Frontiers | Bold non-incremental idea (complete evaluation not required) | 大胆非增量想法（无需完整评估） |
-| Operational | Deployment context, scale, lessons for community | 部署背景、规模、对社区的经验教训 |
+| Research | Novel idea + compelling evaluation evidence | + |
+| Frontiers | Bold non-incremental idea (complete evaluation not required) | |
+| Operational | Deployment context, scale, lessons for community | |
 
-**One-shot revision / 一次性修改重投:**
-- Rejected papers may receive a list of issues to address / 被拒论文可能收到需解决的问题列表
-- Authors can resubmit revision at next deadline / 作者可在下一个截稿日提交修改版
-- Same reviewers review the revision (to extent possible) / 尽可能由同一审稿人评审
+**One-shot revision
+- Rejected papers may receive a list of issues to address
+- Authors can resubmit revision at next deadline
+- Same reviewers review the revision (to extent possible)
 
-### ASPLOS 2027 Reviewer Perspective / ASPLOS 2027 审稿视角
+### ASPLOS 2027 Reviewer Perspective / ASPLOS 2027 
 
-**Rapid Review Round / 快速评审轮:**
-- Reviewers read ONLY first 2 pages / 审稿人仅阅读前 2 页
-- Evaluates: Does this advance Architecture, PL, or OS research? / 评估：是否推进体系结构/PL/OS 研究？
-- Majority of submissions may not advance past this stage / 多数提交可能不会通过此阶段
-- Similar to Nature/Science early screening model / 类似 Nature/Science 的早期筛选模式
+**Rapid Review Round
+- Reviewers read ONLY first 2 pages
+- Evaluates: Does this advance Architecture, PL, or OS research?
+- Majority of submissions may not advance past this stage
+- Similar to Nature/Science early screening model
 
-**Full Review criteria / 全面评审标准:**
-- Advances in core ASPLOS disciplines (not just using them) / 推进 ASPLOS 核心学科
-- Quality of system design and implementation / 系统设计和实现质量
-- Major Revision decision available / 可获得"重大修改"决定
+**Full Review criteria
+- Advances in core ASPLOS disciplines (not just using them)
+- Quality of system design and implementation
+- Major Revision decision available
 
-### SOSP 2026 Reviewer Perspective / SOSP 2026 审稿视角
+### SOSP 2026 Reviewer Perspective / SOSP 2026 
 
-**Core evaluation / 核心评估:**
+**Core evaluation
 - Novelty, significance, interest, clarity, relevance, correctness
-- Encourages groundbreaking work in significant new directions / 鼓励重大新方向的突破性工作
-- Different evaluation criteria for new problems vs established areas / 新问题与成熟领域的评估标准不同
+- Encourages groundbreaking work in significant new directions
+- Different evaluation criteria for new problems vs established areas
 
-**Author Response / 作者回复:**
-- Limited to: correcting factual errors + addressing reviewer questions / 仅限于纠正事实错误+回答问题
-- NO new experiments or additional work / 不包含新实验或额外工作
-- Keep under 500 words / 保持在 500 字以内
+**Author Response
+- Limited to: correcting factual errors + addressing reviewer questions
+- NO new experiments or additional work
+- Keep under 500 words
 
-**Artifact Evaluation / Artifact 评估:**
-- Optional but encouraged / 可选但被鼓励
-- Cooperative process: authors can fix issues during evaluation / 合作过程，作者可在评估期间修复问题
-- Register within days of acceptance notification / 接受通知后数天内注册
+**Artifact Evaluation / Artifact :**
+- Optional but encouraged
+- Cooperative process: authors can fix issues during evaluation
+- Register within days of acceptance notification
 
-### ML vs Systems: Key Review Differences / ML 与系统会议评审关键差异
+### ML vs Systems: Key Review Differences / ML 
 
-| Aspect | ML/AI Venues | Systems Venues | 差异说明 |
+| Aspect | ML/AI Venues | Systems Venues | |
 |--------|-------------|---------------|----------|
-| **Page limit** | 7-9 pages | 12 pages | 系统论文更长，包含更多实现细节 |
-| **Evaluation focus** | Benchmarks, ablations, metrics | End-to-end system performance, real workloads | 系统强调端到端性能和真实工作负载 |
-| **Implementation** | Code often optional | Working system expected | 系统会议期望可工作的系统 |
-| **Novelty** | New methods/insights | New system designs/approaches | 不同类型的创新 |
-| **Reproducibility** | Checklist-based | Artifact evaluation (optional) | 不同的可重现性机制 |
-| **Template** | Venue-specific `.sty` | USENIX `.sty` or ACM `acmart.cls` | 不同模板系统 |
-| **Review process** | Single deadline | Often dual deadlines | 系统会议常有两次截稿 |
+| **Page limit** | 7-9 pages | 12 pages | |
+| **Evaluation focus** | Benchmarks, ablations, metrics | End-to-end system performance, real workloads | |
+| **Implementation** | Code often optional | Working system expected | |
+| **Novelty** | New methods/insights | New system designs/approaches | |
+| **Reproducibility** | Checklist-based | Artifact evaluation (optional) | |
+| **Template** | Venue-specific `.sty` | USENIX `.sty` or ACM `acmart.cls` | |
+| **Review process** | Single deadline | Often dual deadlines | |
 
----
+## Systems-Specific Common Concerns
 
-## Systems-Specific Common Concerns / 系统会议特有的常见关切
-
-| Concern | How to Pre-empt | 如何预防 |
+| Concern | How to Pre-empt | |
 |---------|-----------------|----------|
-| "Just an ML paper, not systems" | Emphasize system design, architecture decisions, deployment challenges | 强调系统设计、架构决策、部署挑战 |
-| "Evaluation only on microbenchmarks" | Include end-to-end evaluation with real workloads | 包含真实工作负载的端到端评估 |
-| "No working prototype" | Build and evaluate a real system, not just simulate | 构建并评估真实系统 |
-| "Deployment not realistic" | Show real-world applicability, discuss practical constraints | 展示真实世界适用性 |
-| "Not relevant to systems community" | Frame contributions in systems terms, cite systems papers | 用系统术语构建贡献，引用系统论文 |
-| "ASPLOS: Not advancing arch/PL/OS" | Explicitly state how work advances core disciplines | 明确说明工作如何推进核心学科 |
-
-
+| "Just an ML paper, not systems" | Emphasize system design, architecture decisions, deployment challenges | |
+| "Evaluation only on microbenchmarks" | Include end-to-end evaluation with real workloads | |
+| "No working prototype" | Build and evaluate a real system, not just simulate | |
+| "Deployment not realistic" | Show real-world applicability, discuss practical constraints | |
+| "Not relevant to systems community" | Frame contributions in systems terms, cite systems papers | |
+| "ASPLOS: Not advancing arch/PL/OS" | Explicitly state how work advances core disciplines | |
 
 ### Following Daniel Dennett's Rules
 
@@ -359,8 +339,6 @@ Overall Assessment:
 - Clear recommendation with reasoning
 ```
 
----
-
 ## Common Reviewer Concerns
 
 ### Technical Concerns
@@ -397,8 +375,6 @@ Overall Assessment:
 | "Limited impact" | Discuss broader implications |
 | "Narrow evaluation" | Evaluate on multiple benchmarks |
 | "Only works in restricted setting" | Acknowledge scope, explain why still valuable |
-
----
 
 ## How to Address Reviewer Feedback
 
@@ -460,8 +436,6 @@ You can respectfully disagree when:
 - Criticism is factually incorrect
 
 Frame disagreements constructively: "We appreciate this perspective. However, [explanation]..."
-
----
 
 ## Pre-Submission Reviewer Simulation
 

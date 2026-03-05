@@ -9,11 +9,8 @@ dependencies: [semanticscholar, arxiv, habanero, requests]
 ---
 
 # ML Paper Writing for Top AI & Systems Conferences
-# ML 论文写作：面向顶级 AI 与系统会议
 
 Expert-level guidance for writing publication-ready papers targeting **NeurIPS, ICML, ICLR, ACL, AAAI, COLM** (ML/AI venues) and **OSDI, NSDI, ASPLOS, SOSP** (Systems venues). This skill combines writing philosophy from top researchers (Nanda, Farquhar, Karpathy, Lipton, Steinhardt) with practical tools: LaTeX templates, citation verification APIs, and conference checklists.
-
-面向 **NeurIPS、ICML、ICLR、ACL、AAAI、COLM**（ML/AI 会议）和 **OSDI、NSDI、ASPLOS、SOSP**（系统会议）的专业论文写作指南。本技能整合了顶级研究者的写作方法论与实用工具：LaTeX 模板、引用验证 API 及会议清单。
 
 ## Core Philosophy: Collaborative Writing
 
@@ -440,9 +437,9 @@ Understanding reviewer behavior helps prioritize your effort:
 
 ---
 
-## Conference Requirements Quick Reference / 会议要求速查表
+## Conference Requirements Quick Reference
 
-### ML/AI Conferences / ML/AI 会议
+### ML/AI Conferences
 
 | Conference | Page Limit | Extra for Camera-Ready | Key Requirement |
 |------------|------------|------------------------|------------------|
@@ -453,7 +450,7 @@ Understanding reviewer behavior helps prioritize your effort:
 | **AAAI 2026** | 7 pages | +1 | Strict style file adherence |
 | **COLM 2025** | 9 pages | +1 | Focus on language models |
 
-### Systems Conferences / 系统会议
+### Systems Conferences
 
 | Conference | Page Limit | Extra for Camera-Ready | Key Requirement | Template |
 |------------|------------|------------------------|-----------------|----------|
@@ -462,16 +459,16 @@ Understanding reviewer behavior helps prioritize your effort:
 | **ASPLOS 2027** | 12 pages (ACM) | varies | Rapid review on first 2 pages; dual cycles | ACM SIGPLAN |
 | **SOSP 2026** | 12 pages | varies | Optional artifact evaluation; author response | ACM SIGPLAN |
 
-**Detailed Systems conference info**: See [references/systems-conferences.md](references/systems-conferences.md) for deadlines, track descriptions, submission rules, and format conversion guides. / 系统会议详细信息（截稿日期、赛道说明、投稿规则）详见 [references/systems-conferences.md](references/systems-conferences.md)。
+**Detailed Systems conference info**: See [references/systems-conferences.md](references/systems-conferences.md) for deadlines, track descriptions, submission rules, and format conversion guides.
 
-**Universal Requirements / 通用要求:**
-- Double-blind review (anonymize submissions) / 双盲评审（提交需匿名化）
-- References don't count toward page limit / 参考文献不计入页数限制
-- Appendices unlimited but reviewers not required to read / 附录无限制但审稿人不要求阅读
-- LaTeX required for all venues / 所有会议要求使用 LaTeX
-- **Systems venues**: USENIX uses custom `.sty`; ACM uses `acmart.cls` / **系统会议**: USENIX 使用自定义 `.sty`；ACM 使用 `acmart.cls`
+**Universal Requirements:**
+- Double-blind review (anonymize submissions)
+- References don't count toward page limit
+- Appendices unlimited but reviewers not required to read
+- LaTeX required for all venues
+- **Systems venues**: USENIX uses custom `.sty`; ACM uses `acmart.cls`
 
-**LaTeX Templates:** See [templates/](templates/) directory for all conference templates. / 详见 [templates/](templates/) 目录。
+**LaTeX Templates:** See [templates/](templates/) directory for all conference templates.
 
 ---
 
@@ -614,9 +611,9 @@ Only remove template artifacts when paper is nearly complete:
 | Deleting template content too early | Lose formatting reference | Keep as comments until done |
 | Not compiling frequently | Errors accumulate | Compile after each section |
 
-### Quick Template Reference / 模板速查表
+### Quick Template Reference
 
-#### ML/AI Conferences / ML/AI 会议
+#### ML/AI Conferences
 
 | Conference | Main File | Key Style File | Notes |
 |------------|-----------|----------------|-------|
@@ -627,7 +624,7 @@ Only remove template artifacts when paper is nearly complete:
 | AAAI 2026 | `aaai2026-unified-template.tex` | `aaai2026.sty` | Very strict compliance |
 | COLM 2025 | `colm2025_conference.tex` | `colm2025_conference.sty` | Similar to ICLR |
 
-#### Systems Conferences / 系统会议
+#### Systems Conferences
 
 | Conference | Main File | Key Style File | Notes |
 |------------|-----------|----------------|-------|
@@ -654,9 +651,9 @@ Format Conversion Checklist:
 - [ ] Step 6: Verify compilation and formatting
 ```
 
-**Step 1: Key Template Differences / 模板关键差异**
+**Step 1: Key Template Differences**
 
-#### ML/AI Conversions / ML/AI 会议转换
+#### ML/AI Conversions
 
 | From → To | Page Change | Key Adjustments |
 |-----------|-------------|------------------|
@@ -666,7 +663,7 @@ Format Conversion Checklist:
 | ICLR → AAAI | 9 → 7 pages | Significant cuts needed, strict style adherence |
 | Any → COLM | varies → 9 | Reframe for language model focus |
 
-#### Systems Conference Conversions / 系统会议转换
+#### Systems Conference Conversions
 
 | From → To | Key Adjustments |
 |-----------|------------------|
@@ -674,7 +671,7 @@ Format Conversion Checklist:
 | ML → ASPLOS/SOSP | ACM SIGPLAN template; reframe for systems contribution |
 | OSDI ↔ SOSP | USENIX ↔ ACM SIGPLAN; similar page limits, different style files |
 
-**Full conversion guide**: See [references/systems-conferences.md](references/systems-conferences.md#format-conversion-ml-venue--systems-venue--格式转换) / 详细转换指南见参考文档。
+**Full conversion guide**: See [references/systems-conferences.md](references/systems-conferences.md#format-conversion-ml-venue--systems-venue) for detailed guidance.
 
 **Step 2: Content Migration (NOT Template Merge)**
 
@@ -708,7 +705,7 @@ When expanding (e.g., ICML 8 → ICLR 9):
 - Include additional baselines
 - Add qualitative examples
 
-**Step 4: Conference-Specific Adjustments / 会议特定调整**
+**Step 4: Conference-Specific Adjustments**
 
 #### ML/AI Venues
 
@@ -720,7 +717,7 @@ When expanding (e.g., ICML 8 → ICLR 9):
 | **AAAI** | Strict adherence to style file (no modifications) |
 | **NeurIPS** | Paper checklist (appendix), lay summary if accepted |
 
-#### Systems Venues / 系统会议
+#### Systems Venues
 
 | Target Venue | Key Required Additions |
 |--------------|------------------------|
@@ -729,7 +726,7 @@ When expanding (e.g., ICML 8 → ICLR 9):
 | **ASPLOS 2027** | Self-contained first 2 pages (rapid review); resubmission note |
 | **SOSP 2026** | ACM SIGPLAN format; optional Artifact Evaluation |
 
-**Full requirements**: See [references/systems-conferences.md](references/systems-conferences.md#submission-rules--投稿规则) / 完整要求详见参考文档。
+**Full requirements**: See [references/systems-conferences.md](references/systems-conferences.md#submission-rules) for details.
 
 **Step 5: Update References**
 
@@ -965,7 +962,7 @@ Baseline & 85.2 & 45ms \\
 | [systems-conferences.md](references/systems-conferences.md) | OSDI/NSDI/ASPLOS/SOSP deadlines, tracks, rules |
 | [sources.md](references/sources.md) | Complete bibliography of all sources |
 
-### LaTeX Templates / LaTeX 模板
+### LaTeX Templates
 
 Templates in `templates/` directory:
 - **ML/AI**: ICML 2026, ICLR 2026, NeurIPS 2025, ACL/EMNLP, AAAI 2026, COLM 2025
@@ -978,7 +975,7 @@ Templates in `templates/` directory:
 
 See [templates/README.md](templates/README.md) for detailed setup instructions.
 
-### Key External Sources / 关键外部资源
+### Key External Sources
 
 **Writing Philosophy:**
 - [Neel Nanda: How to Write ML Papers](https://www.alignmentforum.org/posts/eJGptPbbFPZGLpjsp/highly-opinionated-advice-on-how-to-write-ml-papers) - Narrative, "What/Why/So What"
@@ -991,5 +988,5 @@ See [templates/README.md](templates/README.md) for detailed setup instructions.
 
 **ML/AI Venues:** [NeurIPS](https://neurips.cc/Conferences/2025/PaperInformation/StyleFiles) | [ICML](https://icml.cc/Conferences/2025/AuthorInstructions) | [ICLR](https://iclr.cc/Conferences/2026/AuthorGuide) | [ACL](https://github.com/acl-org/acl-style-files)
 
-**Systems Venues / 系统会议:** [OSDI 2026](https://www.usenix.org/conference/osdi26/call-for-papers) | [NSDI 2027](https://www.usenix.org/conference/nsdi27/call-for-papers) | [ASPLOS 2027](https://www.asplos-conference.org/asplos2026/call-for-papers-asplos27/) | [SOSP 2026](https://sigops.org/s/conferences/sosp/2026/cfp.html)
+**Systems Venues:** [OSDI 2026](https://www.usenix.org/conference/osdi26/call-for-papers) | [NSDI 2027](https://www.usenix.org/conference/nsdi27/call-for-papers) | [ASPLOS 2027](https://www.asplos-conference.org/asplos2026/call-for-papers-asplos27/) | [SOSP 2026](https://sigops.org/s/conferences/sosp/2026/cfp.html)
 
