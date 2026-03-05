@@ -1,0 +1,127 @@
+% NSDI 2027 Paper Template
+% The 24th USENIX Symposium on Networked Systems Design and Implementation
+% May 11-13, 2027, Providence, RI, USA
+%
+% Format: ≤12 pages (excluding references), USENIX format
+%         Two-column, 10pt on 12pt leading, Times Roman
+%
+% Official CFP: https://www.usenix.org/conference/nsdi27/call-for-papers
+% Template source: https://www.usenix.org/conferences/author-resources/paper-templates
+%
+% IMPORTANT NOTES:
+% - Three tracks: Traditional Research, Frontiers, Operational Systems
+% - Indicate track on title page and submission form
+% - Prescreening phase: reviewers read ONLY the Introduction
+% - Introduction must articulate track-specific criteria
+% - Two deadlines: Spring (April 2026) and Fall (September 2026)
+% - One-shot revision available for rejected papers
+%
+% TRACK REQUIREMENTS IN INTRODUCTION:
+% - Research: articulate novel idea + evaluation evidence
+% - Frontiers: articulate novel non-incremental idea
+% - Operational: describe deployment setting, scale, lessons learned
+
+\documentclass[letterpaper,twocolumn,10pt]{article}
+\usepackage{usenix-2020-09}
+
+% Recommended packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{xspace}
+
+% Custom commands
+\newcommand{\system}{SystemName\xspace}  % Replace with your anonymized system name
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\etal}{\textit{et al.}\xspace}
+
+\begin{document}
+
+% Indicate your track in the title page
+% Options: [Research Track] / [Frontiers Track] / [Operational Systems Track]
+\title{Your Paper Title Here}
+
+\author{Paper \#XXX}  % Anonymized for submission (double-blind)
+% Operational Systems track: may keep real company/system names for context
+% Camera-ready:
+% \author{
+%   Author One\\
+%   \textit{Affiliation One}\\
+%   \texttt{email@example.com}
+%   \and
+%   Author Two\\
+%   \textit{Affiliation Two}\\
+%   \texttt{email@example.com}
+% }
+
+\maketitle
+
+\begin{abstract}
+% Write your abstract here.
+Your abstract goes here.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+% CRITICAL: This section is used for prescreening!
+% Reviewers will read ONLY this section to determine:
+% 1. Subject falls within NSDI scope (networked/distributed systems)
+% 2. Exposition understandable by NSDI PC member
+% 3. Track-specific criteria met:
+%    - Research: novel idea + evaluation evidence
+%    - Frontiers: novel non-incremental idea
+%    - Operational: deployment setting, scale, lessons
+%
+% Make sure your Introduction clearly articulates all of the above.
+
+Your introduction goes here. Clearly state the problem, your approach,
+and your contributions. Remember: this section is used for prescreening.
+
+\section{Background and Motivation}
+\label{sec:background}
+
+Provide necessary background on networked systems context.
+
+\section{Design}
+\label{sec:design}
+
+Describe the design of your networked system.
+
+\section{Implementation}
+\label{sec:implementation}
+
+Describe implementation details.
+
+\section{Evaluation}
+\label{sec:evaluation}
+
+Present your evaluation results.
+
+\subsection{Experimental Setup}
+
+Describe your experimental setup, workloads, and baselines.
+
+\subsection{Results}
+
+Present and discuss your results.
+
+\section{Related Work}
+\label{sec:related}
+
+Discuss related work in networked systems.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Summarize your contributions and key findings.
+
+% Bibliography
+{\footnotesize \bibliographystyle{acm}
+\bibliography{references}}
+
+\end{document}

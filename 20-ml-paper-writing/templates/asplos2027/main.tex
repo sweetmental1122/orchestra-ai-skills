@@ -1,0 +1,134 @@
+% ASPLOS 2027 Paper Template
+% ACM International Conference on Architectural Support for
+% Programming Languages and Operating Systems
+%
+% Format: ACM SIGPLAN, ≤12 pages (excluding references), 10pt, two-column
+% Uses acmart.cls with sigplan option
+%
+% Official CFP: https://www.asplos-conference.org/asplos2026/call-for-papers-asplos27/
+% ACM Template: https://www.acm.org/publications/proceedings-template
+%
+% IMPORTANT NOTES:
+% - RAPID REVIEW ROUND: Reviewers read ONLY first 2 pages!
+%   → First 2 pages MUST be self-contained
+%   → Clearly state problem, approach, contribution in first 2 pages
+% - Must advance Architecture, PL, and/or OS research
+% - Two cycles: April 2026 and September 2026
+% - Max 4 submissions per author per cycle
+% - Major Revision decision available
+% - Double-blind review
+%
+% RAPID REVIEW TIPS:
+% - Page 1: Problem motivation + why it matters to arch/PL/OS
+% - Page 2: Approach overview + key results preview + contribution list
+% - Do NOT rely on content after page 2 for rapid review
+
+\documentclass[sigplan,10pt]{acmart}
+
+% Remove copyright/permission footer for submission
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\settopmatter{printfolios=true}
+
+% Remove ACM reference format for submission
+\setcopyright{none}
+\renewcommand\acmConference[4]{}
+\acmDOI{}
+\acmISBN{}
+
+% Recommended packages
+\usepackage{booktabs}
+\usepackage{xspace}
+\usepackage{subcaption}
+
+% Custom commands
+\newcommand{\system}{SystemName\xspace}  % Replace with your anonymized system name
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\etal}{\textit{et al.}\xspace}
+
+\begin{document}
+
+\title{Your Paper Title Here}
+
+% Anonymized for submission
+\author{Paper \#XXX}
+\affiliation{}
+
+% Camera-ready:
+% \author{Author One}
+% \affiliation{%
+%   \institution{University/Company}
+%   \city{City}
+%   \country{Country}}
+% \email{email@example.com}
+
+\begin{abstract}
+% Write your abstract here.
+% Remember: abstract + first 2 pages are critical for rapid review.
+Your abstract goes here.
+\end{abstract}
+
+\maketitle
+\pagestyle{plain}
+
+\section{Introduction}
+\label{sec:intro}
+
+% CRITICAL FOR RAPID REVIEW (Pages 1-2):
+% Reviewers will read ONLY the first 2 pages in the rapid review round.
+% These 2 pages must:
+% 1. Clearly state the problem and why it matters
+% 2. Explain how this advances Architecture, PL, or OS research
+%    (NOT just using arch/PL/OS to advance another domain)
+% 3. Outline your approach and key contributions
+% 4. Preview your main results
+%
+% If reviewers cannot determine your contribution to arch/PL/OS
+% from the first 2 pages, your paper may be rejected in rapid review.
+
+Your introduction goes here. Make the first 2 pages self-contained.
+Clearly articulate how this work advances computer architecture,
+programming languages, or operating systems research.
+
+\section{Background and Motivation}
+\label{sec:background}
+
+Provide necessary background.
+
+\section{Design}
+\label{sec:design}
+
+Describe the design of your system/approach.
+
+\section{Implementation}
+\label{sec:implementation}
+
+Describe implementation details.
+
+\section{Evaluation}
+\label{sec:evaluation}
+
+Present your evaluation results.
+
+\subsection{Experimental Setup}
+
+Describe your experimental setup.
+
+\subsection{Results}
+
+Present and discuss your results.
+
+\section{Related Work}
+\label{sec:related}
+
+Discuss related work.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Summarize your contributions.
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}

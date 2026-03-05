@@ -1,6 +1,8 @@
-# LaTeX Templates for ML/AI Conferences
+# LaTeX Templates for ML/AI & Systems Conferences
+# ML/AI 与系统会议 LaTeX 模板
 
-This directory contains official LaTeX templates for major machine learning and AI conferences.
+This directory contains official LaTeX templates for major machine learning, AI, and systems conferences.
+本目录包含主要机器学习、AI 和系统会议的官方 LaTeX 模板。
 
 ---
 
@@ -103,7 +105,9 @@ tlmgr install <package-name>
 
 ---
 
-## Available Templates
+## Available Templates / 可用模板
+
+### ML/AI Conferences / ML/AI 会议
 
 | Conference | Directory | Year | Source |
 |------------|-----------|------|--------|
@@ -113,6 +117,15 @@ tlmgr install <package-name>
 | ACL | `acl/` | 2025+ | [Official ACL](https://github.com/acl-org/acl-style-files) |
 | AAAI | `aaai2026/` | 2026 | [AAAI Author Kit](https://aaai.org/authorkit26/) |
 | COLM | `colm2025/` | 2025 | [Official COLM](https://github.com/COLM-org/Template) |
+
+### Systems Conferences / 系统会议
+
+| Conference | Directory | Year | Template Type | Source |
+|------------|-----------|------|---------------|--------|
+| OSDI | `osdi2026/` | 2026 | USENIX | [OSDI '26 CFP](https://www.usenix.org/conference/osdi26/call-for-papers) |
+| NSDI | `nsdi2027/` | 2027 | USENIX | [NSDI '27 CFP](https://www.usenix.org/conference/nsdi27/call-for-papers) |
+| ASPLOS | `asplos2027/` | 2027 | ACM SIGPLAN | [ASPLOS '27 CFP](https://www.asplos-conference.org/asplos2026/call-for-papers-asplos27/) |
+| SOSP | `sosp2026/` | 2026 | ACM SIGPLAN | [SOSP '26 CFP](https://sigops.org/s/conferences/sosp/2026/cfp.html) |
 
 ## Usage
 
@@ -199,7 +212,140 @@ Key files:
 - `colm2025_conference.sty` - Style file
 - `colm2025_conference.bst` - Bibliography style
 
-## Page Limits Summary
+---
+
+### OSDI 2026 / NSDI 2027 (USENIX Format / USENIX 格式)
+
+OSDI and NSDI both use the USENIX LaTeX style. The format requires 12 pages max (excluding references), two-column, 10pt on 12pt leading, Times Roman font.
+
+OSDI 和 NSDI 均使用 USENIX LaTeX 样式。格式要求最多 12 页（不含参考文献），双栏，10pt 字体，Times Roman。
+
+```latex
+\documentclass[letterpaper,twocolumn,10pt]{article}
+\usepackage{usenix-2020-09}  % USENIX style file
+
+\begin{document}
+\title{Your Paper Title}
+
+\author{Paper \#XXX}  % Anonymized for submission / 提交时匿名化
+
+\maketitle
+
+\begin{abstract}
+Your abstract here.
+\end{abstract}
+
+% Your paper content
+
+{\footnotesize \bibliographystyle{acm}
+\bibliography{references}}
+
+\end{document}
+```
+
+Key files:
+- `usenix-2020-09.sty` - USENIX style file
+- `main.tex` - Example document
+
+**OSDI 2026 Specific / OSDI 2026 特殊要求:**
+- Submission: ≤12 pages; Camera-ready: ≤14 pages
+- Two tracks: Research and Operational Systems / 两个赛道：研究 和 运营系统
+- Operational Systems track: title must end with "(Operational Systems)" / 运营系统赛道标题须以"(Operational Systems)"结尾
+- Max 8 submissions per author / 每位作者最多 8 篇提交
+
+**NSDI 2027 Specific / NSDI 2027 特殊要求:**
+- Same USENIX format, ≤12 pages
+- Three tracks: Research, Frontiers, Operational Systems / 三个赛道
+- Prescreening based on Introduction / 基于 Introduction 的预筛选
+- Spring and Fall deadlines / 春季和秋季两次截稿
+
+### ASPLOS 2027 (ACM SIGPLAN Format / ACM SIGPLAN 格式)
+
+ASPLOS uses the ACM `acmart` document class with `sigplan` option. 12 pages max (excluding references), two-column, 10pt.
+
+ASPLOS 使用 ACM `acmart` 文档类，`sigplan` 选项。最多 12 页（不含参考文献），双栏，10pt。
+
+```latex
+\documentclass[sigplan,10pt]{acmart}
+
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\settopmatter{printfolios=true}
+
+\begin{document}
+\title{Your Paper Title}
+
+\author{Paper \#XXX}  % Anonymized for submission / 提交时匿名化
+\affiliation{}
+
+\begin{abstract}
+Your abstract here.
+\end{abstract}
+
+\maketitle
+\pagestyle{plain}
+
+% Your paper content
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}
+```
+
+Key files:
+- `acmart.cls` - ACM document class (download from [ACM](https://www.acm.org/publications/proceedings-template))
+- `ACM-Reference-Format.bst` - Bibliography style
+- `main.tex` - Example document
+
+**ASPLOS 2027 Specific / ASPLOS 2027 特殊要求:**
+- Rapid review round: reviewers only read first 2 pages / 快速评审轮：审稿人仅看前 2 页
+- **First 2 pages must be self-contained** / **前 2 页必须自成体系**
+- Two cycles: April and September / 两轮截稿：4 月和 9 月
+- Max 4 submissions per author per cycle / 每人每轮最多 4 篇
+- Major Revision decision available / 支持"重大修改"决定
+
+### SOSP 2026 (ACM SIGPLAN Format / ACM SIGPLAN 格式)
+
+SOSP uses the same ACM SIGPLAN format as ASPLOS. 12 pages max, A4 or US letter, 178×229mm text block.
+
+SOSP 使用与 ASPLOS 相同的 ACM SIGPLAN 格式。最多 12 页，A4 或 US letter，178×229mm 文本区域。
+
+```latex
+\documentclass[sigplan,10pt]{acmart}
+
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\settopmatter{printfolios=true}
+
+\begin{document}
+\title{Your Paper Title}
+
+\author{Paper \#XXX}  % Anonymized / 匿名化
+\affiliation{}
+
+\begin{abstract}
+Your abstract here.
+\end{abstract}
+
+\maketitle
+\pagestyle{plain}
+
+% Your paper content
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}
+```
+
+**SOSP 2026 Specific / SOSP 2026 特殊要求:**
+- Optional Artifact Evaluation / 可选的 Artifact 评估
+- Author response period / 作者回复期
+- Supplementary material allowed (not required to read) / 允许补充材料（审稿人不要求阅读）
+- Anonymized system name required / 需要匿名化系统名称
+
+## Page Limits Summary / 页数限制概览
+
+### ML/AI Conferences / ML/AI 会议
 
 | Conference | Submission | Camera-Ready | Notes |
 |------------|-----------|--------------|-------|
@@ -209,6 +355,15 @@ Key files:
 | ACL 2025 | 8 pages (long) | varies | +unlimited refs/appendix |
 | AAAI 2026 | 7 pages | 8 pages | +unlimited refs/appendix |
 | COLM 2025 | 9 pages | 10 pages | +unlimited refs/appendix |
+
+### Systems Conferences / 系统会议
+
+| Conference | Submission | Camera-Ready | Format | Notes |
+|------------|-----------|--------------|--------|-------|
+| OSDI 2026 | 12 pages | 14 pages | USENIX (8.5×11", 10pt, two-col) | +unlimited refs; encourages concise papers 鼓励精练 |
+| NSDI 2027 | 12 pages | varies | USENIX (same as OSDI) | +unlimited refs/appendix |
+| ASPLOS 2027 | 12 pages | varies | ACM SIGPLAN (10pt, two-col) | +unlimited refs |
+| SOSP 2026 | 12 pages | varies | ACM SIGPLAN (10pt, two-col, 7×9" block) | +unlimited refs; supplementary allowed |
 
 ## Common Issues
 
@@ -239,13 +394,23 @@ For submission, ensure:
 \usepackage{natbib}                   % Citations
 ```
 
-## Updating Templates
+## Updating Templates / 更新模板
 
 Templates are updated annually. Check official sources before each submission:
+模板每年更新。提交前请查看官方来源：
 
+**ML/AI:**
 - ICML: https://icml.cc/
 - ICLR: https://iclr.cc/
 - NeurIPS: https://neurips.cc/
 - ACL: https://github.com/acl-org/acl-style-files
 - AAAI: https://aaai.org/
 - COLM: https://colmweb.org/
+
+**Systems / 系统会议:**
+- OSDI: https://www.usenix.org/conference/osdi26/call-for-papers
+- NSDI: https://www.usenix.org/conference/nsdi27/call-for-papers
+- ASPLOS: https://www.asplos-conference.org/asplos2026/call-for-papers-asplos27/
+- SOSP: https://sigops.org/s/conferences/sosp/2026/cfp.html
+- USENIX Templates: https://www.usenix.org/conferences/author-resources/paper-templates
+- ACM Templates: https://www.acm.org/publications/proceedings-template

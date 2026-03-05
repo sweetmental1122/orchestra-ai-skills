@@ -1,6 +1,7 @@
-# Source Bibliography
+# Source Bibliography / 参考文献清单
 
 This document lists all authoritative sources used to build this skill, organized by topic.
+本文档列出构建本技能所使用的所有权威来源，按主题组织。
 
 ---
 
@@ -76,8 +77,37 @@ This document lists all authoritative sources used to build this skill, organize
 ### COLM
 
 | Document | URL | Purpose |
-|----------|-----|---------|
+|----------|-----|--------|
 | Template | [GitHub](https://github.com/COLM-org/Template) | LaTeX templates |
+
+### OSDI (USENIX)
+
+| Document | URL | Purpose / 用途 |
+|----------|-----|--------|
+| OSDI '26 Call for Papers / 征稿启事 | [USENIX](https://www.usenix.org/conference/osdi26/call-for-papers) | Submission requirements, deadlines, tracks / 提交要求、截稿日期、赛道 |
+| OSDI '26 CFP PDF | [PDF](https://www.usenix.org/sites/default/files/osdi26_cfp_121525.pdf) | Downloadable CFP / 可下载征稿启事 |
+| USENIX Paper Templates | [USENIX](https://www.usenix.org/conferences/author-resources/paper-templates) | LaTeX/Word templates / LaTeX/Word 模板 |
+
+### NSDI (USENIX)
+
+| Document | URL | Purpose / 用途 |
+|----------|-----|--------|
+| NSDI '27 Call for Papers / 征稿启事 | [USENIX](https://www.usenix.org/conference/nsdi27/call-for-papers) | Submission requirements, tracks, prescreening / 提交要求、赛道、预筛选 |
+| NSDI '27 CFP PDF | [PDF](https://www.usenix.org/sites/default/files/nsdi27_cfp_020326.pdf) | Downloadable CFP / 可下载征稿启事 |
+
+### ASPLOS (ACM)
+
+| Document | URL | Purpose / 用途 |
+|----------|-----|--------|
+| ASPLOS '27 Call for Papers / 征稿启事 | [ASPLOS](https://www.asplos-conference.org/asplos2026/call-for-papers-asplos27/) | Submission requirements, rapid review, deadlines / 提交要求、快速评审、截稿日期 |
+| ACM Proceedings Template | [ACM](https://www.acm.org/publications/proceedings-template) | `acmart.cls` template / ACM 模板 |
+
+### SOSP (ACM)
+
+| Document | URL | Purpose / 用途 |
+|----------|-----|--------|
+| SOSP '26 Call for Papers / 征稿启事 | [SOSP](https://sigops.org/s/conferences/sosp/2026/cfp.html) | Submission requirements, artifact evaluation / 提交要求、artifact 评估 |
+| ACM SIGPLAN Template | [ACM](https://www.acm.org/publications/proceedings-template) | `acmart.cls` with `sigplan` option / `sigplan` 选项 |
 
 ---
 
@@ -149,8 +179,9 @@ This document lists all authoritative sources used to build this skill, organize
 ### For Word Choice & Style
 → Start with: Zachary Lipton, Jacob Steinhardt
 
-### For Conference-Specific Requirements
-→ Start with: Official venue guidelines (NeurIPS, ICML, ICLR, ACL)
+### For Conference-Specific Requirements / 会议特定要求
+→ ML/AI: Start with official venue guidelines (NeurIPS, ICML, ICLR, ACL)
+→ Systems: Start with official CFP pages (OSDI, NSDI, ASPLOS, SOSP)
 
 ### For Citation Management
 → Start with: Semantic Scholar API, CrossRef, citation-workflow.md

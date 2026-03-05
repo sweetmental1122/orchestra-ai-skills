@@ -1,0 +1,144 @@
+% SOSP 2026 Paper Template
+% The 32nd ACM Symposium on Operating Systems Principles
+% Conference: September 30, 2026
+%
+% Format: ACM SIGPLAN, ≤12 pages technical content (excluding references)
+%         A4 or US letter, 178×229mm (7×9") text block
+%         Two-column, 8mm separation, 10pt on 12pt leading
+%
+% Official CFP: https://sigops.org/s/conferences/sosp/2026/cfp.html
+% ACM Template: https://www.acm.org/publications/proceedings-template
+%
+% IMPORTANT NOTES:
+% - Double-blind review (use paper ID, not author names)
+% - Anonymized system/project name required (different from arXiv/talks)
+% - Optional Artifact Evaluation after acceptance
+% - Author response period available
+%   → Limited to: correcting factual errors + addressing questions
+%   → NO new experiments or additional work
+%   → Keep under 500 words
+% - Supplementary material allowed (reviewers not required to read)
+% - Figures/tables readable without magnification, color encouraged
+% - Pages numbered, references hyperlinked
+
+\documentclass[sigplan,10pt]{acmart}
+
+% Remove copyright/permission footer for submission
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\settopmatter{printfolios=true}
+
+% Remove ACM reference format for submission
+\setcopyright{none}
+\renewcommand\acmConference[4]{}
+\acmDOI{}
+\acmISBN{}
+
+% Recommended packages
+\usepackage{booktabs}
+\usepackage{xspace}
+\usepackage{subcaption}
+
+% Custom commands
+\newcommand{\system}{SystemName\xspace}  % Replace with your anonymized system name
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\etal}{\textit{et al.}\xspace}
+
+\begin{document}
+
+\title{Your Paper Title Here}
+
+% Anonymized for submission - use paper ID
+\author{Paper \#XXX}
+\affiliation{}
+
+% Camera-ready:
+% \author{Author One}
+% \affiliation{%
+%   \institution{University/Company}
+%   \city{City}
+%   \country{Country}}
+% \email{email@example.com}
+
+\begin{abstract}
+% Write your abstract here.
+Your abstract goes here. Summarize your contribution to computer systems
+software design, implementation, analysis, evaluation, or deployment.
+\end{abstract}
+
+\maketitle
+\pagestyle{plain}
+
+\section{Introduction}
+\label{sec:intro}
+
+% SOSP encourages groundbreaking work in significant new directions.
+% Evaluation criteria for papers addressing new problems may differ
+% from those in established areas.
+%
+% A good SOSP paper:
+% - Motivates a significant problem
+% - Proposes and implements an interesting, compelling solution
+% - Demonstrates the practicality and benefits of the solution
+% - Draws appropriate conclusions
+% - Clearly describes contributions and advances beyond previous work
+
+Your introduction goes here. Clearly state the problem, your approach,
+and your contributions.
+
+\section{Background and Motivation}
+\label{sec:background}
+
+Provide necessary background and motivation for your systems work.
+
+\section{Design}
+\label{sec:design}
+
+Describe the design of your system.
+
+\section{Implementation}
+\label{sec:implementation}
+
+Describe implementation details.
+
+\section{Evaluation}
+\label{sec:evaluation}
+
+Present your evaluation results with real workloads.
+
+\subsection{Experimental Setup}
+
+Describe your experimental setup, workloads, and baselines.
+
+\subsection{End-to-End Performance}
+
+Present end-to-end system performance results.
+
+\subsection{Microbenchmarks}
+
+Present targeted microbenchmarks to explain specific design decisions.
+
+\section{Discussion}
+\label{sec:discussion}
+
+Discuss limitations, lessons learned, and future directions.
+
+\section{Related Work}
+\label{sec:related}
+
+Discuss related work in operating systems and systems software.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Summarize your contributions and key findings.
+
+% Acknowledgments (only in camera-ready, remove for submission)
+% \begin{acks}
+% We thank...
+% \end{acks}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{references}
+
+\end{document}

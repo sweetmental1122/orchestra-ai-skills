@@ -1,0 +1,127 @@
+% OSDI 2026 Paper Template
+% The 20th USENIX Symposium on Operating Systems Design and Implementation
+% July 13-15, 2026, Seattle, WA, USA
+%
+% Format: ≤12 pages (excluding references), 8.5"x11", 10pt on 12pt leading,
+%         two-column, Times Roman, 7"x9" text block
+% Camera-ready: ≤14 pages
+%
+% Official CFP: https://www.usenix.org/conference/osdi26/call-for-papers
+% Template source: https://www.usenix.org/conferences/author-resources/paper-templates
+%
+% IMPORTANT NOTES:
+% - OSDI 2026 has two tracks: Research and Operational Systems
+% - For Operational Systems track, title must end with "(Operational Systems)"
+% - Max 8 submissions per author
+% - Papers should be the right length (not padded to 12 pages)
+% - Papers ≤6 pages are unlikely to receive full consideration
+% - Use anonymized project/system name (different from arXiv/talks)
+
+\documentclass[letterpaper,twocolumn,10pt]{article}
+\usepackage{usenix-2020-09}
+
+% Recommended packages
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{xspace}
+
+% Custom commands
+\newcommand{\system}{SystemName\xspace}  % Replace with your anonymized system name
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+\newcommand{\etal}{\textit{et al.}\xspace}
+
+\begin{document}
+
+% For submission: use anonymized title and Paper #XXX as author
+% For Operational Systems track: add "(Operational Systems)" to title
+\title{Your Paper Title Here}
+% \title{Your Paper Title Here (Operational Systems)}  % For Operational Systems track
+
+\author{Paper \#XXX}  % Anonymized for submission
+% Camera-ready:
+% \author{
+%   Author One\\
+%   \textit{Affiliation One}\\
+%   \texttt{email@example.com}
+%   \and
+%   Author Two\\
+%   \textit{Affiliation Two}\\
+%   \texttt{email@example.com}
+% }
+
+\maketitle
+
+\begin{abstract}
+% Write your abstract here.
+% Guidelines:
+% - State what you achieved
+% - Why this is hard and important
+% - How you do it
+% - What evidence you have
+% - Your most remarkable result
+Your abstract goes here. Replace this text with a concise summary of your
+contribution, approach, and key results.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+
+% Motivate the problem and state your contributions clearly.
+% OSDI reviewers look for:
+% - Significant problem motivation
+% - Interesting and compelling solution
+% - Practicality and benefits demonstrated
+% - Clear contribution articulation
+% - Advances beyond previous work
+
+Your introduction goes here. Clearly state the problem, your approach,
+and your contributions.
+
+\section{Background and Motivation}
+\label{sec:background}
+
+Provide necessary background and motivation for your work.
+
+\section{Design}
+\label{sec:design}
+
+Describe the design of your system.
+
+\section{Implementation}
+\label{sec:implementation}
+
+Describe implementation details.
+
+\section{Evaluation}
+\label{sec:evaluation}
+
+Present your evaluation results.
+
+\subsection{Experimental Setup}
+
+Describe your experimental setup, workloads, and baselines.
+
+\subsection{Results}
+
+Present and discuss your results.
+
+\section{Related Work}
+\label{sec:related}
+
+Discuss related work. Organize methodologically, not paper-by-paper.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Summarize your contributions and key findings.
+
+% Bibliography
+{\footnotesize \bibliographystyle{acm}
+\bibliography{references}}
+
+\end{document}
