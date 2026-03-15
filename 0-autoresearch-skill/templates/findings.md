@@ -20,6 +20,18 @@
 <!-- What emerges across multiple experiments? What types of changes
      consistently work or fail? Why? -->
 
+## Lessons and Constraints
+
+<!-- Specific actionable learnings that should guide future experiments.
+     Things you tried that didn't work and WHY, so you don't repeat them.
+     Constraints you discovered about the problem space.
+
+     Examples:
+     - Weight decay > 0.1 causes training instability at 125M param scale
+     - SwiGLU and RoPE improvements stack because they're orthogonal (FFN vs positional)
+     - Baseline only reproduces published numbers with batch_size=64, not 32
+     - Sleep phases before memorization completion hurt — model needs memories to consolidate -->
+
 ## Open Questions
 
 <!-- What remains unanswered? What would strengthen or challenge

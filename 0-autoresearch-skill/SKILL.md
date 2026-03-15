@@ -215,14 +215,18 @@ Don't just pick randomly — use these criteria:
 
 Note: coherent negative results are a valid contribution. "X does NOT work because Y" is publishable if the reasoning is rigorous.
 
-### findings.md Is the Key Artifact
+### findings.md Is Your Project Memory
 
-This is the continuously evolving narrative of your research understanding. After every outer loop, it should answer:
+This file serves two purposes: it's the research narrative for humans AND your accumulated knowledge base as an agent. Read it at the start of every session, /loop tick, or heartbeat to remember what you've learned.
 
-- What do we know so far?
-- What patterns explain our results?
-- What's our current best explanation (mechanistic, not just correlational)?
-- What remains open?
+After every outer loop, update it to answer:
+
+- What do we know so far? (Current Understanding)
+- What patterns explain our results? (Patterns and Insights)
+- What specific things did we learn not to repeat? (Lessons and Constraints)
+- What remains open? (Open Questions)
+
+The "Lessons and Constraints" section is especially important — it captures specific actionable learnings like "weight decay > 0.1 diverges at this scale" or "baseline only reproduces with batch_size=64." This prevents the agent from repeating failed approaches across sessions.
 
 **Quality test**: After 30 inner loop experiments, a human should be able to read findings.md and write a paper abstract from it. If they can't, the outer loop isn't synthesizing — it's just logging.
 
@@ -238,7 +242,7 @@ Use `/loop` to keep the research running:
 /loop 15m
 ```
 
-On each tick: read `research-state.yaml`, continue whatever you were doing. If an experiment is still running, check on it. If it finished, process results and start the next one. If enough results have accumulated, reflect.
+On each tick: read `research-state.yaml` and `findings.md` to remember where you are and what you've learned. Continue whatever you were doing. If an experiment is still running, check on it. If it finished, process results and start the next one. If enough results have accumulated, reflect.
 
 The `/loop` is a nudge to keep working, not a research phase boundary. If the previous tick's work isn't done, just continue it. Adjust the interval to match your experiment speed (`/loop 10m` for fast experiments, `/loop 30m` for slower ones).
 
