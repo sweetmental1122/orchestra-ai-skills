@@ -294,7 +294,7 @@ When you have something meaningful to share, create a research presentation — 
 - Current understanding (the findings narrative)
 - What's planned next
 
-For Claude Code: generate HTML and `open` it. For OpenClaw: generate PDF.
+For Claude Code: generate HTML and `open` it. If HTML fails to open or render, convert to PDF as fallback (use `weasyprint`, `playwright pdf`, or `wkhtmltopdf`). For OpenClaw: generate PDF directly.
 
 See [references/progress-reporting.md](references/progress-reporting.md) for template scaffolding and the optimization plot approach. Use the template as a starting point — be creative with what you show.
 
