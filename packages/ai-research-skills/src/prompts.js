@@ -5,6 +5,7 @@ import chalk from 'chalk';
  * Skill categories with their skill counts and example skills
  */
 export const CATEGORIES = [
+  { id: '0-autoresearch-skill', name: 'Autoresearch', skills: 1, examples: 'Autonomous research orchestration' },
   { id: '01-model-architecture', name: 'Model Architecture', skills: 6, examples: 'LitGPT, Mamba, TorchTitan, Megatron' },
   { id: '02-tokenization', name: 'Tokenization', skills: 2, examples: 'HuggingFace Tokenizers, SentencePiece' },
   { id: '03-fine-tuning', name: 'Fine-Tuning', skills: 5, examples: 'Axolotl, Unsloth, Torchtune, PEFT' },
@@ -62,6 +63,8 @@ export const INDIVIDUAL_SKILLS = [
   { id: '15-rag/chroma', name: 'Chroma', category: 'RAG' },
   // Paper Writing
   { id: '20-ml-paper-writing', name: 'ML Paper Writing', category: 'Writing' },
+  // Autoresearch
+  { id: '0-autoresearch-skill', name: 'Autoresearch', category: 'Research' },
 ];
 
 /**
@@ -82,6 +85,7 @@ export const QUICK_START_SKILLS = [
   '16-prompt-engineering/dspy',
   '15-rag/chroma',
   '20-ml-paper-writing',
+  '0-autoresearch-skill',
 ];
 
 /**

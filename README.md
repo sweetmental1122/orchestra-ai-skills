@@ -17,12 +17,12 @@
 
 <div align="center">
 
-### **85 Skills Powering AI Research in 2026**
+### **86 Skills Powering AI Research in 2026**
 
 </div>
 
 <details>
-<summary><b>View All 21 Categories</b></summary>
+<summary><b>View All 22 Categories</b></summary>
 
 <div align="center">
 
@@ -35,6 +35,7 @@
 | **Multimodal** (7) | **Prompt Engineering** (4) | **MLOps** (3) |
 | **Observability** (2) | **Infrastructure** (3) | **Mech Interp** (4) |
 | **Emerging Techniques** (6) | **ML Paper Writing** (1) | **Ideation** (2) |
+| **Autoresearch** (1) | | |
 
 </div>
 
@@ -71,7 +72,7 @@ Modern AI research requires mastering dozens of specialized tools and frameworks
 AI Researchers spend more time debugging infrastructure than testing hypotheses—slowing the pace of scientific discovery. 
 We provide a comprehensive library of expert-level research engineering skills that enable AI agents to autonomously implement and execute different stages of AI research experiments—from data preparation and model training to evaluation and deployment.
   - Specialized Expertise - Each skill provides deep, production-ready knowledge of a specific framework (Megatron-LM, vLLM, TRL, etc.)
-  - End-to-End Coverage - 85 skills spanning the full AI research lifecycle, from model architecture to deployment
+  - End-to-End Coverage - 86 skills spanning the full AI research lifecycle, from model architecture to deployment
   - Research-Grade Quality - Documentation sourced from official repos, real GitHub issues, and battle-tested production workflows
 
 ## Available AI Research Engineering Skills
@@ -126,7 +127,7 @@ Install skill categories directly using the **Claude Code CLI**:
 
 </details>
 
-### All 21 Categories (85 Skills)
+### All 22 Categories (86 Skills)
 
 | Category | Skills | Included |
 |----------|--------|----------|
@@ -151,9 +152,10 @@ Install skill categories directly using the **Claude Code CLI**:
 | Emerging | 6 | MoE, Model Merging, Long Context, Speculative Decoding, Distillation, Pruning |
 | ML Paper Writing | 1 | ML Paper Writing (LaTeX templates, citation verification) |
 | Ideation | 2 | Research Brainstorming, Creative Thinking |
+| Autoresearch | 1 | Autonomous research orchestration (two-loop architecture) |
 
 <details>
-<summary><b>View All 85 Skills in Details</b></summary>
+<summary><b>View All 86 Skills in Details</b></summary>
 
 ### 🏗️ Model Architecture (5 skills)
 - **[LitGPT](01-model-architecture/litgpt/)** - Lightning AI's 20+ clean LLM implementations with production training recipes (462 lines + 4 refs)
@@ -283,12 +285,15 @@ Install skill categories directly using the **Claude Code CLI**:
 - **[Research Brainstorming](21-research-ideation/brainstorming-research-ideas/)** - Structured ideation frameworks for discovering high-impact research directions with 10 complementary lenses (384 lines)
 - **[Creative Thinking](21-research-ideation/creative-thinking-for-research/)** - Cognitive science frameworks (bisociation, structure-mapping, constraint manipulation) for genuinely novel research ideas (366 lines)
 
+### 🔬 Autoresearch (1 skill)
+- **[Autoresearch](0-autoresearch-skill/)** - Autonomous research orchestration using a two-loop architecture (inner optimization + outer synthesis). Manages the full lifecycle from literature survey to paper writing, routing to domain-specific skills. Supports Claude Code /loop and OpenClaw heartbeat for continuous operation (390 lines + 3 refs)
+
 
 </details>
 
 ## Demos
 
-All 85 skills in this repo are automatically synced to [Orchestra Research](https://www.orchestra-research.com/research-skills), where you can add them to your projects with one click and use them with AI research agents.
+All 86 skills in this repo are automatically synced to [Orchestra Research](https://www.orchestra-research.com/research-skills), where you can add them to your projects with one click and use them with AI research agents.
 
 **See skills in action → [demos/](demos/README.md)**
 
@@ -350,12 +355,12 @@ We're building towards 80 comprehensive skills across the full AI research lifec
 
 | Metric | Current | Target |
 |--------|---------|--------|
-| **Skills** | **85** (high-quality, standardized YAML) | 80 ✅ |
+| **Skills** | **86** (high-quality, standardized YAML) | 80 ✅ |
 | **Avg Lines/Skill** | **420 lines** (focused + progressive disclosure) | 200-600 lines |
 | **Documentation** | **~130,000 lines** total (SKILL.md + references) | 100,000+ lines |
 | **Gold Standard Skills** | **65** with comprehensive references | 50+ |
 | **Contributors** | 1 | 100+ |
-| **Coverage** | Architecture, Tokenization, Fine-Tuning, Mechanistic Interpretability, Data Processing, Post-Training, Safety, Distributed, Optimization, Evaluation, Infrastructure, Inference, Agents, RAG, Multimodal, Prompt Engineering, MLOps, Observability, ML Paper Writing, Ideation | Full Lifecycle ✅ |
+| **Coverage** | Architecture, Tokenization, Fine-Tuning, Mechanistic Interpretability, Data Processing, Post-Training, Safety, Distributed, Optimization, Evaluation, Infrastructure, Inference, Agents, RAG, Multimodal, Prompt Engineering, MLOps, Observability, ML Paper Writing, Ideation, Autoresearch | Full Lifecycle ✅ |
 
 **Recent Progress**: npm package `@orchestra-research/ai-research-skills` for one-command installation across all coding agents
 
@@ -372,7 +377,8 @@ claude-ai-research-skills/
 ├── README.md                    ← You are here
 ├── CONTRIBUTING.md              ← Contribution guide
 ├── demos/                       ← Curated demo gallery (links to demo repos)
-├── docs/ 
+├── docs/
+├── 0-autoresearch-skill/        (1 skill ✓ - Autonomous research orchestration)
 ├── 01-model-architecture/       (5 skills ✓ - LitGPT, Mamba, RWKV, NanoGPT, TorchTitan)
 ├── 02-tokenization/             (2 skills ✓ - HuggingFace Tokenizers, SentencePiece)
 ├── 03-fine-tuning/              (4 skills ✓ - Axolotl, LLaMA-Factory, Unsloth, PEFT)
