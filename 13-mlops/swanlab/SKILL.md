@@ -1,11 +1,11 @@
 ---
 name: experiment-tracking-swanlab
-description: Track ML experiments with SwanLab, visualize metrics and media, compare runs across configurations, use local or self-hosted dashboards, and integrate with PyTorch, Transformers, PyTorch Lightning, or Fastai
+description: Provides guidance for experiment tracking with SwanLab. Use when you need open-source run tracking, local or self-hosted dashboards, and lightweight media logging for ML workflows.
 version: 1.0.0
 author: Orchestra Research
 license: MIT
 tags: [MLOps, SwanLab, Experiment Tracking, Open Source, Visualization, PyTorch, Transformers, PyTorch Lightning, Fastai, Self-Hosted]
-dependencies: ["swanlab[media,dashboard]>=0.7.11"]
+dependencies: [swanlab>=0.7.11, pillow>=9.0.0, soundfile>=0.12.0]
 ---
 
 # SwanLab: Open-Source Experiment Tracking
@@ -24,8 +24,11 @@ Use SwanLab when you need to:
 ## Installation
 
 ```bash
-# Install SwanLab with media and local dashboard support
-pip install "swanlab[media,dashboard]>=0.7.11"
+# Install SwanLab plus the media dependencies used in this skill
+pip install "swanlab>=0.7.11" "pillow>=9.0.0" "soundfile>=0.12.0"
+
+# Add local dashboard support for mode="local" and swanlab watch
+pip install "swanlab[dashboard]>=0.7.11"
 
 # Optional framework integrations
 pip install transformers pytorch-lightning fastai
@@ -34,7 +37,7 @@ pip install transformers pytorch-lightning fastai
 swanlab login
 ```
 
-`swanlab[media,dashboard]` adds the media dependencies used by Image/Audio/Video/Molecule examples and the local dashboard dependency required by `mode="local"` and `swanlab watch`.
+`pillow` and `soundfile` are the media dependencies used by the Image and Audio examples in this skill. `swanlab[dashboard]` adds the local dashboard dependency required by `mode="local"` and `swanlab watch`.
 
 ## Quick Start
 

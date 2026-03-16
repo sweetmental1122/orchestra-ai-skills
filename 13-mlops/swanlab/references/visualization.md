@@ -226,8 +226,8 @@ image = np.clip(image * 255, 0, 255).astype(np.uint8)
 
 ### Media imports fail
 
-Install the media extras:
+Install the media dependencies used in this skill:
 
 ```bash
-pip install "swanlab[media,dashboard]>=0.7.11"
+pip install "swanlab>=0.7.11" "pillow>=9.0.0" "soundfile>=0.12.0"
 ```
