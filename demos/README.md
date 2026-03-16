@@ -105,20 +105,42 @@ Quantifies how well multilingual embeddings align semantic concepts across 8 lan
 
 ---
 
+### 5. Autoresearch: Embedding Norm Heterogeneity Drives LoRA Brittleness
+
+**Paper:** [autoresearch-norm-heterogeneity/](autoresearch-norm-heterogeneity/)
+
+**Skills Used:** [Autoresearch](../0-autoresearch-skill/), [ML Paper Writing](../20-ml-paper-writing/), [Research Ideation](../21-research-ideation/)
+
+**What It Does:**
+An AI agent ran the full autoresearch workflow autonomously. Starting from a hypothesis about ETF crystallization, the agent discovered a null result — ETF overlaps do NOT predict fine-tuning difficulty — then **pivoted** to identify embedding norm heterogeneity as the actual causal predictor (r=-0.99 at 1.4B scale). The agent wrote the paper end-to-end.
+
+**Why It's Impressive:**
+The research pivot was autonomous. The agent refuted its own starting hypothesis, identified a better predictor, validated it causally (equalizing norms improves fine-tunability by 79%), and wrote a paper with a stronger finding than the original plan.
+
+---
+
+### 6. Autoresearch: The RL Algorithm Brain Scan
+
+**Paper:** [autoresearch-rl-brain-scan/](autoresearch-rl-brain-scan/)
+
+**Skills Used:** [Autoresearch](../0-autoresearch-skill/), [GRPO RL Training](../06-post-training/grpo-rl-training/), [TRL](../06-post-training/trl-fine-tuning/), [SAELens](../04-mechanistic-interpretability/saelens/), [TransformerLens](../04-mechanistic-interpretability/transformer-lens/), [ML Paper Writing](../20-ml-paper-writing/)
+
+**What It Does:**
+An AI agent systematically compared what RLOO, GRPO, and DPO do to model internals using SVD analysis of weight deltas and SAE feature overlap. Key discovery: DPO is a rank-1 perturbation (one SVD direction recovers 95.6% of its behavioral effect), while online RL methods produce distributed, structure-preserving changes.
+
+**Why It's Impressive:**
+The agent orchestrated multiple domain skills (RL training, mechanistic interpretability, paper writing) across the full research lifecycle. The insight that "DPO is rank-1 alignment" is a conceptual contribution that emerged from the outer synthesis loop — not just metric optimization.
+
+---
+
 ## Coming Soon
 
-### 5. ML Paper Writing: From Repo to Publication
+### ML Paper Writing: From Repo to Publication
 
 **Skills Used:** [ML Paper Writing](../20-ml-paper-writing/)
 
 **What It Will Do:**
 Transform a research repository with experimental results into a publication-ready paper for top ML conferences (NeurIPS, ICML, ICLR).
-
-**Planned Contents:**
-- Source research repo with code and results
-- Generated paper draft (LaTeX)
-- Citation verification workflow
-- Before/after comparison
 
 *Status: In development*
 
