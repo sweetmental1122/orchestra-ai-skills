@@ -8,7 +8,7 @@ npx @orchestra-research/ai-research-skills
 
 ## Features
 
-- **83 skills** across 20 categories for AI research engineering
+- **86 skills** across 22 categories for AI research engineering
 - **Auto-detects** installed coding agents
 - **Interactive installer** with guided experience
 - **Global or local install** — install globally with symlinks, or per-project with `--local` for version-controlled, project-specific skill sets
@@ -91,13 +91,14 @@ Benefits:
 
 | Category | Skills | Description |
 |----------|--------|-------------|
+| **Autoresearch** | **1** | **Central orchestration — manages full research lifecycle, routes to all other skills** |
 | Model Architecture | 6 | LitGPT, Mamba, TorchTitan, Megatron... |
 | Post-Training | 8 | GRPO, verl, slime, miles, torchforge... |
 | Fine-Tuning | 5 | Axolotl, Unsloth, PEFT, Torchtune... |
 | Distributed Training | 6 | DeepSpeed, FSDP, Megatron... |
 | Inference Serving | 4 | vLLM, TensorRT-LLM, SGLang... |
 | Optimization | 6 | Flash Attention, GPTQ, AWQ... |
-| And 14 more... | | |
+| And 15 more... | | Ideation, Paper Writing, RAG, Agents, Multimodal... |
 
 ## How It Works
 

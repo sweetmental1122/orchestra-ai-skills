@@ -216,7 +216,7 @@ export async function askLocalConfirmation(skillCount, agents, projectDir, categ
 
   // Description based on install type
   if (installType === 'everything') {
-    console.log(chalk.dim('    All 20 categories'));
+    console.log(chalk.dim('    All 22 categories'));
   } else if (installType === 'quickstart') {
     console.log(chalk.dim('    Essential skills for AI research'));
   } else if (categories && categories.length > 0) {
@@ -502,7 +502,7 @@ export async function askConfirmation(skillCount, agents, selectedCategories, se
 
   // Description based on install type
   if (installType === 'everything') {
-    console.log(chalk.dim('    All 20 categories including:'));
+    console.log(chalk.dim('    All 22 categories including:'));
     console.log(chalk.dim('    Post-Training, Fine-Tuning, Inference, Distributed Training,'));
     console.log(chalk.dim('    Optimization, Evaluation, MLOps, RAG, Agents, Paper Writing...'));
   } else if (installType === 'quickstart') {

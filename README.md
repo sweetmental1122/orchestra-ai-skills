@@ -28,14 +28,14 @@
 
 | | | |
 |:---:|:---:|:---:|
+| **Autoresearch** (1) | **Ideation** (2) | **ML Paper Writing** (1) |
 | **Model Architecture** (5) | **Fine-Tuning** (4) | **Post-Training** (8) |
 | **Distributed Training** (6) | **Optimization** (6) | **Inference** (4) |
 | **Tokenization** (2) | **Data Processing** (2) | **Evaluation** (3) |
 | **Safety & Alignment** (4) | **Agents** (4) | **RAG** (5) |
 | **Multimodal** (7) | **Prompt Engineering** (4) | **MLOps** (3) |
 | **Observability** (2) | **Infrastructure** (3) | **Mech Interp** (4) |
-| **Emerging Techniques** (6) | **ML Paper Writing** (1) | **Ideation** (2) |
-| **Autoresearch** (1) | | |
+| **Emerging Techniques** (6) | | |
 
 </div>
 
@@ -117,7 +117,7 @@ Install skill categories directly using the **Claude Code CLI**:
 # Add the marketplace
 /plugin marketplace add orchestra-research/AI-research-SKILLs
 
-# Install by category (21 categories available)
+# Install by category (22 categories available)
 /plugin install fine-tuning@ai-research-skills        # Axolotl, LLaMA-Factory, PEFT, Unsloth
 /plugin install post-training@ai-research-skills      # TRL, GRPO, OpenRLHF, SimPO, verl, slime, miles, torchforge
 /plugin install inference-serving@ai-research-skills  # vLLM, TensorRT-LLM, llama.cpp, SGLang
@@ -131,6 +131,9 @@ Install skill categories directly using the **Claude Code CLI**:
 
 | Category | Skills | Included |
 |----------|--------|----------|
+| **Autoresearch** | **1** | **Autonomous research orchestration — central layer that manages the full lifecycle and routes to all other skills** |
+| Ideation | 2 | Research Brainstorming, Creative Thinking |
+| ML Paper Writing | 1 | ML Paper Writing (LaTeX templates, citation verification) |
 | Model Architecture | 5 | LitGPT, Mamba, NanoGPT, RWKV, TorchTitan |
 | Tokenization | 2 | HuggingFace Tokenizers, SentencePiece |
 | Fine-Tuning | 4 | Axolotl, LLaMA-Factory, PEFT, Unsloth |
@@ -150,12 +153,12 @@ Install skill categories directly using the **Claude Code CLI**:
 | Observability | 2 | LangSmith, Phoenix |
 | Multimodal | 7 | CLIP, Whisper, LLaVA, BLIP-2, SAM, Stable Diffusion, AudioCraft |
 | Emerging | 6 | MoE, Model Merging, Long Context, Speculative Decoding, Distillation, Pruning |
-| ML Paper Writing | 1 | ML Paper Writing (LaTeX templates, citation verification) |
-| Ideation | 2 | Research Brainstorming, Creative Thinking |
-| Autoresearch | 1 | Autonomous research orchestration (two-loop architecture) |
 
 <details>
 <summary><b>View All 86 Skills in Details</b></summary>
+
+### 🔬 Autoresearch (1 skill) — Central Orchestration Layer
+- **[Autoresearch](0-autoresearch-skill/)** - Autonomous research orchestration using a two-loop architecture (inner optimization + outer synthesis). Manages the full lifecycle from literature survey to paper writing, routing to all domain-specific skills. Supports Claude Code /loop and OpenClaw heartbeat for continuous operation (390 lines + 3 refs)
 
 ### 🏗️ Model Architecture (5 skills)
 - **[LitGPT](01-model-architecture/litgpt/)** - Lightning AI's 20+ clean LLM implementations with production training recipes (462 lines + 4 refs)
@@ -284,9 +287,6 @@ Install skill categories directly using the **Claude Code CLI**:
 ### 💡 Ideation (2 skills)
 - **[Research Brainstorming](21-research-ideation/brainstorming-research-ideas/)** - Structured ideation frameworks for discovering high-impact research directions with 10 complementary lenses (384 lines)
 - **[Creative Thinking](21-research-ideation/creative-thinking-for-research/)** - Cognitive science frameworks (bisociation, structure-mapping, constraint manipulation) for genuinely novel research ideas (366 lines)
-
-### 🔬 Autoresearch (1 skill)
-- **[Autoresearch](0-autoresearch-skill/)** - Autonomous research orchestration using a two-loop architecture (inner optimization + outer synthesis). Manages the full lifecycle from literature survey to paper writing, routing to domain-specific skills. Supports Claude Code /loop and OpenClaw heartbeat for continuous operation (390 lines + 3 refs)
 
 
 </details>
