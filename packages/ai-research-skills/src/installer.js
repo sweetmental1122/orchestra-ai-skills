@@ -401,6 +401,7 @@ export function getAllCategoryIds() {
     '19-emerging-techniques',
     '20-ml-paper-writing',
     '21-research-ideation',
+    '0-autoresearch-skill',
   ];
 }
 

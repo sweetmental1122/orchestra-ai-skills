@@ -26,6 +26,7 @@ export const CATEGORIES = [
   { id: '18-multimodal', name: 'Multimodal', skills: 7, examples: 'CLIP, Whisper, LLaVA, Qwen2-VL' },
   { id: '19-emerging-techniques', name: 'Emerging Techniques', skills: 6, examples: 'MoE, Model Merging, Speculative Decoding' },
   { id: '20-ml-paper-writing', name: 'ML Paper Writing', skills: 1, examples: 'NeurIPS/ICML paper writing' },
+  { id: '21-research-ideation', name: 'Research Ideation', skills: 2, examples: 'Brainstorming, Creative Thinking' },
 ];
 
 /**
@@ -63,6 +64,9 @@ export const INDIVIDUAL_SKILLS = [
   { id: '15-rag/chroma', name: 'Chroma', category: 'RAG' },
   // Paper Writing
   { id: '20-ml-paper-writing', name: 'ML Paper Writing', category: 'Writing' },
+  // Ideation
+  { id: '21-research-ideation/brainstorming-research-ideas', name: 'Research Brainstorming', category: 'Ideation' },
+  { id: '21-research-ideation/creative-thinking-for-research', name: 'Creative Thinking', category: 'Ideation' },
   // Autoresearch
   { id: '0-autoresearch-skill', name: 'Autoresearch', category: 'Research' },
 ];
