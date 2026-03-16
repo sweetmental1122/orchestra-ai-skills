@@ -1,503 +1,360 @@
 ---
-name: swanlab
-description: Track ML experiments with SwanLab - open-source alternative to W&B with real-time visualization, China-friendly network access, and self-hosted deployment support
+name: experiment-tracking-swanlab
+description: Provides guidance for experiment tracking with SwanLab. Use when you need open-source run tracking, local or self-hosted dashboards, and lightweight media logging for ML workflows.
 version: 1.0.0
-author: ckd0817
+author: Orchestra Research
 license: MIT
-tags: [MLOps, SwanLab, Experiment Tracking, Open Source, Visualization, PyTorch, HuggingFace, Self-Hosted, China-Friendly]
-dependencies: [swanlab]
+tags: [MLOps, SwanLab, Experiment Tracking, Open Source, Visualization, PyTorch, Transformers, PyTorch Lightning, Fastai, Self-Hosted]
+dependencies: ["swanlab[media,dashboard]>=0.7.11"]
 ---
 
-# SwanLab: Open-Source ML Experiment Tracking
+# SwanLab: Open-Source Experiment Tracking
 
 ## When to Use This Skill
 
 Use SwanLab when you need to:
-- **Track ML experiments** with automatic metric logging - free and open-source
-- **Visualize training** in real-time dashboards with modern UI
-- **Compare runs** across hyperparameters and configurations
-- **Log multimodal data** (images, audio, text, video, 3D objects)
-- **Self-host** your experiment tracking infrastructure
-- **Work in China** without VPN or network restrictions
-- **Integrate with PyTorch, HuggingFace Transformers, Fastai**
+- Track training and evaluation metrics with a lightweight API
+- Compare runs across configs, seeds, and checkpoints
+- Keep dashboards local or self-hosted instead of depending on a managed SaaS
+- Log images, audio, text, GIFs, point clouds, and molecules during experiments
+- Integrate tracking into PyTorch, Transformers, PyTorch Lightning, or Fastai
 
-**Key Advantages over W&B**:
-- Completely free and open-source (Apache 2.0 license)
-- No network restrictions in China mainland
-- Supports both cloud and self-hosted deployment
-- Modern, customizable visualization with ECharts
-- Lightweight and easy to set up
-
-**GitHub Stars**: 3k+ | **License**: Apache 2.0 | **Language**: Python/TypeScript
+Choose other tools when you specifically need:
+- Mature artifact registries and file lineage: see `13-mlops/mlflow/`
+- Team-heavy collaboration and hosted workflows: see `13-mlops/weights-and-biases/`
+- Simple local scalar curves only: see `13-mlops/tensorboard/`
 
 ## Installation
 
 ```bash
-# Install SwanLab
-pip install swanlab
+# Base package plus media helpers used by Image/Audio/Video/Molecule examples
+pip install "swanlab[media,dashboard]>=0.7.11"
 
-# Login to SwanLab cloud (optional - for cloud tracking)
+# Optional framework integrations
+pip install transformers pytorch-lightning fastai
+
+# Log in only when you want cloud or self-hosted sync
 swanlab login
-
-# Or set API key via environment variable
-export SWANLAB_API_KEY=your_api_key_here
 ```
+
+`swanlab[media,dashboard]` adds the media dependencies used by Image/Audio/Video/Molecule examples and the local dashboard dependency required by `mode="local"` and `swanlab watch`.
 
 ## Quick Start
 
-### Basic Experiment Tracking
-
 ```python
 import swanlab
 
-# Initialize an experiment
 run = swanlab.init(
     project="my-project",
-    experiment_name="experiment-1",
+    experiment_name="baseline",
     config={
-        "learning_rate": 0.001,
+        "learning_rate": 1e-3,
         "epochs": 10,
         "batch_size": 32,
-        "architecture": "ResNet50"
-    }
+        "model": "resnet18",
+    },
 )
 
-# Training loop
 for epoch in range(run.config.epochs):
-    # Your training code
     train_loss = train_epoch()
     val_loss = validate()
 
-    # Log metrics
-    swanlab.log({
-        "epoch": epoch,
-        "train/loss": train_loss,
-        "val/loss": val_loss,
-        "train/accuracy": train_acc,
-        "val/accuracy": val_acc
-    })
+    swanlab.log(
+        {
+            "train/loss": train_loss,
+            "val/loss": val_loss,
+            "epoch": epoch,
+        }
+    )
 
-# Finish the experiment
 run.finish()
 ```
 
-### With PyTorch
+## Core Workflow
+
+### 1. Initialize runs and configs
 
 ```python
-import torch
 import swanlab
 
-# Initialize
-run = swanlab.init(
-    project="pytorch-demo",
-    config={
-        "lr": 0.001,
-        "epochs": 10
-    }
-)
-
-# Access config
-config = run.config
-
-# Training loop
-for epoch in range(config.epochs):
-    for batch_idx, (data, target) in enumerate(train_loader):
-        # Forward pass
-        output = model(data)
-        loss = criterion(output, target)
-
-        # Backward pass
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
-
-        # Log every 100 batches
-        if batch_idx % 100 == 0:
-            swanlab.log({
-                "loss": loss.item(),
-                "epoch": epoch,
-                "batch": batch_idx
-            })
-
-# Save model
-torch.save(model.state_dict(), "model.pth")
-
-run.finish()
-```
-
-## Core Concepts
-
-### 1. Projects and Experiments
-
-**Project**: Collection of related experiments
-**Experiment**: Single execution of your training script
-
-```python
-# Create/use project
 run = swanlab.init(
     project="image-classification",
-    experiment_name="resnet50-experiment-1",  # Optional experiment name
-    description="First baseline run",         # Add description
-    tags=["baseline", "resnet"],              # Organize with tags
-    config={"model": "ResNet50"}              # Hyperparameters
+    experiment_name="resnet18-seed42",
+    description="Baseline run on ImageNet subset",
+    tags=["baseline", "resnet18"],
+    config={
+        "model": "resnet18",
+        "seed": 42,
+        "batch_size": 64,
+        "learning_rate": 3e-4,
+    },
 )
 
-# Each run has unique ID
-print(f"Run ID: {run.id}")
-print(f"Run URL: {run.url}")
+print(run.id)
+print(run.config.learning_rate)
 ```
 
-### 2. Configuration Tracking
-
-Track hyperparameters automatically:
+### 2. Log metrics with stable names
 
 ```python
-config = {
-    # Model architecture
-    "model": "ResNet50",
-    "pretrained": True,
+swanlab.log({"loss": 0.42, "accuracy": 0.91})
 
-    # Training params
-    "learning_rate": 0.001,
-    "batch_size": 32,
-    "epochs": 50,
-    "optimizer": "Adam",
-
-    # Data params
-    "dataset": "ImageNet",
-    "augmentation": "standard"
-}
-
-run = swanlab.init(project="my-project", config=config)
-
-# Access config during training
-lr = run.config.learning_rate
-batch_size = run.config.batch_size
+swanlab.log(
+    {
+        "train/loss": train_loss,
+        "train/accuracy": train_acc,
+        "val/loss": val_loss,
+        "val/accuracy": val_acc,
+        "lr": current_lr,
+    },
+    step=global_step,
+)
 ```
 
-### 3. Metric Logging
+### 3. Save checkpoints locally
 
-```python
-# Log scalars
-swanlab.log({"loss": 0.5, "accuracy": 0.92})
-
-# Log multiple metrics
-swanlab.log({
-    "train/loss": train_loss,
-    "train/accuracy": train_acc,
-    "val/loss": val_loss,
-    "val/accuracy": val_acc,
-    "learning_rate": current_lr,
-    "epoch": epoch
-})
-
-# Log with custom step
-swanlab.log({"loss": loss}, step=global_step)
-
-# Log images
-swanlab.log({"examples": [swanlab.Image(img) for img in images]})
-
-# Log audio
-swanlab.log({"audio": swanlab.Audio("path/to/audio.wav")})
-
-# Log text
-swanlab.log({"notes": swanlab.Text("Training notes here")})
-```
-
-### 4. Multimodal Data Support
-
-SwanLab supports various data types:
-
-```python
-# Images
-swanlab.log({"predictions": swanlab.Image(image_array, caption="Model prediction")})
-
-# Audio
-swanlab.log({"speech": swanlab.Audio("recording.wav", sample_rate=16000)})
-
-# Video (path to video file)
-swanlab.log({"demo": swanlab.Video("demo.mp4")})
-
-# Text
-swanlab.log({"generated": swanlab.Text(generated_text)})
-
-# 3D Objects
-swanlab.log({"model": swanlab.Object3D("model.obj")})
-
-# Molecules (for chemistry/biology)
-swanlab.log({"molecule": swanlab.Molecule("molecule.sdf")})
-```
-
-### 5. Model Checkpointing
+SwanLab `0.7.11` does not expose a generic file artifact helper. Save checkpoints yourself and log the associated metadata you need for comparison.
 
 ```python
 import torch
 import swanlab
 
-# Save model checkpoint
-checkpoint = {
-    'epoch': epoch,
-    'model_state_dict': model.state_dict(),
-    'optimizer_state_dict': optimizer.state_dict(),
-    'loss': loss,
-}
+checkpoint_path = "checkpoints/best.pth"
+torch.save(model.state_dict(), checkpoint_path)
 
-torch.save(checkpoint, 'checkpoint.pth')
-
-# Log the checkpoint file
-swanlab.log({"checkpoint": swanlab.File("checkpoint.pth")})
+swanlab.log(
+    {
+        "best/val_accuracy": best_val_accuracy,
+        "artifacts/checkpoint_path": swanlab.Text(checkpoint_path),
+    }
+)
 ```
+
+## Media Logging
+
+```python
+import numpy as np
+import swanlab
+
+# Images
+image = np.random.randint(0, 255, (224, 224, 3), dtype=np.uint8)
+swanlab.log({"examples/image": swanlab.Image(image, caption="Augmented sample")})
+
+# Audio: path or numpy array
+wave = np.sin(np.linspace(0, 8 * np.pi, 16000)).astype("float32")
+swanlab.log({"examples/audio": swanlab.Audio(wave, sample_rate=16000)})
+
+# Text
+swanlab.log({"examples/text": swanlab.Text("Training notes for this run.")})
+
+# GIF video only in SwanLab 0.7.11
+swanlab.log({"examples/video": swanlab.Video("predictions.gif", caption="Validation rollout")})
+
+# 3D point cloud from numpy
+points = np.random.rand(128, 3).astype("float32")
+swanlab.log({"examples/point_cloud": swanlab.Object3D(points, caption="Point cloud sample")})
+
+# 3D model from GLB
+swanlab.log({"examples/model": swanlab.Object3D("mesh.glb", caption="Mesh preview")})
+
+# Molecule via helper constructors
+swanlab.log({"examples/molecule": swanlab.Molecule.from_smiles("CCO", caption="Ethanol")})
+```
+
+Avoid these patterns in SwanLab `0.7.11`:
+- Raw-dictionary chart wrappers instead of real `swanlab.echarts.*` objects
+- Generic file or histogram helper calls that do not exist in this release
+- Inline 2D box annotations passed directly into the image helper
+- MP4 paths passed into the video helper
+- Direct OBJ or PLY file paths passed into the 3D object helper
+- Direct SDF or SMILES strings passed into the molecule constructor
+
+## Custom Charts
+
+SwanLab chart logging is based on `pyecharts` objects exposed through `swanlab.echarts`.
+
+```python
+import swanlab
+
+line = swanlab.echarts.Line()
+line.add_xaxis(["epoch-1", "epoch-2", "epoch-3"])
+line.add_yaxis("train/loss", [0.92, 0.61, 0.44])
+line.set_global_opts(
+    title_opts=swanlab.echarts.options.TitleOpts(title="Training Loss")
+)
+
+swanlab.log({"charts/loss_curve": line})
+```
+
+See [references/visualization.md](references/visualization.md) for more chart and media patterns.
 
 ## Framework Integrations
 
-### HuggingFace Transformers
+### Transformers
 
-SwanLab provides seamless integration with HuggingFace Transformers:
+Use the non-deprecated callback module:
 
 ```python
 from transformers import Trainer, TrainingArguments
-from swanlab.integration.huggingface import SwanLabCallback
-import swanlab
+from swanlab.integration.transformers import SwanLabCallback
 
-# Initialize SwanLab
-swanlab.init(
-    project="hf-transformers",
-    experiment_name="bert-finetuning"
-)
-
-# Training arguments
 training_args = TrainingArguments(
     output_dir="./results",
-    logging_steps=100,
-    save_steps=500,
-    # ... other args
+    per_device_train_batch_size=8,
+    evaluation_strategy="epoch",
+    logging_steps=50,
 )
 
-# Add SwanLab callback
 trainer = Trainer(
     model=model,
     args=training_args,
     train_dataset=train_dataset,
     eval_dataset=eval_dataset,
-    callbacks=[SwanLabCallback()]
+    callbacks=[
+        SwanLabCallback(
+            project="hf-demo",
+            experiment_name="bert-finetune",
+            config={"model": "bert-base-uncased"},
+        )
+    ],
 )
 
 trainer.train()
-swanlab.finish()
 ```
 
 ### PyTorch Lightning
 
+`SwanLabLogger` can initialize the run itself. Do not call `swanlab.init()` first unless you intentionally want to reuse an existing run.
+
 ```python
 import pytorch_lightning as pl
 from swanlab.integration.pytorch_lightning import SwanLabLogger
-import swanlab
 
-# Create SwanLab logger
 swanlab_logger = SwanLabLogger(
     project="lightning-demo",
-    experiment_name="my-experiment"
+    experiment_name="mnist-classifier",
+    config={"batch_size": 64, "max_epochs": 10},
 )
 
-# Use with Trainer
 trainer = pl.Trainer(
     logger=swanlab_logger,
-    max_epochs=10
+    max_epochs=10,
+    accelerator="auto",
 )
 
-trainer.fit(model)
+trainer.fit(model, train_loader, val_loader)
 ```
 
 ### Fastai
 
+`SwanLabCallback` for Fastai also initializes SwanLab if no run exists.
+
 ```python
-from fastai.vision.all import *
+from fastai.vision.all import accuracy, resnet34, vision_learner
 from swanlab.integration.fastai import SwanLabCallback
-import swanlab
 
-# Initialize SwanLab
-swanlab.init(project="fastai-demo")
-
-# Create learner with SwanLab callback
-learn = vision_learner(dls, resnet18, metrics=accuracy)
-learn.fit(10, cbs=SwanLabCallback())
-
-swanlab.finish()
-```
-
-## Visualization Features
-
-### Custom Charts with ECharts
-
-SwanLab supports ECharts for customizable visualizations:
-
-```python
-import swanlab
-
-# Create custom chart with ECharts
-echarts_option = {
-    "title": {"text": "Training Progress"},
-    "xAxis": {"type": "category", "data": ["epoch1", "epoch2", "epoch3"]},
-    "yAxis": {"type": "value"},
-    "series": [{
-        "data": [0.5, 0.3, 0.1],
-        "type": "line"
-    }]
-}
-
-swanlab.log({"custom_chart": swanlab.ECharts(echarts_option)})
-```
-
-### Experiment Comparison
-
-Compare multiple experiments in the UI:
-- Select experiments to compare
-- View overlaid charts
-- Compare configurations side-by-side
-- Analyze performance differences
-
-## Self-Hosted Deployment
-
-SwanLab supports self-hosted deployment for data privacy:
-
-```bash
-# Clone self-hosted repository
-git clone https://github.com/SwanHubX/self-hosted.git
-cd self-hosted
-
-# Start with Docker Compose
-docker-compose up -d
-```
-
-### Configure for Self-Hosted
-
-```python
-import swanlab
-
-# Point to your self-hosted instance
-swanlab.init(
-    project="my-project",
-    host="http://your-server:5092"  # Your self-hosted URL
-)
-```
-
-See the [self-hosted repository](https://github.com/SwanHubX/self-hosted) for detailed setup instructions.
-
-## Offline Mode
-
-For environments without internet access:
-
-```python
-import swanlab
-
-# Enable offline mode
-swanlab.init(
-    project="my-project",
-    mode="offline"  # Data saved locally
-)
-
-# Your training code...
-swanlab.log({"loss": loss})
-
-# Sync later when online
-# swanlab.watch(path="path/to/offline/run")
-```
-
-## Best Practices
-
-### 1. Organize with Tags and Descriptions
-
-```python
-swanlab.init(
-    project="my-project",
-    experiment_name="resnet50-lr0.001-bs32",
-    tags=["baseline", "resnet50", "imagenet"],
-    description="First baseline run with ResNet50"
-)
-```
-
-### 2. Log Everything Relevant
-
-```python
-# Log system metrics
-swanlab.log({
-    "system/gpu_memory": gpu_memory_used,
-    "system/cpu_util": cpu_utilization
-})
-
-# Log data statistics
-swanlab.log({
-    "data/train_size": len(train_dataset),
-    "data/val_size": len(val_dataset)
-})
-
-# Log gradient statistics
-swanlab.log({"gradients/mean": grad_mean, "gradients/std": grad_std})
-```
-
-### 3. Use Descriptive Experiment Names
-
-```python
-# Good: Descriptive experiment names
-swanlab.init(
-    project="nlp-classification",
-    experiment_name="bert-base-lr0.001-bs32-epoch10"
-)
-
-# Avoid: Generic names
-swanlab.init(project="nlp", experiment_name="run1")
-```
-
-### 4. Log Model Predictions
-
-```python
-# Log sample predictions for analysis
-for i, (image, pred, label) in enumerate(zip(images, predictions, labels)):
-    swanlab.log({
-        f"sample_{i}": swanlab.Image(
-            image,
-            caption=f"Pred: {pred}, Label: {label}"
+learn = vision_learner(dls, resnet34, metrics=accuracy)
+learn.fit(
+    5,
+    cbs=[
+        SwanLabCallback(
+            project="fastai-demo",
+            experiment_name="pets-classification",
+            config={"arch": "resnet34", "epochs": 5},
         )
-    })
+    ],
+)
 ```
 
-### 5. Use Offline Mode for Unstable Connections
+See [references/integrations.md](references/integrations.md) for fuller framework examples.
+
+## Self-Hosted and Offline Workflows
+
+### Self-hosted cloud endpoint
 
 ```python
 import os
+import swanlab
 
-# Enable offline mode for unstable networks
-os.environ["SWANLAB_MODE"] = "offline"
+swanlab.login(
+    api_key=os.environ["SWANLAB_API_KEY"],
+    host="http://your-server:5092",
+)
 
-swanlab.init(project="my-project")
-# ... your code ...
-
-# Sync later when connection is stable
+run = swanlab.init(project="self-hosted-demo", mode="cloud")
+swanlab.log({"loss": 0.12})
+run.finish()
 ```
 
-## Comparison with W&B
+### Local dashboard only
 
-| Feature | SwanLab | Weights & Biases |
-|---------|---------|------------------|
-| **License** | Open-source (Apache 2.0) | Proprietary |
-| **Pricing** | Free | Free tier + paid plans |
-| **China Access** | No VPN needed | May require VPN |
-| **Self-hosted** | Supported | Enterprise only |
-| **Experiment Tracking** | Yes | Yes |
-| **Hyperparameter Sweeps** | Coming soon | Yes |
-| **Model Artifacts** | Basic support | Full support |
-| **Integrations** | Growing | Extensive |
+```python
+import swanlab
+
+run = swanlab.init(
+    project="offline-demo",
+    mode="local",
+    logdir="./swanlog",
+)
+
+swanlab.log({"loss": 0.35, "epoch": 1})
+run.finish()
+```
+
+View local logs:
+
+```bash
+swanlab watch ./swanlog
+```
+
+Sync a local run later:
+
+```bash
+swanlab sync ./swanlog
+```
+
+Or from Python:
+
+```python
+import swanlab
+
+swanlab.sync("./swanlog")
+```
+
+## Common Issues
+
+### `AttributeError` for media helpers
+
+You are probably using an API name from an outdated example. In `0.7.11`, use:
+- `swanlab.echarts.Line()` instead of the older raw-dictionary chart wrapper
+- Local `torch.save(...)` plus metric/text logging instead of a non-existent generic file helper
+- Scalar series or chart objects instead of a non-existent histogram helper
+
+### `ImportError` for media logging
+
+Install the media extras:
+
+```bash
+pip install "swanlab[media,dashboard]>=0.7.11"
+```
+
+### Self-hosted endpoint is ignored
+
+Pass `host` to `swanlab.login(...)`, not `swanlab.init(...)`.
+
+### Local runs need a dashboard
+
+`mode="local"` writes logs locally. Use `swanlab watch ./swanlog` to inspect them, then `swanlab sync ./swanlog` when you want to upload.
 
 ## Resources
 
-- **Documentation (Chinese)**: https://docs.swanlab.cn
-- **Documentation (English)**: https://docs.swanlab.cn/en
-- **GitHub**: https://github.com/SwanHubX/SwanLab
-- **Self-Hosted**: https://github.com/SwanHubX/self-hosted
-- **Examples**: https://github.com/SwanHubX/SwanLab/tree/main/examples
-- **Community**: Join the SwanLab community for support and discussions
+- [Official docs (Chinese)](https://docs.swanlab.cn)
+- [Official docs (English)](https://docs.swanlab.cn/en)
+- [GitHub repo](https://github.com/SwanHubX/SwanLab)
+- [Self-hosted repo](https://github.com/SwanHubX/self-hosted)
+- [Examples](https://github.com/SwanHubX/SwanLab/tree/main/examples)
 
 ## See Also
 
-- `references/integrations.md` - Detailed framework integration examples
-- `references/visualization.md` - Advanced visualization with ECharts and multimodal data
+- [references/integrations.md](references/integrations.md) - Framework-specific examples
+- [references/visualization.md](references/visualization.md) - Charts and media logging patterns

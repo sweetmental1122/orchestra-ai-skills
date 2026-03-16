@@ -1,239 +1,143 @@
 # SwanLab Framework Integrations
 
-This document provides detailed integration examples for popular ML frameworks.
+This document focuses on framework patterns that align with SwanLab `0.7.11`.
 
-## PyTorch Integration
+## PyTorch
 
-### Basic PyTorch Training Loop
+### Basic Training Loop
 
 ```python
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch.utils.data import DataLoader
 import swanlab
 
-# Initialize SwanLab
 run = swanlab.init(
     project="pytorch-training",
     experiment_name="mnist-mlp",
     config={
-        "learning_rate": 0.001,
+        "learning_rate": 1e-3,
         "batch_size": 64,
         "epochs": 10,
-        "model": "MLP",
-        "hidden_size": 128
-    }
+        "hidden_size": 128,
+    },
 )
 
-# Model definition
-class MLP(nn.Module):
-    def __init__(self, hidden_size):
-        super().__init__()
-        self.net = nn.Sequential(
-            nn.Flatten(),
-            nn.Linear(28 * 28, hidden_size),
-            nn.ReLU(),
-            nn.Linear(hidden_size, 10)
-        )
-
-    def forward(self, x):
-        return self.net(x)
-
-# Setup
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = MLP(run.config.hidden_size).to(device)
+model = nn.Sequential(
+    nn.Flatten(),
+    nn.Linear(28 * 28, run.config.hidden_size),
+    nn.ReLU(),
+    nn.Linear(run.config.hidden_size, 10),
+)
 optimizer = optim.Adam(model.parameters(), lr=run.config.learning_rate)
 criterion = nn.CrossEntropyLoss()
 
-# Training loop
 for epoch in range(run.config.epochs):
     model.train()
-    total_loss = 0
-
     for batch_idx, (data, target) in enumerate(train_loader):
-        data, target = data.to(device), target.to(device)
-
         optimizer.zero_grad()
-        output = model(data)
-        loss = criterion(output, target)
+        logits = model(data)
+        loss = criterion(logits, target)
         loss.backward()
         optimizer.step()
 
-        total_loss += loss.item()
-
-        # Log batch metrics
         if batch_idx % 100 == 0:
-            swanlab.log({
-                "batch/loss": loss.item(),
-                "batch/epoch": epoch,
-                "batch/idx": batch_idx
-            })
-
-    # Validation
-    model.eval()
-    correct = 0
-    total = 0
-
-    with torch.no_grad():
-        for data, target in val_loader:
-            data, target = data.to(device), target.to(device)
-            output = model(data)
-            pred = output.argmax(dim=1)
-            correct += (pred == target).sum().item()
-            total += target.size(0)
-
-    accuracy = correct / total
-    avg_loss = total_loss / len(train_loader)
-
-    # Log epoch metrics
-    swanlab.log({
-        "epoch/train_loss": avg_loss,
-        "epoch/val_accuracy": accuracy,
-        "epoch": epoch
-    })
-
-    print(f"Epoch {epoch}: Loss={avg_loss:.4f}, Accuracy={accuracy:.4f}")
+            swanlab.log(
+                {
+                    "train/loss": loss.item(),
+                    "train/epoch": epoch,
+                    "train/batch": batch_idx,
+                }
+            )
 
 run.finish()
 ```
 
-### Custom Callback for PyTorch
+### Minimal Callback Wrapper
 
 ```python
 import swanlab
 
-class SwanLabPyTorchCallback:
-    """Custom callback for PyTorch training with SwanLab logging."""
-
+class SwanLabTracker:
     def __init__(self, project, experiment_name=None, config=None):
         self.run = swanlab.init(
             project=project,
             experiment_name=experiment_name,
-            config=config
+            config=config,
         )
 
-    def on_train_begin(self):
-        """Called at the start of training."""
-        swanlab.log({"training/status": "started"})
+    def log_metrics(self, metrics, step=None):
+        swanlab.log(metrics, step=step)
 
-    def on_epoch_end(self, epoch, train_loss, val_loss, metrics=None):
-        """Called at the end of each epoch."""
-        log_dict = {
-            "epoch": epoch,
-            "train/loss": train_loss,
-            "val/loss": val_loss
-        }
-        if metrics:
-            log_dict.update(metrics)
-        swanlab.log(log_dict)
+    def log_images(self, name, images, captions=None):
+        if captions is None:
+            payload = [swanlab.Image(image) for image in images]
+        else:
+            payload = [
+                swanlab.Image(image, caption=caption)
+                for image, caption in zip(images, captions)
+            ]
+        swanlab.log({name: payload})
 
-    def on_batch_end(self, batch_idx, loss):
-        """Called at the end of each batch."""
-        swanlab.log({"batch/loss": loss, "batch/idx": batch_idx})
+    def log_note(self, name, text):
+        swanlab.log({name: swanlab.Text(text)})
 
-    def on_train_end(self):
-        """Called at the end of training."""
-        swanlab.log({"training/status": "completed"})
+    def finish(self):
         self.run.finish()
-
-# Usage
-callback = SwanLabPyTorchCallback(
-    project="my-project",
-    experiment_name="pytorch-run",
-    config={"lr": 0.001}
-)
-
-callback.on_train_begin()
-for epoch in range(epochs):
-    # Training code...
-    callback.on_epoch_end(epoch, train_loss, val_loss, {"accuracy": acc})
-callback.on_train_end()
 ```
 
-## HuggingFace Transformers Integration
+This wrapper deliberately omits fake histogram and file helpers that are not present in SwanLab `0.7.11`.
 
-### Text Classification with BERT
+## Transformers
+
+Use `swanlab.integration.transformers` rather than the deprecated HuggingFace alias module.
 
 ```python
 from transformers import (
-    AutoTokenizer,
     AutoModelForSequenceClassification,
+    AutoTokenizer,
     Trainer,
-    TrainingArguments
+    TrainingArguments,
 )
-from swanlab.integration.huggingface import SwanLabCallback
-import swanlab
-import numpy as np
+from swanlab.integration.transformers import SwanLabCallback
 
-# Initialize SwanLab
-swanlab.init(
-    project="text-classification",
-    experiment_name="bert-imdb",
-    config={
-        "model": "bert-base-uncased",
-        "max_length": 128,
-        "batch_size": 16,
-        "epochs": 3,
-        "learning_rate": 2e-5
-    }
-)
-
-# Load tokenizer and model
 tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
 model = AutoModelForSequenceClassification.from_pretrained(
     "bert-base-uncased",
-    num_labels=2
+    num_labels=2,
 )
 
-# Tokenize datasets
-def tokenize_function(examples):
-    return tokenizer(
-        examples["text"],
-        padding="max_length",
-        truncation=True,
-        max_length=swanlab.config.max_length
-    )
-
-tokenized_datasets = dataset.map(tokenize_function, batched=True)
-
-# Metrics function
-def compute_metrics(eval_pred):
-    logits, labels = eval_pred
-    predictions = np.argmax(logits, axis=-1)
-    accuracy = (predictions == labels).mean()
-    return {"accuracy": accuracy}
-
-# Training arguments
 training_args = TrainingArguments(
     output_dir="./results",
-    num_train_epochs=swanlab.config.epochs,
-    per_device_train_batch_size=swanlab.config.batch_size,
-    per_device_eval_batch_size=swanlab.config.batch_size,
-    learning_rate=swanlab.config.learning_rate,
+    num_train_epochs=3,
+    per_device_train_batch_size=16,
+    per_device_eval_batch_size=16,
     evaluation_strategy="epoch",
-    save_strategy="epoch",
-    load_best_model_at_end=True,
-    logging_steps=100
+    logging_steps=100,
 )
 
-# Trainer with SwanLab callback
 trainer = Trainer(
     model=model,
     args=training_args,
-    train_dataset=tokenized_datasets["train"],
-    eval_dataset=tokenized_datasets["test"],
-    compute_metrics=compute_metrics,
-    callbacks=[SwanLabCallback()]
+    train_dataset=train_dataset,
+    eval_dataset=eval_dataset,
+    callbacks=[
+        SwanLabCallback(
+            project="text-classification",
+            experiment_name="bert-imdb",
+            config={
+                "model": "bert-base-uncased",
+                "batch_size": 16,
+                "epochs": 3,
+            },
+        )
+    ],
 )
 
-# Train
 trainer.train()
-
-swanlab.finish()
 ```
 
-### Question Answering with Transformers
+### Question Answering
 
 ```python
 from transformers import (
@@ -241,36 +145,19 @@ from transformers import (
     AutoTokenizer,
     DefaultDataCollator,
     Trainer,
-    TrainingArguments
+    TrainingArguments,
 )
-from swanlab.integration.huggingface import SwanLabCallback
-import swanlab
-
-swanlab.init(
-    project="question-answering",
-    experiment_name="bert-squad",
-    config={
-        "model": "bert-base-uncased",
-        "max_length": 384,
-        "stride": 128,
-        "batch_size": 12,
-        "epochs": 2
-    }
-)
+from swanlab.integration.transformers import SwanLabCallback
 
 model = AutoModelForQuestionAnswering.from_pretrained("bert-base-uncased")
 tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
-
-# Preprocessing for QA...
-# (context and question tokenization logic)
 
 training_args = TrainingArguments(
     output_dir="./qa-results",
     evaluation_strategy="epoch",
     learning_rate=2e-5,
-    per_device_train_batch_size=swanlab.config.batch_size,
-    num_train_epochs=swanlab.config.epochs,
-    weight_decay=0.01
+    per_device_train_batch_size=12,
+    num_train_epochs=2,
 )
 
 trainer = Trainer(
@@ -279,35 +166,37 @@ trainer = Trainer(
     train_dataset=train_dataset,
     eval_dataset=eval_dataset,
     data_collator=DefaultDataCollator(),
-    callbacks=[SwanLabCallback()]
+    callbacks=[
+        SwanLabCallback(
+            project="question-answering",
+            experiment_name="bert-squad",
+            config={"model": "bert-base-uncased", "epochs": 2},
+        )
+    ],
 )
 
 trainer.train()
-swanlab.finish()
 ```
 
-## PyTorch Lightning Integration
+## PyTorch Lightning
 
-### Image Classification with Lightning
+`SwanLabLogger` can create the run for you. Prefer passing project metadata directly to the logger.
 
 ```python
 import pytorch_lightning as pl
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader
-from torchvision import datasets, transforms
 from swanlab.integration.pytorch_lightning import SwanLabLogger
-import swanlab
 
 class LitClassifier(pl.LightningModule):
-    def __init__(self, learning_rate=0.001):
+    def __init__(self, learning_rate=1e-3):
         super().__init__()
         self.save_hyperparameters()
         self.model = nn.Sequential(
             nn.Flatten(),
             nn.Linear(28 * 28, 128),
             nn.ReLU(),
-            nn.Linear(128, 10)
+            nn.Linear(128, 10),
         )
         self.criterion = nn.CrossEntropyLoss()
 
@@ -325,203 +214,91 @@ class LitClassifier(pl.LightningModule):
         x, y = batch
         logits = self(x)
         loss = self.criterion(logits, y)
-        preds = torch.argmax(logits, dim=1)
-        acc = (preds == y).float().mean()
+        acc = (torch.argmax(logits, dim=1) == y).float().mean()
         self.log("val/loss", loss, prog_bar=True)
         self.log("val/accuracy", acc, prog_bar=True)
 
     def configure_optimizers(self):
         return torch.optim.Adam(self.parameters(), lr=self.hparams.learning_rate)
 
-# Data
-transform = transforms.Compose([transforms.ToTensor()])
-train_dataset = datasets.MNIST(root='./data', train=True, download=True, transform=transform)
-val_dataset = datasets.MNIST(root='./data', train=False, download=True, transform=transform)
-
-train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
-val_loader = DataLoader(val_dataset, batch_size=64)
-
-# Initialize SwanLab
-swanlab.init(
+swanlab_logger = SwanLabLogger(
     project="lightning-demo",
     experiment_name="mnist-classifier",
-    config={
-        "learning_rate": 0.001,
-        "batch_size": 64,
-        "max_epochs": 10
-    }
+    config={"learning_rate": 1e-3, "max_epochs": 10},
 )
 
-# Logger
-swanlab_logger = SwanLabLogger()
-
-# Trainer
 trainer = pl.Trainer(
     logger=swanlab_logger,
     max_epochs=10,
-    accelerator="auto"
+    accelerator="auto",
 )
 
-model = LitClassifier(learning_rate=0.001)
-trainer.fit(model, train_loader, val_loader)
-
-swanlab.finish()
+trainer.fit(LitClassifier(), train_loader, val_loader)
 ```
 
-## Fastai Integration
+## Fastai
 
-### Image Classification with Fastai
+`SwanLabCallback` accepts the same run metadata you would normally pass to `swanlab.init(...)`.
 
 ```python
-from fastai.vision.all import *
+from fastai.vision.all import URLs, ImageDataLoaders, Resize, accuracy, get_image_files, resnet34, untar_data, vision_learner
 from swanlab.integration.fastai import SwanLabCallback
-import swanlab
 
-# Initialize SwanLab
-swanlab.init(
-    project="fastai-demo",
-    experiment_name="pets-classification",
-    config={
-        "arch": "resnet34",
-        "epochs": 5,
-        "batch_size": 64
-    }
-)
-
-# Data preparation
 path = untar_data(URLs.PETS)
 dls = ImageDataLoaders.from_name_func(
     path,
-    get_image_files(path/"images"),
+    get_image_files(path / "images"),
     valid_pct=0.2,
     label_func=lambda x: x[0].isupper(),
     item_tfms=Resize(224),
-    bs=swanlab.config.batch_size
+    bs=64,
 )
 
-# Create learner
 learn = vision_learner(dls, resnet34, metrics=accuracy)
-
-# Train with SwanLab callback
 learn.fit(
-    swanlab.config.epochs,
-    cbs=SwanLabCallback(
-        log_model=True,
-        log_preds=True
-    )
+    5,
+    cbs=[
+        SwanLabCallback(
+            project="fastai-demo",
+            experiment_name="pets-classification",
+            config={"arch": "resnet34", "epochs": 5, "batch_size": 64},
+        )
+    ],
 )
-
-# Log final metrics
-swanlab.log({
-    "final/train_loss": learn.recorder.train_metrics[-1],
-    "final/valid_loss": learn.recorder.valid_metrics[-1]
-})
-
-swanlab.finish()
 ```
 
-### Text Classification with Fastai
+### Fastai Text
 
 ```python
-from fastai.text.all import *
+from fastai.text.all import AWD_LSTM, TextDataLoaders, accuracy, text_classifier_learner, untar_data, URLs
 from swanlab.integration.fastai import SwanLabCallback
-import swanlab
 
-swanlab.init(
-    project="fastai-text",
-    experiment_name="imdb-sentiment",
-    config={
-        "arch": "AWD_LSTM",
-        "epochs": 3,
-        "batch_size": 64
-    }
-)
-
-# Data
 path = untar_data(URLs.IMDB)
-dls = TextDataLoaders.from_folder(
-    path,
-    valid='test',
-    bs=swanlab.config.batch_size
-)
+dls = TextDataLoaders.from_folder(path, valid="test", bs=64)
 
-# Learner
 learn = text_classifier_learner(
     dls,
     AWD_LSTM,
     drop_mult=0.5,
-    metrics=accuracy
+    metrics=accuracy,
 )
 
-# Train
 learn.fit_one_cycle(
-    swanlab.config.epochs,
-    cbs=SwanLabCallback()
-)
-
-swanlab.finish()
-```
-
-## Custom Integration
-
-### Generic Callback Pattern
-
-```python
-import swanlab
-
-class SwanLabTracker:
-    """Generic SwanLab tracker for any ML framework."""
-
-    def __init__(self, project, config=None, **kwargs):
-        self.run = swanlab.init(
-            project=project,
-            config=config,
-            **kwargs
+    3,
+    cbs=[
+        SwanLabCallback(
+            project="fastai-text",
+            experiment_name="imdb-sentiment",
+            config={"arch": "AWD_LSTM", "epochs": 3, "batch_size": 64},
         )
-
-    def log_metrics(self, metrics, step=None):
-        """Log dictionary of metrics."""
-        swanlab.log(metrics, step=step)
-
-    def log_images(self, name, images, captions=None):
-        """Log images with optional captions."""
-        if captions:
-            imgs = [swanlab.Image(img, caption=c)
-                    for img, c in zip(images, captions)]
-        else:
-            imgs = [swanlab.Image(img) for img in images]
-        swanlab.log({name: imgs})
-
-    def log_histogram(self, name, values):
-        """Log histogram of values."""
-        swanlab.log({name: swanlab.Histogram(values)})
-
-    def log_model(self, path, name="model"):
-        """Log model checkpoint."""
-        swanlab.log({name: swanlab.File(path)})
-
-    def finish(self):
-        """Finish the run."""
-        self.run.finish()
-
-# Usage with any framework
-tracker = SwanLabTracker(
-    project="custom-training",
-    config={"framework": "custom"}
+    ],
 )
-
-# During training
-tracker.log_metrics({"loss": 0.5, "accuracy": 0.92}, step=100)
-tracker.log_images("samples", batch_images)
-
-tracker.finish()
 ```
 
-## Tips for Best Results
+## Best Practices
 
-1. **Initialize early**: Call `swanlab.init()` before any training code
-2. **Use config**: Log all hyperparameters via the config parameter
-3. **Log regularly**: Log metrics every batch or epoch for smooth curves
-4. **Use namespaces**: Prefix metrics like `train/loss`, `val/accuracy` for organization
-5. **Log samples**: Log input/output samples for debugging and analysis
-6. **Finish properly**: Always call `run.finish()` or `swanlab.finish()` at the end
+1. Initialize as early as possible so config and environment metadata are captured once.
+2. Use stable metric names such as `train/loss` and `val/accuracy` across runs.
+3. Save checkpoints locally with your framework and log the checkpoint path or score separately.
+4. Prefer `run.finish()` when you manage the run yourself; let framework integrations finalize runs when they own the lifecycle.
+5. Use `mode="local"` plus `swanlab watch ./swanlog` when you want an offline-first workflow.
