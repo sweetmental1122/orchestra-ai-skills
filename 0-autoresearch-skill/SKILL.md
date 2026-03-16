@@ -48,7 +48,7 @@ Create this structure at the project root:
 │       ├── code/             # Experiment-specific code
 │       ├── results/          # Raw outputs, metrics, logs
 │       └── analysis.md       # What we learned
-├── reports/                  # Progress presentations for humans
+├── to_human/                 # Progress presentations and reports for human review
 └── paper/                    # Final paper (via ml-paper-writing)
 ```
 
@@ -250,14 +250,14 @@ The "Lessons and Constraints" section is especially important — it captures sp
 **First action — run this immediately:**
 
 ```
-/loop 10m Continue autoresearch. Read research-state.yaml and findings.md. Re-read the autoresearch SKILL.md occasionally to stay aligned with the research workflow. Check: is the current experiment done? Are there errors? Is progress stalling? If everything is on track, keep working. If something is wrong, step back and fix it. Update findings.md, research-log.md, and research-state.yaml when there's new progress. If there's meaningful progress to show, generate a report and open the HTML/PDF for the user. Never idle.
+/loop 10m Continue autoresearch. Read research-state.yaml and findings.md. Re-read the autoresearch SKILL.md occasionally to stay aligned with the research workflow. Check: is the current experiment done? Are there errors? Is progress stalling? If everything is on track, keep working. If something is wrong, step back and fix it. Update findings.md, research-log.md, and research-state.yaml when there's new progress. Git commit periodically to save progress and clean up the repo if needed. Prepare a progress report in to_human/ every once in a while and open the HTML/PDF for the user. Never idle.
 ```
 
 This fires every 10 minutes regardless of what's happening. It's a rhythm that keeps you working — not a research phase boundary. If your previous work isn't done, just continue it.
 
 ### OpenClaw
 
-**First action — set up a 10-minute cron job immediately** with this prompt: Continue autoresearch. Read research-state.yaml and findings.md. Re-read the autoresearch SKILL.md occasionally to stay aligned. Check: is the current experiment done? Are there errors? Is progress stalling? If everything is on track, keep working. If something is wrong, step back and fix it. Update findings.md, research-log.md, and research-state.yaml when there's new progress. If there's meaningful progress to show, generate a PDF presentation and send it to the user. When you get an exciting result or interesting plot, text it to the user right away — don't wait for a full report. Never idle. OpenClaw handles cron job setup internally.
+**First action — set up a 10-minute cron job immediately** with this prompt: Continue autoresearch. Read research-state.yaml and findings.md. Re-read the autoresearch SKILL.md occasionally to stay aligned. Check: is the current experiment done? Are there errors? Is progress stalling? If everything is on track, keep working. If something is wrong, step back and fix it. Update findings.md, research-log.md, and research-state.yaml when there's new progress. Git commit periodically to save progress and clean up the repo if needed. Prepare a progress report in to_human/ every once in a while and send the PDF to the user. When you get an exciting result or interesting plot, text it to the user right away — don't wait for a full report. Never idle. OpenClaw handles cron job setup internally.
 
 ### What the Loop Does
 
