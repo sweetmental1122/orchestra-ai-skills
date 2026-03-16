@@ -241,14 +241,14 @@ The "Lessons and Constraints" section is especially important — it captures sp
 **First action — run this immediately:**
 
 ```
-/loop 10m Continue autoresearch. Read research-state.yaml and findings.md. Check: is the current experiment done? Are there errors? Is progress stalling? If everything is on track, keep working. If something is wrong, step back and fix it. Never idle.
+/loop 10m Continue autoresearch. Read research-state.yaml and findings.md. Check: is the current experiment done? Are there errors? Is progress stalling? If everything is on track, keep working. If something is wrong, step back and fix it. If there's meaningful progress to show, generate a report and open the HTML/PDF for the user. Never idle.
 ```
 
 This fires every 10 minutes regardless of what's happening. It's a rhythm that keeps you working — not a research phase boundary. If your previous work isn't done, just continue it.
 
 ### OpenClaw
 
-**First action — set up a 10-minute cron job immediately** with the same prompt: continue autoresearch, read state files, check for errors, keep working. OpenClaw handles cron job setup internally.
+**First action — set up a 10-minute cron job immediately** with the same prompt: continue autoresearch, read state files, check for errors, keep working. If there's meaningful progress, generate a PDF report and send it to the user. OpenClaw handles cron job setup internally.
 
 ### What the Loop Does
 
