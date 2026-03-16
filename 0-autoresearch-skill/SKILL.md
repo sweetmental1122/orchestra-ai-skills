@@ -257,7 +257,9 @@ This fires every 10 minutes regardless of what's happening. It's a rhythm that k
 
 ### OpenClaw
 
-**First action — set up a 10-minute cron job immediately** with this prompt: Continue autoresearch. Read research-state.yaml and findings.md. Re-read the autoresearch SKILL.md occasionally to stay aligned. Check: is the current experiment done? Are there errors? Is progress stalling? If everything is on track, keep working. If something is wrong, step back and fix it. Update findings.md, research-log.md, and research-state.yaml when there's new progress. Git commit periodically to save progress and clean up the repo if needed. Prepare a progress report in to_human/ every once in a while and send the PDF to the user. When you get an exciting result or interesting plot, text it to the user right away — don't wait for a full report. Never idle. OpenClaw handles cron job setup internally.
+**First action — set up a 10-minute cron job. You MUST do this before any research work.** If you don't know how to set up a cron job in OpenClaw, check your OpenClaw documentation or system instructions first — figure it out, then set it up. Do not skip this step.
+
+The cron prompt: Continue autoresearch. Read research-state.yaml and findings.md. Re-read the autoresearch SKILL.md occasionally to stay aligned. Check: is the current experiment done? Are there errors? Is progress stalling? If everything is on track, keep working. If something is wrong, step back and fix it. Update findings.md, research-log.md, and research-state.yaml when there's new progress. Git commit periodically to save progress and clean up the repo if needed. Prepare a progress report in to_human/ every once in a while and send the PDF to the user. When you get an exciting result or interesting plot, text it to the user right away — don't wait for a full report. Never idle.
 
 ### What the Loop Does
 
