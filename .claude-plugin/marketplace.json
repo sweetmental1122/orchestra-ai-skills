@@ -216,14 +216,17 @@
     },
     {
       "name": "multimodal",
-      "description": "Vision, audio, and multimodal models including CLIP, Whisper, LLaVA, BLIP-2, Segment Anything, Stable Diffusion, and AudioCraft. Use when working with images, audio, or multimodal tasks.",
+      "description": "Vision, audio, and multimodal models including CLIP, Whisper, LLaVA, BLIP-2, Segment Anything, Stable Diffusion, AudioCraft, Cosmos Policy, OpenPI, and OpenVLA-OFT. Use when working with images, audio, multimodal tasks, or vision-language-action robot policies.",
       "source": "./",
       "strict": false,
       "skills": [
         "./18-multimodal/audiocraft",
         "./18-multimodal/blip-2",
         "./18-multimodal/clip",
+        "./18-multimodal/cosmos-policy",
         "./18-multimodal/llava",
+        "./18-multimodal/openpi",
+        "./18-multimodal/openvla-oft",
         "./18-multimodal/segment-anything",
         "./18-multimodal/stable-diffusion",
         "./18-multimodal/whisper"
