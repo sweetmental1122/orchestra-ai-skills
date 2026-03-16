@@ -468,6 +468,23 @@ All contributors are featured in our [Contributors Hall of Fame](CONTRIBUTORS.md
 ## Recent Updates
 
 <details open>
+<summary><b>March 2026 - v1.4.0 🔬 Autoresearch & 86 Skills — Full Research Lifecycle</b></summary>
+
+- 🔬 **NEW SKILL**: **Autoresearch** — autonomous research orchestration using a two-loop architecture (inner optimization loop + outer synthesis loop)
+- 🧠 Manages the full research lifecycle: literature survey → ideation → experiments → synthesis → paper writing
+- 🔄 Routes to all 85 domain skills automatically — agents don't need to know which skill to use
+- ⏰ Mandatory `/loop` (Claude Code) and cron job (OpenClaw) for continuous autonomous operation
+- 📊 Generates research presentations (HTML/PDF) with optimization trajectory plots for human review
+- 📝 Findings.md as persistent project memory across sessions with "Lessons and Constraints" tracking
+- 🗂️ Structured workspace: research-state.yaml, findings.md, research-log.md, literature/, experiments/, src/, data/, to_human/
+- 📄 **Two demo papers produced by autoresearch**: [Norm Heterogeneity → LoRA Brittleness](demos/autoresearch-norm-heterogeneity/) and [RL Algorithm Brain Scan](demos/autoresearch-rl-brain-scan/)
+- 🚀 WELCOME.md for cold-start agent bootstrap — one URL to go from zero to autonomous research
+- 📦 npm v1.4.x with Windows symlink fallback, all 22 categories installable
+- 📊 **86 total skills** across **22 categories** — complete research lifecycle coverage
+
+</details>
+
+<details>
 <summary><b>February 2026 - v0.15.0 🛡️ Prompt Guard & 83 Skills</b></summary>
 
 - 🛡️ **NEW SKILL**: Prompt Guard - Meta's 86M prompt injection & jailbreak detector
