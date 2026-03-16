@@ -5,7 +5,7 @@ version: 1.0.0
 author: Orchestra Research
 license: MIT
 tags: [Cosmos Policy, VLA, Robotics, LIBERO, RoboCasa, Simulation, Evaluation, Benchmarking, KV Cache, EGL Rendering]
-dependencies: [torch, mujoco, robosuite, robocasa, transformers, cosmos-policy]
+dependencies: [torch>=2.1.0, mujoco>=3.0.0, robosuite>=1.4.0, robocasa>=0.2.0, transformers>=4.40.0, cosmos-policy>=1.0.0]
 ---
 
 # Cosmos Policy Reproduction

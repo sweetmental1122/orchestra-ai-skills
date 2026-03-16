@@ -5,7 +5,7 @@ version: 1.0.0
 author: Orchestra Research
 license: MIT
 tags: [OpenPI, Physical Intelligence, VLA, Robotics, JAX, PyTorch, Fine-Tuning, Policy Serving, ALOHA, DROID, LIBERO, pi0]
-dependencies: [jax, torch, transformers, openpi-client]
+dependencies: [jax>=0.4.30, torch>=2.1.0, transformers>=4.40.0, openpi-client>=0.1.0]
 ---
 
 # OpenPI Fine-Tuning and Serving

@@ -5,7 +5,7 @@ version: 1.0.0
 author: Orchestra Research
 license: MIT
 tags: [OpenVLA, OpenVLA-OFT, VLA, Robotics, Fine-Tuning, LIBERO, ALOHA, LoRA, FiLM, Action Chunking, Deployment, Continuous Actions]
-dependencies: [torch==2.2.0, transformers, peft==0.11.1, draccus==0.8.0, accelerate>=0.25.0, wandb, fastapi, uvicorn, tensorflow==2.15.0, robosuite==1.4.0]
+dependencies: [torch==2.2.0, transformers>=4.40.0, peft==0.11.1, draccus==0.8.0, accelerate>=0.25.0, wandb>=0.16.0, fastapi>=0.100.0, uvicorn>=0.24.0, tensorflow==2.15.0, robosuite==1.4.0]
 ---
 
 # OpenVLA-OFT
