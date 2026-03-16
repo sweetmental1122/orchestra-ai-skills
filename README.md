@@ -1,6 +1,6 @@
-# AI Research Engineering `Skills` Library
+# AI Research `Skills` Library
 
-> **The most comprehensive open-source library of AI research engineering skills for AI agents**
+> **The most comprehensive open-source skills library enabling AI agents to autonomously conduct AI research — from idea to paper**
 
 <p align="center">
   <img src="docs/assets/promo.gif" alt="AI Research Skills Demo" width="700">
@@ -59,7 +59,7 @@
 
 ## Our Mission
 
-We provide the layer of **Engineering Ability** that **enable your coding agent to write and conduct AI research experiments**, including preparing datasets, executing training pipelines, deploying models, and building your AI agents.
+We enable AI agents to **autonomously conduct AI research** — from literature survey and idea generation through experiment execution to paper writing. The library provides both the **research orchestration layer** (autoresearch, ideation, paper writing) and the **engineering skills** (training, evaluation, deployment) needed at each stage.
 <p align="center">
   <img src="docs/skills.png" alt="AI Research Agent System" width="50%">
   <br>
@@ -68,11 +68,12 @@ We provide the layer of **Engineering Ability** that **enable your coding agent 
 
 ## Path Towards AI Research Agent
 
-Modern AI research requires mastering dozens of specialized tools and frameworks. 
-AI Researchers spend more time debugging infrastructure than testing hypotheses—slowing the pace of scientific discovery. 
-We provide a comprehensive library of expert-level research engineering skills that enable AI agents to autonomously implement and execute different stages of AI research experiments—from data preparation and model training to evaluation and deployment.
-  - Specialized Expertise - Each skill provides deep, production-ready knowledge of a specific framework (Megatron-LM, vLLM, TRL, etc.)
-  - End-to-End Coverage - 86 skills spanning the full AI research lifecycle, from model architecture to deployment
+Modern AI research requires mastering dozens of specialized tools and frameworks.
+AI Researchers spend more time debugging infrastructure than testing hypotheses — slowing the pace of scientific discovery.
+We provide a comprehensive skills library that enables AI agents to autonomously conduct the full research lifecycle — from brainstorming ideas to writing the paper.
+  - Autonomous Research - The **autoresearch** skill orchestrates the entire research workflow using a two-loop architecture, routing to domain skills as needed
+  - Specialized Expertise - Each domain skill provides deep, production-ready knowledge of a specific framework (Megatron-LM, vLLM, TRL, etc.)
+  - End-to-End Coverage - 86 skills spanning the full AI research lifecycle, from ideation and literature survey to experiments and paper writing
   - Research-Grade Quality - Documentation sourced from official repos, real GitHub issues, and battle-tested production workflows
 
 ## Available AI Research Engineering Skills
