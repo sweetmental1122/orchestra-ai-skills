@@ -97,3 +97,7 @@ temp/
 output/
 *.zip
 0-autoresearch-skill/background_docs/
+0-autoresearch-skill/twitter_thread_draft.md
+0-autoresearch-skill/social_posts.md
+0-autoresearch-skill/image_generation_brief.md
+0-autoresearch-skill/autoresearch-loops-image.png
