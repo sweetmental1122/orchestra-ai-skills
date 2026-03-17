@@ -1,6 +1,6 @@
 # LIBERO Command Matrix
 
-Command variations for running Cosmos Policy LIBERO evaluation on local machines, interactive GPU shells, or batch systems. All commands use the `cosmos_policy.eval.run_libero` module directly.
+Command variations for running Cosmos Policy LIBERO evaluation on local machines, interactive GPU shells, or batch systems. All commands use the official public `cosmos_policy.experiments.robot.libero.run_libero_eval` module.
 
 ## Preferred path: interactive GPU shell
 
@@ -20,51 +20,108 @@ export MUJOCO_GL=egl
 export PYOPENGL_PLATFORM=egl
 
 # Smoke eval (1 trial, single suite)
-python -m cosmos_policy.eval.run_libero \
-  --task-suite libero_10 \
-  --num-trials 1 \
-  --enable-cross-attn-kv-cache
+uv run --extra cu128 --group libero --python 3.10 \
+  python -m cosmos_policy.experiments.robot.libero.run_libero_eval \
+    --config cosmos_predict2_2b_480p_libero__inference_only \
+    --ckpt_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B \
+    --config_file cosmos_policy/config/config.py \
+    --use_wrist_image True \
+    --use_proprio True \
+    --normalize_proprio True \
+    --unnormalize_actions True \
+    --dataset_stats_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_dataset_statistics.json \
+    --t5_text_embeddings_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_t5_embeddings.pkl \
+    --trained_with_image_aug True \
+    --chunk_size 16 \
+    --num_open_loop_steps 16 \
+    --task_suite_name libero_10 \
+    --num_trials_per_task 1 \
+    --local_log_dir cosmos_policy/experiments/robot/libero/logs/ \
+    --seed 195 \
+    --randomize_seed False \
+    --deterministic True \
+    --run_id_note smoke \
+    --ar_future_prediction False \
+    --ar_value_prediction False \
+    --use_jpeg_compression True \
+    --flip_images True \
+    --num_denoising_steps_action 5 \
+    --num_denoising_steps_future_state 1 \
+    --num_denoising_steps_value 1 \
+    --data_collection False
 
 # Full eval (50 trials, single suite)
-python -m cosmos_policy.eval.run_libero \
-  --task-suite libero_10 \
-  --num-trials 50 \
-  --enable-cross-attn-kv-cache
+uv run --extra cu128 --group libero --python 3.10 \
+  python -m cosmos_policy.experiments.robot.libero.run_libero_eval \
+    --config cosmos_predict2_2b_480p_libero__inference_only \
+    --ckpt_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B \
+    --config_file cosmos_policy/config/config.py \
+    --use_wrist_image True \
+    --use_proprio True \
+    --normalize_proprio True \
+    --unnormalize_actions True \
+    --dataset_stats_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_dataset_statistics.json \
+    --t5_text_embeddings_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_t5_embeddings.pkl \
+    --trained_with_image_aug True \
+    --chunk_size 16 \
+    --num_open_loop_steps 16 \
+    --task_suite_name libero_10 \
+    --num_trials_per_task 50 \
+    --local_log_dir cosmos_policy/experiments/robot/libero/logs/ \
+    --seed 195 \
+    --randomize_seed False \
+    --deterministic True \
+    --run_id_note full \
+    --ar_future_prediction False \
+    --ar_value_prediction False \
+    --use_jpeg_compression True \
+    --flip_images True \
+    --num_denoising_steps_action 5 \
+    --num_denoising_steps_future_state 1 \
+    --num_denoising_steps_value 1 \
+    --data_collection False
 
 # All four suites
 for suite in libero_spatial libero_object libero_goal libero_10; do
-  python -m cosmos_policy.eval.run_libero \
-    --task-suite $suite \
-    --num-trials 50 \
-    --enable-cross-attn-kv-cache
+  uv run --extra cu128 --group libero --python 3.10 \
+    python -m cosmos_policy.experiments.robot.libero.run_libero_eval \
+      --config cosmos_predict2_2b_480p_libero__inference_only \
+      --ckpt_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B \
+      --config_file cosmos_policy/config/config.py \
+      --use_wrist_image True \
+      --use_proprio True \
+      --normalize_proprio True \
+      --unnormalize_actions True \
+      --dataset_stats_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_dataset_statistics.json \
+      --t5_text_embeddings_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_t5_embeddings.pkl \
+      --trained_with_image_aug True \
+      --chunk_size 16 \
+      --num_open_loop_steps 16 \
+      --task_suite_name "$suite" \
+      --num_trials_per_task 50 \
+      --local_log_dir cosmos_policy/experiments/robot/libero/logs/ \
+      --seed 195 \
+      --randomize_seed False \
+      --deterministic True \
+      --run_id_note "suite_${suite}" \
+      --ar_future_prediction False \
+      --ar_value_prediction False \
+      --use_jpeg_compression True \
+      --flip_images True \
+      --num_denoising_steps_action 5 \
+      --num_denoising_steps_future_state 1 \
+      --num_denoising_steps_value 1 \
+      --data_collection False
 done
 ```
 
 ## Local GPU workstation path
 
-Skip `srun` and run the same `python -m` commands directly. Set EGL env vars first. Keep singularity enabled on cluster nodes unless there is a verified reason not to.
+Skip `srun` and run the same `uv run ... python -m` commands directly. Set EGL env vars first. Keep singularity enabled on cluster nodes unless there is a verified reason not to.
 
-## KV cache A/B benchmark path
+## Benchmarking note
 
-```bash
-# Baseline (cache off)
-python -m cosmos_policy.eval.run_libero \
-  --task-suite libero_10 \
-  --num-trials 10 \
-  --no-enable-cross-attn-kv-cache \
-  --output-dir results/baseline
-
-# Cached (cache on)
-python -m cosmos_policy.eval.run_libero \
-  --task-suite libero_10 \
-  --num-trials 10 \
-  --enable-cross-attn-kv-cache \
-  --output-dir results/kv_cache_on
-```
-
-Key output files to inspect:
-- `results/baseline/summary.json`
-- `results/kv_cache_on/summary.json`
+The public upstream CLI does not document a stable `--enable-cross-attn-kv-cache` or `--output-dir` benchmark surface. If you need A/B cache numbers, use repo-local automation from the target research repo or record the exact config patch you applied instead of assuming a portable one-flag command.
 
 ## Batch fallback
 
@@ -74,10 +131,35 @@ Only use batch submission after the direct command path works interactively:
 sbatch --partition=gpu --time=04:00:00 --wrap="
   export CUDA_VISIBLE_DEVICES=0 MUJOCO_EGL_DEVICE_ID=0 MUJOCO_GL=egl PYOPENGL_PLATFORM=egl
   cd /path/to/cosmos-policy
-  python -m cosmos_policy.eval.run_libero \
-    --task-suite libero_10 \
-    --num-trials 50 \
-    --enable-cross-attn-kv-cache
+  uv run --extra cu128 --group libero --python 3.10 \
+    python -m cosmos_policy.experiments.robot.libero.run_libero_eval \
+      --config cosmos_predict2_2b_480p_libero__inference_only \
+      --ckpt_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B \
+      --config_file cosmos_policy/config/config.py \
+      --use_wrist_image True \
+      --use_proprio True \
+      --normalize_proprio True \
+      --unnormalize_actions True \
+      --dataset_stats_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_dataset_statistics.json \
+      --t5_text_embeddings_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_t5_embeddings.pkl \
+      --trained_with_image_aug True \
+      --chunk_size 16 \
+      --num_open_loop_steps 16 \
+      --task_suite_name libero_10 \
+      --num_trials_per_task 50 \
+      --local_log_dir cosmos_policy/experiments/robot/libero/logs/ \
+      --seed 195 \
+      --randomize_seed False \
+      --deterministic True \
+      --run_id_note batch \
+      --ar_future_prediction False \
+      --ar_value_prediction False \
+      --use_jpeg_compression True \
+      --flip_images True \
+      --num_denoising_steps_action 5 \
+      --num_denoising_steps_future_state 1 \
+      --num_denoising_steps_value 1 \
+      --data_collection False
 "
 ```
 
@@ -85,4 +167,4 @@ sbatch --partition=gpu --time=04:00:00 --wrap="
 
 - On A40 cluster nodes, singularity is mandatory because host `transformer_engine` can fail with `GLIBC_2.29` loader errors.
 - Always align `CUDA_VISIBLE_DEVICES` and `MUJOCO_EGL_DEVICE_ID` to the same GPU index.
-- Use `--output-dir` to keep A/B results separate for comparison.
+- Keep the full config block with the command because upstream eval depends on many explicit flags, not only task suite and trial count.

@@ -5,7 +5,7 @@ version: 1.0.0
 author: Orchestra Research
 license: MIT
 tags: [Cosmos Policy, VLA, Robotics, LIBERO, RoboCasa, Simulation, Evaluation, Benchmarking, KV Cache, EGL Rendering]
-dependencies: [torch>=2.1.0, mujoco>=3.0.0, robosuite>=1.4.0, robocasa>=0.2.0, transformers>=4.40.0, "cosmos-policy @ git+https://github.com/NVIDIA-Cosmos/cosmos-policy.git"]
+dependencies: [torch>=2.1.0, mujoco>=3.0.0, robosuite>=1.4.0, robocasa>=0.2.0, transformers>=4.40.0, "cosmos-policy @ git+https://github.com/NVlabs/cosmos-policy.git"]
 ---
 
 # Cosmos Policy Evaluation
@@ -14,27 +14,38 @@ Evaluation and benchmarking workflows for NVIDIA Cosmos Policy on LIBERO and Rob
 
 ## Quick start
 
-Run a minimal LIBERO evaluation using the official evaluation script:
-
-```python
-from cosmos_policy.eval.libero_runner import LiberoEvalRunner
-
-runner = LiberoEvalRunner(
-    task_suite="libero_10",
-    num_trials=1,
-    enable_cross_attn_kv_cache=True,
-)
-results = runner.evaluate()
-print(f"Success rate: {results['success_rate']:.1%}")
-```
-
-Or from the command line:
+Run a minimal LIBERO evaluation using the official public eval module:
 
 ```bash
-python -m cosmos_policy.eval.run_libero \
-  --task-suite libero_10 \
-  --num-trials 1 \
-  --enable-cross-attn-kv-cache
+uv run --extra cu128 --group libero --python 3.10 \
+  python -m cosmos_policy.experiments.robot.libero.run_libero_eval \
+    --config cosmos_predict2_2b_480p_libero__inference_only \
+    --ckpt_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B \
+    --config_file cosmos_policy/config/config.py \
+    --use_wrist_image True \
+    --use_proprio True \
+    --normalize_proprio True \
+    --unnormalize_actions True \
+    --dataset_stats_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_dataset_statistics.json \
+    --t5_text_embeddings_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_t5_embeddings.pkl \
+    --trained_with_image_aug True \
+    --chunk_size 16 \
+    --num_open_loop_steps 16 \
+    --task_suite_name libero_10 \
+    --num_trials_per_task 1 \
+    --local_log_dir cosmos_policy/experiments/robot/libero/logs/ \
+    --seed 195 \
+    --randomize_seed False \
+    --deterministic True \
+    --run_id_note smoke \
+    --ar_future_prediction False \
+    --ar_value_prediction False \
+    --use_jpeg_compression True \
+    --flip_images True \
+    --num_denoising_steps_action 5 \
+    --num_denoising_steps_future_state 1 \
+    --num_denoising_steps_value 1 \
+    --data_collection False
 ```
 
 ## Core concepts
@@ -50,7 +61,7 @@ python -m cosmos_policy.eval.run_libero \
 | Action prediction | Autoregressive action token generation |
 | KV cache | Optional cross-attention cache for inference speedup |
 
-**Cross-attention KV cache**: When enabled, language and image cross-attention key/value pairs are cached across action decoding steps, avoiding redundant computation. This trades memory for latency — critical for real-time robot control.
+**Cross-attention KV cache**: The underlying model architecture uses cross-attention and related caching optimizations, but the public eval CLI does not currently expose a stable one-flag KV cache toggle. If you need cache A/B experiments, treat them as repo-specific automation rather than assuming a portable upstream command.
 
 ## Compute requirements
 
@@ -72,8 +83,8 @@ python -m cosmos_policy.eval.run_libero \
 
 **Use alternatives when:**
 - Training or fine-tuning Cosmos Policy from scratch (use official Cosmos training docs)
-- Working with OpenVLA-based policies (use `openvla-oft` skill)
-- Working with Physical Intelligence pi0 models (use `openpi` skill)
+- Working with OpenVLA-based policies (use `fine-tuning-openvla-oft`)
+- Working with Physical Intelligence pi0 models (use `fine-tuning-serving-openpi`)
 - Running real-robot evaluation rather than simulation
 
 ---
@@ -112,10 +123,35 @@ export PYOPENGL_PLATFORM=egl
 **Step 3: Run smoke evaluation**
 
 ```bash
-python -m cosmos_policy.eval.run_libero \
-  --task-suite libero_10 \
-  --num-trials 1 \
-  --enable-cross-attn-kv-cache
+uv run --extra cu128 --group libero --python 3.10 \
+  python -m cosmos_policy.experiments.robot.libero.run_libero_eval \
+    --config cosmos_predict2_2b_480p_libero__inference_only \
+    --ckpt_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B \
+    --config_file cosmos_policy/config/config.py \
+    --use_wrist_image True \
+    --use_proprio True \
+    --normalize_proprio True \
+    --unnormalize_actions True \
+    --dataset_stats_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_dataset_statistics.json \
+    --t5_text_embeddings_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_t5_embeddings.pkl \
+    --trained_with_image_aug True \
+    --chunk_size 16 \
+    --num_open_loop_steps 16 \
+    --task_suite_name libero_10 \
+    --num_trials_per_task 1 \
+    --local_log_dir cosmos_policy/experiments/robot/libero/logs/ \
+    --seed 195 \
+    --randomize_seed False \
+    --deterministic True \
+    --run_id_note smoke \
+    --ar_future_prediction False \
+    --ar_value_prediction False \
+    --use_jpeg_compression True \
+    --flip_images True \
+    --num_denoising_steps_action 5 \
+    --num_denoising_steps_future_state 1 \
+    --num_denoising_steps_value 1 \
+    --data_collection False
 ```
 
 **Step 4: Validate and parse results**
@@ -124,16 +160,12 @@ python -m cosmos_policy.eval.run_libero \
 import json
 import glob
 
-# Find latest evaluation result
-log_files = sorted(glob.glob("eval_results/libero_10/*.json"))
+# Find latest evaluation result from the official log directory
+log_files = sorted(glob.glob("cosmos_policy/experiments/robot/libero/logs/**/*.json", recursive=True))
 with open(log_files[-1]) as f:
     results = json.load(f)
 
-for task_name, task_result in results["per_task"].items():
-    success_rate = task_result["successes"] / task_result["trials"]
-    print(f"  {task_name}: {success_rate:.0%}")
-
-print(f"\nOverall: {results['aggregate_success_rate']:.1%}")
+print(results)
 ```
 
 **Step 5: Scale up**
@@ -142,10 +174,35 @@ Run across all four LIBERO task suites with 50 trials:
 
 ```bash
 for suite in libero_spatial libero_object libero_goal libero_10; do
-  python -m cosmos_policy.eval.run_libero \
-    --task-suite $suite \
-    --num-trials 50 \
-    --enable-cross-attn-kv-cache
+  uv run --extra cu128 --group libero --python 3.10 \
+    python -m cosmos_policy.experiments.robot.libero.run_libero_eval \
+      --config cosmos_predict2_2b_480p_libero__inference_only \
+      --ckpt_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B \
+      --config_file cosmos_policy/config/config.py \
+      --use_wrist_image True \
+      --use_proprio True \
+      --normalize_proprio True \
+      --unnormalize_actions True \
+      --dataset_stats_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_dataset_statistics.json \
+      --t5_text_embeddings_path nvidia/Cosmos-Policy-LIBERO-Predict2-2B/libero_t5_embeddings.pkl \
+      --trained_with_image_aug True \
+      --chunk_size 16 \
+      --num_open_loop_steps 16 \
+      --task_suite_name "$suite" \
+      --num_trials_per_task 50 \
+      --local_log_dir cosmos_policy/experiments/robot/libero/logs/ \
+      --seed 195 \
+      --randomize_seed False \
+      --deterministic True \
+      --run_id_note "suite_${suite}" \
+      --ar_future_prediction False \
+      --ar_value_prediction False \
+      --use_jpeg_compression True \
+      --flip_images True \
+      --num_denoising_steps_action 5 \
+      --num_denoising_steps_future_state 1 \
+      --num_denoising_steps_value 1 \
+      --data_collection False
 done
 ```
 
@@ -176,74 +233,74 @@ Verify `macros_private.py` exists and paths are correct.
 **Step 2: Single-task smoke evaluation**
 
 ```bash
-python -m cosmos_policy.eval.run_robocasa \
-  --task-name TurnOffMicrowave \
-  --obj-instance-split A \
-  --num-trials 2 \
-  --enable-cross-attn-kv-cache
+uv run --extra cu128 --group robocasa --python 3.10 \
+  python -m cosmos_policy.experiments.robot.robocasa.run_robocasa_eval \
+    --config cosmos_predict2_2b_480p_robocasa_50_demos_per_task__inference \
+    --ckpt_path nvidia/Cosmos-Policy-RoboCasa-Predict2-2B \
+    --config_file cosmos_policy/config/config.py \
+    --use_wrist_image True \
+    --num_wrist_images 1 \
+    --use_proprio True \
+    --normalize_proprio True \
+    --unnormalize_actions True \
+    --dataset_stats_path nvidia/Cosmos-Policy-RoboCasa-Predict2-2B/robocasa_dataset_statistics.json \
+    --t5_text_embeddings_path nvidia/Cosmos-Policy-RoboCasa-Predict2-2B/robocasa_t5_embeddings.pkl \
+    --trained_with_image_aug True \
+    --chunk_size 32 \
+    --num_open_loop_steps 16 \
+    --task_name TurnOffMicrowave \
+    --obj_instance_split A \
+    --num_trials_per_task 2 \
+    --local_log_dir cosmos_policy/experiments/robot/robocasa/logs/ \
+    --seed 195 \
+    --randomize_seed False \
+    --deterministic True \
+    --run_id_note smoke \
+    --use_variance_scale False \
+    --use_jpeg_compression True \
+    --flip_images True \
+    --num_denoising_steps_action 5 \
+    --num_denoising_steps_future_state 1 \
+    --num_denoising_steps_value 1 \
+    --data_collection False
 ```
 
 **Step 3: Validate outputs**
 
-- Confirm the eval log prints the expected task name, object split, and `enable_cross_attn_kv_cache` value.
+- Confirm the eval log prints the expected task name, object split, and checkpoint/config values.
 - Inspect the final `Success rate:` line in the log.
 
 **Step 4: Expand scope**
 
-Increase `--num-trials` or add more tasks. Keep `--obj-instance-split` fixed across A/B runs for comparability.
+Increase `--num_trials_per_task` or add more tasks. Keep `--obj_instance_split` fixed across repeated runs for comparability.
 
 ---
 
-## Workflow 3: Cross-attention KV cache benchmark
+## Workflow 3: Benchmarking note
 
-Use this workflow for A/B latency and success-rate comparisons.
+Use this workflow to avoid inventing a public benchmark CLI that does not exist.
 
 ```text
-Cache Benchmark Progress:
-- [ ] Step 1: Run baseline evaluation (cache off)
-- [ ] Step 2: Run cached evaluation (cache on)
-- [ ] Step 3: Compare latency and success metrics
+Benchmarking Progress:
+- [ ] Step 1: Confirm whether you are using upstream public commands or repo-local automation
+- [ ] Step 2: Run one deterministic smoke eval and save logs
+- [ ] Step 3: Only then layer on any custom A/B benchmarking wrapper
 ```
 
-**Step 1: Run baseline**
+**Step 1: Pick the right command surface**
 
-```bash
-python -m cosmos_policy.eval.run_libero \
-  --task-suite libero_10 \
-  --num-trials 10 \
-  --no-enable-cross-attn-kv-cache \
-  --output-dir results/baseline
-```
+- If you are using the public upstream repo, stick to `cosmos_policy.experiments.robot.*.run_*_eval` and do not invent `--enable-cross-attn-kv-cache` or `--output-dir` flags.
+- If you are using a local research repo that adds wrappers or patched configs, document that repo-specific command beside the upstream command.
 
-**Step 2: Run with KV cache**
+**Step 2: Save one deterministic smoke run first**
 
-```bash
-python -m cosmos_policy.eval.run_libero \
-  --task-suite libero_10 \
-  --num-trials 10 \
-  --enable-cross-attn-kv-cache \
-  --output-dir results/kv_cache_on
-```
+- For LIBERO, keep `--num_trials_per_task 1` and a fixed seed such as `195`.
+- For RoboCasa, keep `--num_trials_per_task 2`, fixed `--obj_instance_split`, and a fixed seed.
 
-**Step 3: Compare results**
+**Step 3: Treat A/B benchmarking as repo-specific**
 
-```python
-import json
-
-def load_results(path):
-    with open(f"{path}/summary.json") as f:
-        return json.load(f)
-
-baseline = load_results("results/baseline")
-cached = load_results("results/kv_cache_on")
-
-print(f"{'Metric':<25} {'Baseline':>10} {'KV Cache':>10} {'Delta':>10}")
-print("-" * 60)
-print(f"{'Success rate':<25} {baseline['success_rate']:>9.1%} {cached['success_rate']:>9.1%} "
-      f"{cached['success_rate'] - baseline['success_rate']:>+9.1%}")
-print(f"{'Mean step latency (ms)':<25} {baseline['mean_step_ms']:>10.1f} {cached['mean_step_ms']:>10.1f} "
-      f"{cached['mean_step_ms'] - baseline['mean_step_ms']:>+10.1f}")
-```
+- The public Cosmos Policy repo does not document a stable single-flag KV cache benchmark path.
+- If you need cache A/B numbers, use checked-in local automation from the target repo or patch the config in a reproducible way and record that diff next to the command.
 
 ---
 
@@ -258,7 +315,7 @@ Reference values from official evaluation (tied to specific setup and seeds):
 | LIBERO-Goal | ~80-88% | Goal-conditioned, harder |
 | LIBERO-10 | ~75-85% | 10 diverse long-horizon tasks |
 
-**KV cache impact**: Enabling cross-attention KV cache typically reduces per-step inference latency by 15-30% with negligible impact on success rate. Exact speedup depends on sequence length and GPU architecture.
+**Benchmark note**: Any KV cache latency claim depends on repo-local implementation details. Record the exact script or config diff you used before comparing numbers across runs.
 
 ---
 
@@ -324,7 +381,7 @@ print(f"Rendering on GPU {cuda_dev}")
 
 ## Resources
 
-- Cosmos Policy repository: https://github.com/NVIDIA-Cosmos/cosmos-policy
+- Cosmos Policy repository: https://github.com/NVlabs/cosmos-policy
 - LIBERO benchmark: https://github.com/Lifelong-Robot-Learning/LIBERO
 - RoboCasa environment: https://github.com/robocasa/robocasa
 - MuJoCo documentation: https://mujoco.readthedocs.io/

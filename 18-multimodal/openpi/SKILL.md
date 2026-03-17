@@ -65,11 +65,11 @@ actions = result["actions"]  # numpy array of shape (chunk_size, action_dim)
 - Converting JAX checkpoints to PyTorch format
 - Debugging OpenPI training issues (norm stats, memory, config)
 
-**Use `openvla-oft` instead when:**
+**Use `fine-tuning-openvla-oft` instead when:**
 - Fine-tuning OpenVLA with continuous action heads and LoRA
 - Reproducing OpenVLA-OFT paper results on LIBERO or ALOHA
 
-**Use `cosmos-policy` instead when:**
+**Use `evaluating-cosmos-policy` instead when:**
 - Evaluating NVIDIA Cosmos Policy on simulation benchmarks
 
 ---

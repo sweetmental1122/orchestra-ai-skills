@@ -75,8 +75,8 @@ Reproduction notes: results are tied to Python 3.10.14, PyTorch 2.2.0, NVIDIA A1
 - You want continuous action heads (L1 regression or diffusion) instead of tokenized actions
 
 **Use alternatives when:**
-- You need a different VLA architecture (use `openpi` for pi0/pi0.5 models)
-- You need the NVIDIA Cosmos Policy stack (use `cosmos-policy`)
+- You need a different VLA architecture (use `fine-tuning-serving-openpi` for pi0/pi0.5 models)
+- You need the NVIDIA Cosmos Policy stack (use `evaluating-cosmos-policy`)
 - You need general LLM fine-tuning without robot action heads
 
 ---
@@ -98,7 +98,7 @@ Setup Progress:
 ```bash
 conda create -n openvla-oft python=3.10 -y
 conda activate openvla-oft
-pip3 install torch torchvision torchaudio
+pip3 install torch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0
 pip3 install robosuite==1.4.0
 ```
 
