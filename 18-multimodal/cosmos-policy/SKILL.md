@@ -5,7 +5,7 @@ version: 1.0.0
 author: Orchestra Research
 license: MIT
 tags: [Cosmos Policy, VLA, Robotics, LIBERO, RoboCasa, Simulation, Evaluation, Profiling, EGL Rendering]
-dependencies: [torch>=2.1.0, mujoco>=3.0.0, robosuite>=1.4.0, robocasa>=0.2.0, transformers>=4.40.0, "cosmos-policy @ git+https://github.com/NVlabs/cosmos-policy.git"]
+dependencies: [torch>=2.1.0, mujoco>=3.0.0, robosuite>=1.4.0, "robocasa @ git+https://github.com/moojink/robocasa-cosmos-policy.git", transformers>=4.40.0, "cosmos-policy @ git+https://github.com/NVlabs/cosmos-policy.git"]
 ---
 
 # Cosmos Policy Evaluation
@@ -221,12 +221,13 @@ RoboCasa Eval Progress:
 **Step 1: Install RoboCasa**
 
 ```bash
-pip install robocasa
+git clone https://github.com/moojink/robocasa-cosmos-policy.git
+uv pip install -e robocasa-cosmos-policy
 python -m robocasa.scripts.setup_macros
 python -m robocasa.scripts.download_kitchen_assets
 ```
 
-Verify `macros_private.py` exists and paths are correct.
+This fork installs the `robocasa` Python package expected by Cosmos Policy while preserving the patched environment changes used in the public RoboCasa eval path. Verify `macros_private.py` exists and paths are correct.
 
 **Step 2: Single-task smoke evaluation**
 
@@ -297,6 +298,9 @@ cd cosmos-policy
 uv sync --extra cu128 --group libero --python 3.10
 # or, for RoboCasa:
 uv sync --extra cu128 --group robocasa --python 3.10
+# then install the Cosmos-compatible RoboCasa fork:
+git clone https://github.com/moojink/robocasa-cosmos-policy.git
+uv pip install -e robocasa-cosmos-policy
 ```
 
 **Step 3: Export runtime environment**
@@ -393,5 +397,6 @@ print(f"Rendering on GPU {cuda_dev}")
 
 - Cosmos Policy repository: https://github.com/NVlabs/cosmos-policy
 - LIBERO benchmark: https://github.com/Lifelong-Robot-Learning/LIBERO
-- RoboCasa environment: https://github.com/robocasa/robocasa
+- Cosmos-compatible RoboCasa fork: https://github.com/moojink/robocasa-cosmos-policy
+- Upstream RoboCasa project: https://github.com/robocasa/robocasa
 - MuJoCo documentation: https://mujoco.readthedocs.io/

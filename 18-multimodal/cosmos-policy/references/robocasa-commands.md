@@ -96,6 +96,7 @@ Before running any command below:
 - follow `SETUP.md` and enter the supported Docker container
 - run `uv sync --extra cu128 --group robocasa --python 3.10`
 - clone `https://github.com/moojink/robocasa-cosmos-policy.git` and install it with `uv pip install -e robocasa-cosmos-policy`
+- run `python -m robocasa.scripts.setup_macros` and `python -m robocasa.scripts.download_kitchen_assets` before the first eval
 
 ## Batch fallback
 
