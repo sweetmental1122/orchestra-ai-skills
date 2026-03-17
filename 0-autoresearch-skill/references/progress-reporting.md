@@ -143,7 +143,7 @@ Replace placeholder content with your actual research data. Add, remove, or rear
 Generate the HTML, then show it to the human:
 
 ```bash
-open reports/progress-001.html
+open to_human/progress-001.html
 ```
 
 ### OpenClaw

@@ -82,18 +82,30 @@ We provide a comprehensive skills library that enables AI agents to autonomously
 
 ### 📦 Quick Install (Recommended)
 
-Install skills to **any coding agent** (Claude Code, OpenCode, Cursor, Codex, Gemini CLI, Qwen Code) with one command:
+**For humans** — interactive installer with one command:
 
 ```bash
 npx @orchestra-research/ai-research-skills
 ```
 
-This launches an interactive installer that:
+**For AI agents** — point your agent to the welcome doc and it handles the rest:
+
+```
+Read https://www.orchestra-research.com/ai-research-skills/welcome.md and follow the instructions to install and use AI Research Skills.
+```
+
+This installs all 86 skills, loads the **autoresearch** orchestration layer, and starts autonomous research.
+
+<details>
+<summary><b>What the installer does</b></summary>
+
 - **Auto-detects** your installed coding agents
-- **Installs** skills to `~/.orchestra/skills/` with symlinks to each agent
+- **Installs** skills to `~/.orchestra/skills/` with symlinks to each agent (falls back to copy on Windows)
 - **Offers** everything, quickstart bundle, by category, or individual skills
 - **Updates** installed skills with latest versions
 - **Uninstalls** all or selected skills
+
+</details>
 
 <details>
 <summary><b>CLI Commands</b></summary>
@@ -302,13 +314,14 @@ We maintain a curated collection of demo repositories showing how to use skills 
 
 | Demo | Skills Used | What It Does |
 |------|-------------|--------------|
+| **[Norm Heterogeneity → LoRA Brittleness](demos/autoresearch-norm-heterogeneity/)** | Autoresearch, ML Paper Writing, Ideation | Agent autonomously discovered norm heterogeneity predicts fine-tuning difficulty (r=-0.99), pivoting from a null result on ETF overlaps |
+| **[RL Algorithm Brain Scan](demos/autoresearch-rl-brain-scan/)** | Autoresearch, GRPO, TRL, SAELens, TransformerLens, ML Paper Writing | Agent found DPO is a rank-1 perturbation (95.6% recovery from one SVD direction) while online RL is distributed and structure-preserving |
 | **[NeMo Eval: GPQA Benchmark](https://github.com/zechenzhangAGI/Nemo-Eval-Skill-Demo)** | NeMo Evaluator | Compare Llama 8B/70B/405B on graduate-level science questions |
 | **[LoRA Without Regret Reproduction](https://www.orchestra-research.com/perspectives/LLM-with-Orchestra)** | GRPO, TRL | Reproduce SFT + GRPO RL experiments via prompting |
-| **ML Paper Writing** *(coming soon)* | ML Paper Writing | Transform research repo → publication-ready paper |
 | **[Layer-Wise Quantization Experiment](https://github.com/AmberLJC/llama-quantization-experiment)** | llama.cpp, GGUF | Investigate optimal layer precision allocation—early layers at Q8 achieve 1.9× compression with 1.3% perplexity loss |
 | **[Cross-Lingual Alignment Analysis](https://github.com/AmberLJC/faiss-demo)** | FAISS | Quantify how well multilingual embeddings align semantic concepts across 8 languages using FAISS similarity search |
 
-**Featured Demo**: Reproduce Thinking Machines Lab's "LoRA Without Regret" paper **by simply prompting an AI agent**. The agent autonomously writes training code for both SFT and GRPO reinforcement learning, provisions H100 GPUs, runs LoRA rank ablation experiments overnight, and generates publication-ready analysis. No manual coding required—just describe what you want to reproduce. ([Blog](https://www.orchestra-research.com/perspectives/LLM-with-Orchestra) | [Video](https://www.youtube.com/watch?v=X0DoLYfXl5I))
+**Featured Demos**: Two papers produced entirely by AI agents using the **autoresearch** skill. The [Norm Heterogeneity paper](demos/autoresearch-norm-heterogeneity/) demonstrates autonomous research pivoting — the agent refuted its own hypothesis and discovered a stronger finding. The [RL Brain Scan paper](demos/autoresearch-rl-brain-scan/) demonstrates multi-skill orchestration — the agent trained RL models, analyzed internals with interpretability tools, and synthesized the insight that "DPO is rank-1 alignment." Both papers written end-to-end by the agent.
 
 ## Skill Structure
 
@@ -455,6 +468,23 @@ All contributors are featured in our [Contributors Hall of Fame](CONTRIBUTORS.md
 ## Recent Updates
 
 <details open>
+<summary><b>March 2026 - v1.4.0 🔬 Autoresearch & 86 Skills — Full Research Lifecycle</b></summary>
+
+- 🔬 **NEW SKILL**: **Autoresearch** — autonomous research orchestration using a two-loop architecture (inner optimization loop + outer synthesis loop)
+- 🧠 Manages the full research lifecycle: literature survey → ideation → experiments → synthesis → paper writing
+- 🔄 Routes to all 85 domain skills automatically — agents don't need to know which skill to use
+- ⏰ Mandatory `/loop` (Claude Code) and cron job (OpenClaw) for continuous autonomous operation
+- 📊 Generates research presentations (HTML/PDF) with optimization trajectory plots for human review
+- 📝 Findings.md as persistent project memory across sessions with "Lessons and Constraints" tracking
+- 🗂️ Structured workspace: research-state.yaml, findings.md, research-log.md, literature/, experiments/, src/, data/, to_human/
+- 📄 **Two demo papers produced by autoresearch**: [Norm Heterogeneity → LoRA Brittleness](demos/autoresearch-norm-heterogeneity/) and [RL Algorithm Brain Scan](demos/autoresearch-rl-brain-scan/)
+- 🚀 WELCOME.md for cold-start agent bootstrap — one URL to go from zero to autonomous research
+- 📦 npm v1.4.x with Windows symlink fallback, all 22 categories installable
+- 📊 **86 total skills** across **22 categories** — complete research lifecycle coverage
+
+</details>
+
+<details>
 <summary><b>February 2026 - v0.15.0 🛡️ Prompt Guard & 83 Skills</b></summary>
 
 - 🛡️ **NEW SKILL**: Prompt Guard - Meta's 86M prompt injection & jailbreak detector

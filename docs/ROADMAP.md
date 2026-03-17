@@ -4,17 +4,17 @@
 
 Build the most comprehensive open-source library of AI research skills, enabling AI agents to autonomously conduct experiments from hypothesis to deployment.
 
-**Target**: 70 comprehensive skills by month 6
+**Target**: 86 comprehensive skills — achieved ✅
 
 ## Progress Overview
 
 | Metric | Current | Target |
 |--------|---------|--------|
-| **Skills** | **70** (high-quality, standardized YAML) | 70 ✅ |
+| **Skills** | **86** (high-quality, standardized YAML) | 86 ✅ |
 | **Avg Lines/Skill** | **420 lines** (focused + progressive disclosure) | 200-500 lines |
-| **Documentation** | **~115,000 lines** total (SKILL.md + references) | 100,000+ lines |
-| **Gold Standard Skills** | **58** with comprehensive references | 50+ |
-| **Coverage** | Architecture, Tokenization, Fine-Tuning, Data Processing, Post-Training, Safety, Distributed, Infrastructure, Optimization, Evaluation, Inference, Agents, RAG, Multimodal, MLOps, Observability, Prompt Engineering, Emerging Techniques | Full Lifecycle ✅ |
+| **Documentation** | **~130,000 lines** total (SKILL.md + references) | 100,000+ lines |
+| **Gold Standard Skills** | **65** with comprehensive references | 50+ ✅ |
+| **Coverage** | Autoresearch, Ideation, Paper Writing, Architecture, Tokenization, Fine-Tuning, Data Processing, Post-Training, Safety, Distributed, Infrastructure, Optimization, Evaluation, Inference, Agents, RAG, Multimodal, MLOps, Observability, Prompt Engineering, Emerging Techniques | Full Lifecycle ✅ |
 
 ## Development Phases
 
