@@ -310,10 +310,12 @@ Reference values from official evaluation (tied to specific setup and seeds):
 
 | Task Suite | Success Rate | Notes |
 |-----------|-------------|-------|
-| LIBERO-Spatial | ~90-95% | Easiest suite |
-| LIBERO-Object | ~85-92% | Object manipulation focus |
-| LIBERO-Goal | ~80-88% | Goal-conditioned, harder |
-| LIBERO-10 | ~75-85% | 10 diverse long-horizon tasks |
+| LIBERO-Spatial | 98.1% | Official LIBERO spatial result |
+| LIBERO-Object | 100.0% | Official LIBERO object result |
+| LIBERO-Goal | 98.2% | Official LIBERO goal result |
+| LIBERO-Long | 97.6% | Official LIBERO long-horizon result |
+| LIBERO-Average | 98.5% | Official average across LIBERO suites |
+| RoboCasa | 67.1% | Official RoboCasa average result |
 
 **Reproduction note**: Published success rates still depend on checkpoint choice, task suite, seeds, and simulator setup. Record the exact command and environment alongside any reported number.
 
