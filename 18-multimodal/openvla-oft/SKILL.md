@@ -10,13 +10,15 @@ dependencies: [torch==2.2.0, transformers>=4.40.0, peft==0.11.1, draccus==0.8.0,
 
 # OpenVLA-OFT
 
-Fine-tuning and evaluation workflows for OpenVLA-OFT and OpenVLA-OFT+ from the official `openvla-oft` codebase. Enables LoRA-based adaptation of OpenVLA for robot action generation with continuous action prediction heads.
+Fine-tuning and evaluation workflows for OpenVLA-OFT and OpenVLA-OFT+ from the official `openvla-oft` codebase. Covers blank-machine setup plus LoRA-based adaptation of OpenVLA for robot action generation with continuous action prediction heads.
 
 ## Quick start
 
-Evaluate a pretrained LIBERO checkpoint:
+Clone the public repo, follow the official setup, then evaluate a pretrained LIBERO checkpoint:
 
 ```bash
+git clone https://github.com/moojink/openvla-oft.git
+cd openvla-oft
 python experiments/robot/libero/run_libero_eval.py \
   --pretrained_checkpoint moojink/openvla-7b-oft-finetuned-libero-spatial \
   --task_suite_name libero_spatial \
@@ -93,11 +95,13 @@ Setup Progress:
 - [ ] Step 4: Verify critical versions
 ```
 
-**Step 1: Create conda env**
+**Step 1: Create conda env and clone repo**
 
 ```bash
 conda create -n openvla-oft python=3.10 -y
 conda activate openvla-oft
+git clone https://github.com/moojink/openvla-oft.git
+cd openvla-oft
 pip3 install torch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0
 pip3 install robosuite==1.4.0
 ```
@@ -105,7 +109,6 @@ pip3 install robosuite==1.4.0
 **Step 2: Install package**
 
 ```bash
-cd openvla-oft
 pip install -e .
 ```
 

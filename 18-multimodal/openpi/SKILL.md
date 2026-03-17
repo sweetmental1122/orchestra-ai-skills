@@ -5,18 +5,22 @@ version: 1.0.0
 author: Orchestra Research
 license: MIT
 tags: [OpenPI, Physical Intelligence, VLA, Robotics, JAX, PyTorch, Fine-Tuning, Policy Serving, ALOHA, DROID, LIBERO, pi0]
-dependencies: [jax>=0.4.30, torch>=2.1.0, transformers>=4.40.0, openpi-client>=0.1.0]
+dependencies: [uv>=0.4.0, jax>=0.4.30, torch>=2.1.0, transformers>=4.53.2]
 ---
 
 # OpenPI Fine-Tuning and Serving
 
-End-to-end workflows for fine-tuning and serving Physical Intelligence's OpenPI models (pi0, pi0-fast, pi0.5) on robot manipulation tasks. Covers JAX training, PyTorch training, checkpoint conversion, and policy inference serving.
+End-to-end workflows for fine-tuning and serving Physical Intelligence's OpenPI models (pi0, pi0-fast, pi0.5) on robot manipulation tasks from the public `openpi` repository. Covers blank-machine setup, JAX training, PyTorch training, checkpoint conversion, and policy inference serving.
 
 ## Quick start
 
-Serve a pretrained policy and query it:
+Clone the public repo, install the workspace, then serve a pretrained policy:
 
 ```bash
+git clone --recurse-submodules https://github.com/Physical-Intelligence/openpi.git
+cd openpi
+GIT_LFS_SKIP_SMUDGE=1 uv sync
+GIT_LFS_SKIP_SMUDGE=1 uv pip install -e .
 uv run scripts/serve_policy.py --env DROID
 ```
 
@@ -56,6 +60,50 @@ actions = result["actions"]  # numpy array of shape (chunk_size, action_dim)
 | Fine-tune pi0 (JAX) | 1x A100 80GB | ~40 GB | Smaller model footprint |
 | Fine-tune (PyTorch DDP) | 1-8x A100 | ~40 GB/GPU | torchrun launcher |
 | Compute norm stats | CPU or 1x GPU | ~8 GB | Fast, can run on login node |
+
+## Workflow 0: Blank-machine setup
+
+Copy this checklist and track progress:
+
+```text
+Setup Progress:
+- [ ] Step 1: Clone the public openpi repo with submodules
+- [ ] Step 2: Install uv and sync the workspace
+- [ ] Step 3: Install the editable package
+- [ ] Step 4: Verify core imports and serving entrypoint
+```
+
+**Step 1: Clone repo**
+
+```bash
+git clone --recurse-submodules https://github.com/Physical-Intelligence/openpi.git
+cd openpi
+```
+
+If you already cloned without submodules:
+
+```bash
+git submodule update --init --recursive
+```
+
+**Step 2: Sync dependencies**
+
+```bash
+GIT_LFS_SKIP_SMUDGE=1 uv sync
+```
+
+**Step 3: Install editable package**
+
+```bash
+GIT_LFS_SKIP_SMUDGE=1 uv pip install -e .
+```
+
+**Step 4: Verify installation**
+
+```bash
+uv run python -c "from openpi.training import config as _config; print(_config.get_config('pi05_droid').name)"
+uv run scripts/serve_policy.py --help
+```
 
 ## When to use vs alternatives
 
@@ -287,7 +335,7 @@ uv run examples/simple_client/main.py --env DROID
 Install the lightweight client in your robot environment:
 
 ```bash
-pip install openpi-client
+pip install "openpi-client @ git+https://github.com/Physical-Intelligence/openpi.git#subdirectory=packages/openpi-client"
 ```
 
 Full integration example:
@@ -350,7 +398,14 @@ Fix: reapply the transformer patch. Run `uv cache clean transformers` to reset, 
 
 **Issue: `serve_policy.py` crashes with `ModuleNotFoundError`**
 
-Fix: install missing runtime dependencies:
+Fix: resync the public workspace first:
+
+```bash
+GIT_LFS_SKIP_SMUDGE=1 uv sync
+GIT_LFS_SKIP_SMUDGE=1 uv pip install -e .
+```
+
+If the missing module is simulator-related, install the extra runtime dependencies called for by that example:
 
 ```bash
 uv pip install pytest robosuite==1.4.0 gym bddl easydict matplotlib

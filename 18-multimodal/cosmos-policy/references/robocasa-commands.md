@@ -1,6 +1,6 @@
 # RoboCasa Command Matrix
 
-Command variations for running Cosmos Policy RoboCasa evaluation on local machines, interactive GPU shells, or batch systems. All commands use the official public `cosmos_policy.experiments.robot.robocasa.run_robocasa_eval` module. If an older research repo mentioned helper wrappers, treat those wrappers as thin launchers around this command plus environment setup and asset validation.
+Command variations for running Cosmos Policy RoboCasa evaluation on local machines, interactive GPU shells, or batch systems. All commands use the official public `cosmos_policy.experiments.robot.robocasa.run_robocasa_eval` module.
 
 ## Preferred path: interactive GPU shell
 
@@ -86,17 +86,16 @@ uv run --extra cu128 --group robocasa --python 3.10 \
 
 ## Local GPU workstation path
 
-Skip `srun` and run the same `uv run ... python -m` commands directly. Set EGL env vars first. Keep singularity enabled on cluster nodes unless there is a verified reason not to.
+Skip `srun` and run the same `uv run ... python -m` commands directly. Set EGL env vars first. If host-Python binaries are unstable, prefer the official container/runtime from `SETUP.md`.
 
-## If your old repo had wrappers
+## Blank-machine setup reminder
 
-Typical local wrapper responsibilities were:
+Before running any command below:
 
-- acquiring the GPU allocation or Slurm shell
-- exporting EGL and cache environment variables
-- pinning a default task, object split, trial count, and seed for smoke runs
-- verifying kitchen assets and macros before launching eval
-- routing logs and copied summaries into a stable output directory
+- clone `https://github.com/NVlabs/cosmos-policy.git`
+- follow `SETUP.md` and enter the supported Docker container
+- run `uv sync --extra cu128 --group robocasa --python 3.10`
+- clone `https://github.com/moojink/robocasa-cosmos-policy.git` and install it with `uv pip install -e robocasa-cosmos-policy`
 
 ## Batch fallback
 
@@ -141,6 +140,6 @@ sbatch --partition=gpu --time=01:00:00 --wrap="
 
 ## High-signal gotchas
 
-- On A40 cluster nodes, singularity is mandatory because host installs can fail with import and binary compatibility errors.
+- If host-Python binaries fail to import cleanly, return to the official container/runtime from `SETUP.md` before debugging Python package state.
 - Keep task name, object split, seed, and trial count fixed across repeated runs for comparability.
 - Always align `CUDA_VISIBLE_DEVICES` and `MUJOCO_EGL_DEVICE_ID` to the same GPU index.

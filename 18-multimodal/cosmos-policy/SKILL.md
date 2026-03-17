@@ -10,7 +10,7 @@ dependencies: [torch>=2.1.0, mujoco>=3.0.0, robosuite>=1.4.0, robocasa>=0.2.0, t
 
 # Cosmos Policy Evaluation
 
-Evaluation workflows for NVIDIA Cosmos Policy on LIBERO and RoboCasa simulation environments. Covers setup, headless GPU evaluation, inference profiling, and how to map old repo-local wrappers back to the public upstream commands.
+Evaluation workflows for NVIDIA Cosmos Policy on LIBERO and RoboCasa simulation environments from the public `cosmos-policy` repository. Covers blank-machine setup, headless GPU evaluation, and inference profiling.
 
 ## Quick start
 
@@ -60,7 +60,7 @@ uv run --extra cu128 --group libero --python 3.10 \
 | Language conditioning | Cross-attention to language embeddings |
 | Action prediction | Autoregressive action token generation |
 
-**Wrapper boundary**: The public repo exposes evaluation entrypoints such as `cosmos_policy.experiments.robot.libero.run_libero_eval` and `cosmos_policy.experiments.robot.robocasa.run_robocasa_eval`. If your original research repo used helper wrappers, those wrappers were repo-local orchestration around these public commands rather than a separate upstream API surface.
+**Public command surface**: The supported evaluation entrypoints are `cosmos_policy.experiments.robot.libero.run_libero_eval` and `cosmos_policy.experiments.robot.robocasa.run_robocasa_eval`. Keep reproduction notes anchored to these public modules and their documented flags.
 
 ## Compute requirements
 
@@ -102,10 +102,11 @@ LIBERO Eval Progress:
 **Step 1: Install environment**
 
 ```bash
-conda create -n cosmos-policy python=3.10 -y
-conda activate cosmos-policy
-pip install -e .
-pip install robosuite==1.4.0
+git clone https://github.com/NVlabs/cosmos-policy.git
+cd cosmos-policy
+# Follow SETUP.md to build and enter the supported Docker container.
+# Then, inside the container:
+uv sync --extra cu128 --group libero --python 3.10
 ```
 
 **Step 2: Configure headless rendering**
@@ -273,34 +274,41 @@ Increase `--num_trials_per_task` or add more tasks. Keep `--obj_instance_split` 
 
 ---
 
-## Workflow 3: Reconstructing local wrappers
-
-Use this workflow when an older research repo referenced helper scripts that are not present in the public Cosmos Policy repo.
+## Workflow 3: Blank-machine cluster launch
 
 ```text
-Wrapper Reconstruction Progress:
-- [ ] Step 1: Lock down the upstream public command first
-- [ ] Step 2: Record the non-command responsibilities your old wrapper handled
-- [ ] Step 3: Recreate that orchestration in your local repo without inventing new upstream flags
+Cluster Launch Progress:
+- [ ] Step 1: Clone the public repo and enter the supported runtime
+- [ ] Step 2: Sync the benchmark-specific dependency group
+- [ ] Step 3: Export rendering and cache environment variables before eval
 ```
 
-**Step 1: Lock down the public command surface**
+**Step 1: Clone and enter the supported runtime**
 
-- Start from `cosmos_policy.experiments.robot.libero.run_libero_eval` or `cosmos_policy.experiments.robot.robocasa.run_robocasa_eval`.
-- Keep the exact config, checkpoint, dataset stats, and embedding arguments beside the command so the wrapper does not silently hide required state.
+```bash
+git clone https://github.com/NVlabs/cosmos-policy.git
+cd cosmos-policy
+# Follow SETUP.md, start the Docker container, and enter it before continuing.
+```
 
-**Step 2: Capture what the old wrapper actually did**
+**Step 2: Sync dependencies**
 
-- Export EGL and device-selection variables such as `CUDA_VISIBLE_DEVICES`, `MUJOCO_EGL_DEVICE_ID`, `MUJOCO_GL`, and `PYOPENGL_PLATFORM`.
-- Standardize cache roots, Hugging Face cache paths, and log/output directories.
-- Add cluster-specific concerns such as `srun` or `sbatch` options, container enablement, or module loads.
-- Validate simulator prerequisites such as LIBERO dataset config or RoboCasa kitchen assets before launching eval.
+```bash
+uv sync --extra cu128 --group libero --python 3.10
+# or, for RoboCasa:
+uv sync --extra cu128 --group robocasa --python 3.10
+```
 
-**Step 3: Recreate orchestration locally**
+**Step 3: Export runtime environment**
 
-- Implement wrappers in your own repo as thin launchers around the public `python -m` entrypoints.
-- Keep wrapper-added behavior explicit in the script body or README: partition selection, cache root, smoke-test defaults, result-copying, and first-outcome snapshots.
-- Document any repo-specific config patch next to the wrapper instead of implying that it is part of upstream Cosmos Policy.
+```bash
+export CUDA_VISIBLE_DEVICES=0
+export MUJOCO_EGL_DEVICE_ID=0
+export MUJOCO_GL=egl
+export PYOPENGL_PLATFORM=egl
+export HF_HOME=${HF_HOME:-$HOME/.cache/huggingface}
+export TRANSFORMERS_CACHE=${TRANSFORMERS_CACHE:-$HF_HOME}
+```
 
 ---
 
@@ -324,7 +332,7 @@ Reference values from official evaluation (tied to specific setup and seeds):
 ## Non-negotiable rules
 
 - **EGL alignment**: Always set `CUDA_VISIBLE_DEVICES`, `MUJOCO_EGL_DEVICE_ID`, `MUJOCO_GL=egl`, and `PYOPENGL_PLATFORM=egl` together on headless GPU nodes.
-- **Singularity on clusters**: Keep singularity/apptainer enabled on A40 or similar cluster nodes to avoid `GLIBC_2.29` and `transformer_engine` loader failures.
+- **Official runtime first**: If host-Python installs hit binary compatibility issues, fall back to the supported container workflow from `SETUP.md` before debugging package internals.
 - **Cache consistency**: Use the same cache directory across setup and eval so Hugging Face and dependency caches are reused.
 - **Run comparability**: Keep task name, object split, seed, and trial count fixed across repeated runs.
 
@@ -332,9 +340,9 @@ Reference values from official evaluation (tied to specific setup and seeds):
 
 ## Common issues
 
-**Issue: `GLIBC_2.29` or `transformer_engine` loader failures on cluster nodes**
+**Issue: binary compatibility or loader failures on host Python**
 
-Fix: rerun with the default singularity/container path. Do not force host execution.
+Fix: rerun inside the official container/runtime from `SETUP.md`. Do not assume host-package rebuilds will match the public release environment.
 
 **Issue: LIBERO prompts for config path in a non-interactive shell**
 

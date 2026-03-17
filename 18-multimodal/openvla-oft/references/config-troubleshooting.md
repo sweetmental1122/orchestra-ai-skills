@@ -39,7 +39,7 @@ Platform constants:
 
 Implications:
 - If command path does not include expected platform tokens, constants may default to LIBERO.
-- For custom launch wrappers, verify selected platform constants in logs.
+- For custom entrypoints or renamed scripts, verify selected platform constants in logs.
 
 Expected defaults:
 - LIBERO: `NUM_ACTIONS_CHUNK=8`, `ACTION_DIM=7`, `PROPRIO_DIM=8`

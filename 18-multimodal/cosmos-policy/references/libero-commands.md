@@ -1,6 +1,6 @@
 # LIBERO Command Matrix
 
-Command variations for running Cosmos Policy LIBERO evaluation on local machines, interactive GPU shells, or batch systems. All commands use the official public `cosmos_policy.experiments.robot.libero.run_libero_eval` module. If an older research repo mentioned helper wrappers, treat those wrappers as thin launchers around this command plus environment setup and logging.
+Command variations for running Cosmos Policy LIBERO evaluation on local machines, interactive GPU shells, or batch systems. All commands use the official public `cosmos_policy.experiments.robot.libero.run_libero_eval` module.
 
 ## Preferred path: interactive GPU shell
 
@@ -117,17 +117,15 @@ done
 
 ## Local GPU workstation path
 
-Skip `srun` and run the same `uv run ... python -m` commands directly. Set EGL env vars first. Keep singularity enabled on cluster nodes unless there is a verified reason not to.
+Skip `srun` and run the same `uv run ... python -m` commands directly. Set EGL env vars first. If host-Python binaries are unstable, prefer the official container/runtime from `SETUP.md`.
 
-## If your old repo had wrappers
+## Blank-machine setup reminder
 
-Typical local wrapper responsibilities were:
+Before running any command below:
 
-- acquiring the GPU allocation or Slurm shell
-- exporting EGL and cache environment variables
-- pinning a default suite, trial count, and seed for smoke runs
-- routing logs and copied summaries into a stable output directory
-- injecting any repo-local config patch beside the public upstream command
+- clone `https://github.com/NVlabs/cosmos-policy.git`
+- follow `SETUP.md` and enter the supported Docker container
+- run `uv sync --extra cu128 --group libero --python 3.10`
 
 ## Batch fallback
 
@@ -171,6 +169,6 @@ sbatch --partition=gpu --time=04:00:00 --wrap="
 
 ## High-signal gotchas
 
-- On A40 cluster nodes, singularity is mandatory because host `transformer_engine` can fail with `GLIBC_2.29` loader errors.
+- If host-Python binaries fail to import cleanly, return to the official container/runtime from `SETUP.md` before debugging Python package state.
 - Always align `CUDA_VISIBLE_DEVICES` and `MUJOCO_EGL_DEVICE_ID` to the same GPU index.
 - Keep the full config block with the command because upstream eval depends on many explicit flags, not only task suite and trial count.
