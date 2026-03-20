@@ -53,7 +53,7 @@
 - [Roadmap](#roadmap)
 - [Repository Structure](#repository-structure)
 - [Use Cases](#use-cases)
-- [Contributing](#contributing)
+- [Contributors](#contributors)
 - [Community](#community)
 
 
@@ -451,9 +451,14 @@ Built with:
 Special thanks to:
 - EleutherAI, HuggingFace, NVIDIA, Lightning AI, Meta AI, Anthropic
 - All researchers who maintain excellent documentation
+ 
+## Contributors
 
+Thanks to all the people who have contributed to the AI Research Skills Library:
 
-## Contributing
+<a href="https://github.com/orchestra-research/AI-research-SKILLs/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=orchestra-research/AI-research-SKILLs" />
+</a> 
 
 We welcome contributions from the AI research community! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on:
 
@@ -461,9 +466,6 @@ We welcome contributions from the AI research community! See [CONTRIBUTING.md](C
 - Improving existing skills
 - Quality standards and best practices
 - Submission process
-
-All contributors are featured in our [Contributors Hall of Fame](CONTRIBUTORS.md) 🌟
- 
 
 ## Recent Updates
 
