@@ -4,7 +4,7 @@ Autonomous research requires agents that keep working continuously — hours, ov
 
 ## MANDATORY: Set Up Before Anything Else
 
-The wall-clock loop is the first thing you do when starting autoresearch. Without it, the agent does one cycle of work and stops. The loop fires every 10 minutes and simply tells the agent: "keep working, check if anything's wrong."
+The wall-clock loop is the first thing you do when starting autoresearch. Without it, the agent does one cycle of work and stops. The loop fires every 20 minutes and simply tells the agent: "keep working, check if anything's wrong."
 
 This is completely separate from the research inner/outer loops. The wall-clock loop is a fixed-interval prompt injection. The research loops run at experiment speed (minutes to hours per cycle). They will not sync and don't need to.
 
@@ -13,12 +13,12 @@ This is completely separate from the research inner/outer loops. The wall-clock 
 **Run this as your very first action:**
 
 ```
-/loop 10m Continue autoresearch. Read research-state.yaml and findings.md. Check: is the current experiment done? Are there errors? Is progress stalling? If everything is on track, keep working. If something is wrong, step back and fix it. Never idle.
+/loop 20m Continue autoresearch. Read research-state.yaml and findings.md. Check: is the current experiment done? Are there errors? Is progress stalling? If everything is on track, keep working. If something is wrong, step back and fix it. Never idle.
 ```
 
 ### What Happens on Each Tick
 
-The `/loop` message fires every 10 minutes. When it fires:
+The `/loop` message fires every 20 minutes. When it fires:
 
 1. **Read state** — `research-state.yaml` and `findings.md` to remember where you are and what you've learned
 2. **Check health** — is the current experiment running? Did it error? Is training diverging?
@@ -28,7 +28,7 @@ The `/loop` message fires every 10 minutes. When it fires:
 
 The tick is a nudge, not a phase boundary. If the previous tick's work isn't done, just keep going.
 
-### When Experiments Run Longer Than 10 Minutes
+### When Experiments Run Longer Than 20 Minutes
 
 This is normal and expected. On the next tick:
 - Check if the experiment finished
@@ -41,7 +41,25 @@ Your primary memory between ticks is `research-state.yaml` and `findings.md`. Ke
 
 ## OpenClaw: Cron Job
 
-**Set up a 10-minute cron job as your very first action.** Use the same prompt as Claude Code's `/loop`: continue autoresearch, read state files, check for errors, keep working. OpenClaw handles cron job setup internally — just set the interval to 10 minutes.
+**Set up a 20-minute cron job in the current session as your very first action.** Use the `cron.add` tool to create a recurring job bound to the current chat session:
+
+```json
+{
+  "name": "autoresearch-loop",
+  "schedule": { "kind": "every", "everyMs": 1200000 },
+  "sessionTarget": "current",
+  "payload": {
+    "kind": "agentTurn",
+    "message": "Continue autoresearch. Read research-state.yaml and findings.md. Check: is the current experiment done? Are there errors? Is progress stalling? If everything is on track, keep working. If something is wrong, step back and fix it. Never idle."
+  }
+}
+```
+
+Key details:
+- `sessionTarget: "current"` binds the cron to the current chat session (resolved to `session:<sessionKey>` at creation time), so it maintains conversation context across ticks
+- `everyMs: 1200000` = 20 minutes
+- Verify with `cron.list` that the job is created and enabled
+- To check run history later: `cron.runs` with the job ID
 
 ### Context Between Cron Ticks
 
@@ -53,13 +71,14 @@ OpenClaw cron invocations may start fresh each time. Your workspace files are yo
 
 Keep these updated after every action so the next cron tick can pick up seamlessly.
 
-### PDF Progress Reports
+### Progress Reports
 
 OpenClaw can't `open` HTML files locally like Claude Code can. When you have something to report:
 
 1. Generate a PDF progress summary (use Python with reportlab, matplotlib, or similar)
 2. Include: research question, key results, optimization trajectory plot, current understanding, next steps
-3. The human will see it in their next interaction
+3. Send it to the user via Telegram, WhatsApp, or Slack — whichever channel they use
+4. When you get an exciting result or interesting plot, send it right away — don't wait for a full report
 
 ## Research State as Ground Truth
 
