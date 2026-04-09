@@ -42,7 +42,7 @@ S5 — Impact: Broader significance or availability.
 - **Irene Zhang**: "The abstract is probably the hardest section to write because you cannot use any terms or concepts that you introduced in the paper."
 - **Gernot Heiser**: The abstract must be self-contained — no forward references, no undefined jargon.
 
-### Best-Paper Examples
+### Structural Examples
 
 **Blox (EuroSys'24)**: Abstract states 7 scheduling abstractions, names the system, lists concrete metrics.
 
@@ -117,7 +117,7 @@ This paper makes the following contributions:
 4. [Evaluation] — We evaluate [System Name] on [workload], showing [headline result] (§5).
 ```
 
-**Best-Paper Examples**:
+**Structural Examples**:
 - **Blox (EuroSys'24)**: 7 contributions covering abstractions + simulator + case studies
 - **Sia (SOSP'23)**: 5 primary contributions with section cross-references
 - **Lucid (ASPLOS'23)**: Contributions mirror the G1–G5 gap structure
@@ -160,7 +160,7 @@ Observation 3: [Finding]. [Evidence]. Combined with O1 and O2, this motivates [a
 - Each observation should logically lead to a design decision in §3
 - Use figures/tables to present data — reviewers trust visualizations over prose claims
 
-**Best-Paper Examples**:
+**Structural Examples**:
 - **GFS (arXiv 2025)**: 3 production observations → 3 design insights → 3 system components
 - **Lucid (ASPLOS'23)**: 5 cluster characteristic analyses from Azure/Alibaba traces
 
@@ -220,7 +220,7 @@ For complex systems, a summary table of design decisions is highly effective:
 | Fault tolerance | [X] | [Y] | [reason] |
 ```
 
-**Best-Paper Examples**:
+**Structural Examples**:
 - **Blox (EuroSys'24)**: 7 abstraction modules each with dedicated subsection
 - **Sia (SOSP'23)**: 3-phase scheduling design with alternatives per phase
 
@@ -305,7 +305,7 @@ Figure [N] shows [metric] as [scale dimension] increases from [min] to [max].
 At [max scale], [System Name] achieves [result], compared to [baseline] at [result].
 ```
 
-**Best-Paper Examples**:
+**Structural Examples**:
 - **Sia (SOSP'23)**: Evaluation on 4 workload mixes × 3 cluster sizes, ablation of 3 components
 - **Blox (EuroSys'24)**: 7 case studies each with dedicated evaluation subsection
 
@@ -368,29 +368,29 @@ Para 2 (optional, 2–3 sentences):
 
 ---
 
-## Best-Paper Structural Analysis
+## Structural Exemplar Analysis
 
-> **Note**: Best-paper information below is from public search results. Verify titles, authors, and years at each conference's official website before citing.
+> **Note**: Papers below are selected as structural exemplars for their writing quality and organization. Those verified as official best paper award winners are marked with (Best Paper Award). Venue and year information has been verified against official conference websites. Papers without the award marker are included for their exemplary structure, not as best-paper claims.
 
 ### OSDI/NSDI (USENIX Format)
 
 | Year | Paper | Structural Pattern | Key Takeaway |
 |------|-------|--------------------|--------------|
-| 2025 | Basilisk (OSDI) | Formal verification | Theorem-proof structure in design section |
-| 2024 | Anvil (OSDI) | Cluster management verification | Liveness property decomposition |
-| 2024 | ChameleonAPI (OSDI) | ML systems | API customization pipeline as workflow |
-| 2025 | NDD (NSDI) | Network verification | Decision diagram formalization |
+| 2025 | Basilisk (OSDI) (Best Paper Award) | Formal verification | Theorem-proof structure in design section |
+| 2024 | Anvil (OSDI) (Best Paper Award) | Cluster management verification | Liveness property decomposition |
+| 2024 | ChameleonAPI (OSDI) (Best Paper Award) | ML systems | API customization pipeline as workflow |
+| 2025 | NDD (NSDI) (Best Paper Award) | Network verification | Decision diagram formalization |
 
 ### ASPLOS/SOSP (ACM Format)
 
 | Year | Paper | Structural Pattern | Key Takeaway |
 |------|-------|--------------------|--------------|
-| 2025 | CXLfork (ASPLOS) | Hardware+systems | Hardware mechanism + software design dual sections |
-| 2024 | Centauri (ASPLOS) | ML training scheduling | Overlap analysis → scheduler design |
-| 2023 | TreeSLS (SOSP) | Persistent microkernel | NVM observations → tree-structured design |
+| 2025 | CXLfork (ASPLOS) (Best Paper Award) | Hardware+systems | Hardware mechanism + software design dual sections |
+| 2024 | Centauri (ASPLOS) (Best Paper Award) | ML training scheduling | Overlap analysis → scheduler design |
+| 2023 | TreeSLS (SOSP) (Best Paper Award) | Persistent microkernel | NVM observations → tree-structured design |
 | 2023 | Sia (SOSP) | GPU scheduling | 5 contributions + 3-phase design |
 
-### Common Structural Traits in Best Papers
+### Common Structural Traits in Exemplar Papers
 
 1. **Clear thesis in abstract sentence 3** — every best paper has a quotable thesis
 2. **Numbered contributions with section maps** — reviewers can trace claims

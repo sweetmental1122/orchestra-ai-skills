@@ -5,7 +5,6 @@ version: 1.0.0
 author: Orchestra Research
 license: MIT
 tags: [Writing Systems Papers, OSDI, SOSP, ASPLOS, NSDI, EuroSys, Structural Blueprint, Academic Writing, LaTeX]
-dependencies: [semanticscholar, arxiv, requests]
 ---
 
 # Writing Systems Papers: Paragraph-Level Structural Blueprint
@@ -58,7 +57,7 @@ Full citations and URLs: see [references/section-blueprints.md](references/secti
 | S5 Evaluation | 3–4 | Setup + End-to-end + Microbenchmarks + Scalability |
 | S6 Related Work | 1 | Grouped by methodology, explicit comparison |
 | S7 Conclusion | 0.5 | 3-sentence summary |
-| **Total** | **~12** | References unlimited |
+| **Total** | **~12** | Submission: 12 pages strict (USENIX) / 11 pages (ACM ASPLOS). Camera-ready: up to 14 pages (USENIX) / 13 pages (ACM). Ranges above span submission through camera-ready. Target 12 pages for initial submission. References unlimited. |
 
 ### Abstract (150–250 words, 5 sentences)
 
