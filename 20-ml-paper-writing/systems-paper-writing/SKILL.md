@@ -1,13 +1,13 @@
 ---
-name: writing-systems-papers
-description: Paragraph-level structural blueprint for 12-page systems papers targeting OSDI, SOSP, ASPLOS, NSDI, and EuroSys. Provides page allocation, paragraph templates, and writing patterns backed by authoritative guides and best-paper analysis. Complements ml-paper-writing with fine-grained systems-specific guidance.
-version: 1.0.0
+name: systems-paper-writing
+description: Comprehensive guide for writing systems papers targeting OSDI, SOSP, ASPLOS, NSDI, and EuroSys. Provides paragraph-level structural blueprints, writing patterns, venue-specific checklists, reviewer guidelines, LaTeX templates, and conference deadlines. Use this skill for all systems conference paper writing.
+version: 1.1.0
 author: Orchestra Research
 license: MIT
-tags: [Writing Systems Papers, OSDI, SOSP, ASPLOS, NSDI, EuroSys, Structural Blueprint, Academic Writing, LaTeX]
+tags: [Systems Paper Writing, OSDI, SOSP, ASPLOS, NSDI, EuroSys, Structural Blueprint, Academic Writing, LaTeX]
 ---
 
-# Writing Systems Papers: Paragraph-Level Structural Blueprint
+# Systems Paper Writing: Paragraph-Level Structural Blueprint
 
 Fine-grained structural guidance for writing **10–12 page systems papers** targeting top systems venues: OSDI, SOSP, ASPLOS, NSDI, and EuroSys. This skill provides page allocation per section, paragraph-level blueprints, and writing patterns distilled from authoritative guides and best-paper analysis.
 
@@ -254,6 +254,17 @@ Step 6: Use ml-paper-writing for citation verification and LaTeX formatting
 
 ## References
 
+### Writing Guidance
 - [references/section-blueprints.md](references/section-blueprints.md) — Detailed per-section paragraph templates with authoritative source quotes and best-paper structural examples
 - [references/writing-patterns.md](references/writing-patterns.md) — Four writing patterns with concrete paper examples
-- [references/checklist.md](references/checklist.md) — Pre-submission checklist combining community resources and academic integrity verification
+
+### Venue-Specific
+- [references/checklist.md](references/checklist.md) — 7-stage pre-submission checklist covering structure, writing quality, evaluation rigor, design quality, academic integrity, venue-specific requirements (OSDI/NSDI/ASPLOS/SOSP/EuroSys), and final pass
+- [references/systems-conferences.md](references/systems-conferences.md) — Conference overview, deadlines, track descriptions, formatting requirements, submission rules, and format conversion guides
+- [references/reviewer-guidelines.md](references/reviewer-guidelines.md) — How systems conference reviewers evaluate papers, with venue-specific criteria and common concerns
+
+### LaTeX Templates
+- [templates/osdi2026/](templates/osdi2026/) — OSDI 2026 (USENIX format)
+- [templates/nsdi2027/](templates/nsdi2027/) — NSDI 2027 (USENIX format)
+- [templates/asplos2027/](templates/asplos2027/) — ASPLOS 2027 (ACM SIGPLAN format)
+- [templates/sosp2026/](templates/sosp2026/) — SOSP 2026 (ACM SIGPLAN format)
