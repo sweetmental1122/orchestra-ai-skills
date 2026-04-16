@@ -56,6 +56,7 @@
 - [Contributors](#contributors)
 - [Citation](#citation)
 - [Community](#community)
+- [Recent Updates](#recent-updates)
 
 
 ## Our Mission
